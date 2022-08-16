@@ -1,10 +1,12 @@
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,500;0,600;0,700;0,800;1,100;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200&display=swap');
 
 *{
     box-sizing: content-box;
     padding: 0;
     margin: 0;
-    font-family: 'Merriweather', serif;
+    font-family: 'Kanit', sans-serif;
 }
 
 /*Configuracion de la imagen de fondo en el body*/
@@ -21,51 +23,6 @@ body{
    
 }
 
-
-/*Header que incluye menu de sesiones y logo*/
-.header-box{
-    display: flex;
-    flex-direction: row;   
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(255, 255, 255, 0.97);
-    width: 100%;
-    position: fixed;
-    z-index: 100;
-    margin: auto;
-}
-/*configuraciones del apartado superior izquierdo, "logo"*/
-.logo-box{
-    display: flex;
-    flex: row;
-    justify-content: center;
-    align-items: center;
-}
-/*Tamaño de la imagen del logo*/
-.logo-header{
-    width: 120px;
-    height: 110px;
-}
-
-/*nombre a la par del logo*/
-.title-header{
-    color: rgb(0, 0, 0);
-    font-size: 20px;
-    font-weight: 700;
-}
-/*Menu de sesiones*/
-.menu{
-    display: flex;
-}
-/*configuraciones para los Li del menú*/
-.options{
-    padding: 10px;
-    margin: 12px;
-    list-style: none;
-    font-weight: 600;
-    font-size: 17px;
-    color: rgb(0, 0, 0);
-}
 
 /*Container que ayuda a que el fondo del body se pueda visualizar*/
 .container{
@@ -159,6 +116,7 @@ body{
 .objetivos-ol>li{
     padding: 8px;
 }
+
 
 /*contenedor de la mision*/
 .mision-box{
@@ -266,9 +224,16 @@ body{
 
     }
 
+
     .img-objetivos{
         min-width: 200px;
         width: 80%;
+    }
+
+    .creadores-cont{
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 30px;
     }
     
 }

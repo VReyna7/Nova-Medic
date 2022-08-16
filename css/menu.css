@@ -1,0 +1,129 @@
+/*Header que incluye menu de sesiones y logo*/
+.header-box{
+    display: flex;
+    flex-direction: row;   
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.97);
+    width: 100%;
+    position: fixed;
+    z-index: 100;
+    margin: auto;
+}
+/*configuraciones del apartado superior izquierdo, "logo"*/
+.logo-box{
+    display: flex;
+    flex: row;
+    justify-content: center;
+    align-items: center;
+}
+/*Tamaño de la imagen del logo*/
+.logo-header{
+    width: 120px;
+    height: 110px;
+}
+
+/*nombre a la par del logo*/
+.title-header{
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+.link{
+    text-decoration: none;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+.linkAct{
+    background-color: rgb(255, 100, 100);
+    color: white;
+    width: 200px;
+    text-decoration: none;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+
+#icono-menu{
+    font-size: 30px;
+    margin-left: 10px;
+    display: none;
+}
+
+.link:hover{
+    background-color: rgb(255, 100, 100);
+    transition: 02s;
+    color: white;
+}
+
+/*Menu de sesiones*/
+.opciones{
+    display: flex;
+}
+
+/*configuraciones para los Li del menú*/
+.options{
+    padding: 10px;
+    margin: 12px;
+    text-align: center;
+    list-style: none;
+    font-weight: 600;
+    font-size: 17px;
+    color: rgb(0, 0, 0);
+}
+
+.optionA{
+    padding: 10px;
+    margin: 12px;
+    text-align: center;
+    list-style: none;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.options:hover{
+   color: white;
+}
+
+
+@media screen and (max-width: 500px){
+.header-box{
+    display: flex;
+    justify-content: space-around;
+}
+
+.menu{
+    display: none;
+}
+
+ul{
+    flex-direction: column;
+}
+
+.mostrar{
+    display: flex;
+}
+
+#icono-menu{
+    display: flex;
+}
+
+.active{
+    display: flex;
+    background-color: rgba(255, 255, 255, 0.97);
+    opacity: 30px;
+    position:fixed;
+    bottom: 0;
+    width: 100%;
+    height: 85%;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.opciones{
+    padding: 15px;
+}
+
+}

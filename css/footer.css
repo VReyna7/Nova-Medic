@@ -1,0 +1,52 @@
+*{
+    box-sizing: content-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Kanit', sans-serif;
+}
+
+.footer-box{
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    border-top: 4px solid black;
+}
+
+.pages-footer{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    border-right: 2px solid black;
+    margin-left: 20px;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+span{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.sociales-img{
+    width: 40px;
+    height: 40px;
+    margin: 10px;
+}
+
+.contacto{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.empre{
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+}
+
+.parra{
+    width: 97%;
+}
