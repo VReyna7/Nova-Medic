@@ -1,0 +1,107 @@
+body{
+    background-color: #0d6efd !important;
+}
+
+.row{
+    margin-top: 20px !important;
+}
+
+.div-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100vw;
+    height: 100%;
+    min-width: 200px;
+}
+
+.sexo{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sexotexts{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+
+.fotin{
+    width: 100%;
+    height: 100%;
+}
+
+.divimagen{
+    background-image: url("../img/fondo5.png");
+    width: 420px;
+    height: 500px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.form-group{
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.colorito{
+    background-color: rgba(2, 2, 2, 0.97) !important ;
+    width: 600px;
+    height: 500px;
+    padding: 40px;
+    margin-top: 120px;
+    flex-direction: column;
+    margin-bottom: 120px;
+}
+
+.fecha{
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+
+.count{
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width: 1040px){
+    .divimagen{
+
+        width: 300px;
+        height: 500px;
+    }
+}
+
+@media screen and (max-width: 940px){
+    .div-form{
+        flex-wrap: wrap;
+      }
+
+    .divimagen{
+        margin-top: 0;
+    }
+
+    .colorito{
+        margin-bottom: 0;
+    }
+
+    .divimagen{
+        width: 600px;
+        height: 500px;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
+
+
+@media screen and (max-width: 624px){
+
+    .divimagen{
+       display: none;
+    }
+}
+
+

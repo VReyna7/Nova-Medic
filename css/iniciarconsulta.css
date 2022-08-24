@@ -1,0 +1,230 @@
+body{
+    overflow-x: hidden;
+}
+
+
+.info{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height:  750px;
+    color: rgb(255, 255, 255);
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+}
+
+.fondoprimario{
+    display: flex;
+    background-image: url(../img/fondo5.png);
+    height: 100% ;
+    width: 100% ;
+    clip-path: polygon(0 0, 100% 0, 81% 100%, 0% 100%);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.fondoprimario-mid{
+    display: flex;
+    background-image: url(../img/fondo5.png);
+    height: 100% ;
+    width: 100% ;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 17% 100%);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+.imagensita{
+    width: 420px;
+    height: auto;
+    margin: 20px;
+    clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
+}
+
+
+.info-text, .info2-text{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-right: 80px;
+    padding-left: 80px;
+}
+
+
+
+.info-mid{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height:  750px;
+    color: rgb(3, 3, 3);
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+}
+
+
+.info2{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    padding-left: 25px;
+}
+
+
+
+/*Estilo de botones*/
+.bntsPrinc{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 500px;
+    margin: 0 auto;
+    align-items: center;
+    height: 80%;
+}
+
+
+
+.bntsPrinc button{
+    width: 250px;
+    height: 80px;
+    border-radius: 10px;
+    border: 0px;
+    font-size: 1.5em;
+    padding: 10px;
+    background-color: #0d6efd !important;
+    color: white;
+    margin: 100px;
+}
+
+.bntsPrinc button:hover{
+    background: rgba(0, 0, 0, 0.4);
+    transform: scale(1.1);
+    transition: 1s;
+}
+
+
+@media screen and (max-width: 580px){
+
+
+.bntsPrinc button{
+    width: 150px;
+    height: 150px;
+}
+
+
+}
+
+@media screen and (max-width: 850px){
+    .fondoprimario{
+        display: none;
+     }
+     
+     .fondoprimario-mid{
+         display: none;
+     }
+
+}
+@media screen and (max-width: 490px){
+
+    .info2{
+        display: flex;
+        width: 100%;
+        padding-left: 0;
+    }
+    
+    .bntsPrinc button{
+        border: 3px solid white;
+        font-size: 1.5em;
+        padding: 0px;
+        margin: 0;
+    }
+
+    .bntsPrinc button{
+    width: 100px;
+    }
+
+    
+
+    .p-objetivos {
+        flex-wrap: wrap;
+        text-align: center;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    
+    
+    }
+
+
+    @media screen and (max-width: 450px){
+
+        .bntsPrinc button{
+            border: 3px solid white;
+            font-size: 1.1em;
+            padding: 0px;
+            margin-bottom: 0x;
+            margin-top: 0px;
+        }
+
+        .info{
+            height:  900px;
+  
+        }
+        
+        .info2{
+            height: 900px;
+        }
+        
+        .info-text, .info2-text{
+            margin-top: 4%x;
+        }
+        
+        }
+
+
+        @media screen and (max-width: 310px){
+
+            .info-text{
+                padding-top: 10%;
+            }
+            
+            .info{
+            height:  1000px;
+  
+         }
+            .p-objetivos{
+                margin-bottom: 0px;
+                margin-top: 0px;
+            }
+
+        .info-mid{
+            margin-top: 40PX;
+              width: 100%;
+            height:  850px;
+
+        }
+
+        .p-objetivos{
+            display: none;
+        }
+
+        .objetivo-h3{
+            font-size: 15px  !important;
+        }
+
+            }

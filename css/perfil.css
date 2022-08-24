@@ -1,0 +1,151 @@
+.body{
+    overflow-x: hidden;
+}
+
+.contenedor{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.contenido{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    width: 100%;
+    justify-content: center;
+    
+}
+
+.fotoPerfil{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    
+    padding: 40px;
+}
+
+.fotoPerfil img{
+    height: 350px;
+    width: 350px;
+    clip-path: circle(50% at 50% 50%);
+}
+
+.fotoPerfil button{
+    color: white;
+    background-color: #0d6efd;
+    padding: 15px;
+    margin: 20px;
+    border-radius: 5px;
+    border: 0px;
+    font-size: 1.1em;
+}
+
+.encabezado{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-bottom: 2px solid lightgray;
+    align-items: center;
+    justify-content:space-between;
+    color: rgb(15, 71, 149);
+    width: 100%;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.encabezado input{
+    background-color: #0d6efd;
+    color: white;
+    border: 0px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.encabezado input:hover{
+    transform: scale(1.05);
+    transition: 1s;
+}
+
+.datosUsuario{
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 20px;
+    color: black;
+}
+
+.datosUsuario form{
+    display: flex;
+    flex-direction: column;
+    outline: none;
+}
+
+.datosUsuario form input{
+    margin: 20px;
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.datosUsuario form label{
+    margin-top: 10px;
+    margin-left: 20px;
+    color: black;
+    font-size: 1.2em;
+}
+
+#confPasswordLabel{
+    color:rgb(233, 98, 2);
+    display: none;
+}
+
+#confPassword{
+    display: none;
+    border: 2px solid  rgb(233, 98, 2);
+}
+
+.confCambios{
+    background-color: #0d6efd;
+    color: white;
+    border: 0px;
+    margin: 0 auto;
+    display: none;
+    font-size: 1.2em;
+}
+
+.confCambios:hover{
+    transform: scale(1.02);
+    transition: 1s;
+}
+
+.fotoPerfil button:hover{
+    transform: scale(1.1);
+    transition: 1s;
+}
+
+@media screen and (max-width: 1000px){
+    .fotoPerfil img{
+        height: 200px;
+        width: 200px;
+    }
+    .fotoPerfil{
+        width: 100%;
+        height: fit-content;
+        border-bottom: 2px solid lightgray;
+        padding: 20px;
+    }
+    .datosUsuario{
+        width: 100%;
+    }
+}

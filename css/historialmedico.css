@@ -1,0 +1,113 @@
+body{
+    background-color: #0d6efd !important;
+}
+
+
+.row{
+    margin-top: 20px !important;
+}
+
+.div-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100vw;
+    height: 100%;
+    min-width: 200px;
+}
+
+.Options{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.optiontexts{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+.options{
+    margin-bottom: 20px;
+}
+
+.fotin{
+    width: 100%;
+    height: 100%;
+}
+
+.divimagen{
+    background-image: url("../img/fondo5.png");
+    width: 450px;
+    height: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.colorito{
+    background-color: rgba(2, 2, 2, 0.97) !important ;
+    width: 600px;
+    height: auto;
+    padding: 40px;
+    margin-top: 120px;
+    flex-direction: column;
+    margin-bottom: 120px;
+}
+
+
+.especific-text-form,.especific-text-form2 {
+    display: none !important;
+}
+
+
+.botonsito{
+    margin-top: 30px;
+}
+
+.true, .true2, .true3, .true4{
+    display: flex !important;
+    flex-direction: column !important;
+    margin-top: 8px !important;
+    
+}
+
+@media screen and (max-width: 1020px){
+    .divimagen{
+        width: 300px;
+        height: 700px;
+
+    }
+}
+
+@media screen and (max-width: 920px){
+    .divimagen{
+        width: 250px;
+        height: 700px;
+
+    }
+}
+
+
+
+@media screen and (max-width: 860px){
+    .divimagen{
+       display: none;
+
+    }
+}
+
+@media screen and (max-width: 540px){
+
+    .colorito{
+        width: 300px;
+
+    }
+
+    .optiontexts{
+        flex-wrap: wrap;
+    }
+}
