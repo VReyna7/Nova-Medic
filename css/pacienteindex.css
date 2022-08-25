@@ -14,9 +14,9 @@ body{
 
 .info{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 100px;
     color: rgb(20, 20, 20);
     justify-content: center;
     align-items: center;
@@ -45,7 +45,7 @@ body{
     flex-direction: row;
     width: 100%;
     height: auto;
-    margin-top: 20px;
+    margin-top: 12%;
     padding-top: 100px;
     padding-bottom: 100px;
     color: rgb(255, 255, 255);
@@ -54,15 +54,7 @@ body{
     padding-left: 25px;
 }
 
-.info3{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    margin-top: 20px;
-    color: rgb(20, 20, 20);
-    justify-content: center;
-    align-items: center;
-}
+
 .imagen-info2{
     width: 400px;
     height: 402px;
@@ -86,7 +78,7 @@ body{
     width: 250px;
     height: 80px;
     border-radius: 10px;
-    border: 0px;
+    border: 3px solid white;
     font-size: 1.5em;
     padding: 10px;
     background-color: #0d6efd !important;

@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/index.css">
-    <script src="js/scrollreveal.js"></script>
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/regis.css">
+    <script src="../js/scrollreveal.js"></script>
+    <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <title>Prueba</title>
 </head>
 <body>
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
       <div class="container">
-          <img src="img/My project.png" width="90" height="90" class="d-inline-block align-top" alt="">
+          <img src="../img/My project.png" width="90" height="90" class="d-inline-block align-top" alt="">
           <a class="navbar-brand fs-4" href="#" >NOVA MEDIC</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -20,93 +20,67 @@
           <div class="collapse navbar-collapse " id="navbarNav">
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
-                <a class="nav-link active fs-6 navbar-brand" aria-current="page" href="#fondo" >INICIO</a>
+                <a class="nav-link  fs-6 navbar-brand" aria-current="page" href="../index.html" >INICIO</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link fs-6 navbar-brand" href="#objetivos" >OBJETIVOS</a>
+                <a class="nav-link  fs-6 navbar-brand" href="iniciosesion.html" >INICIAR SESION</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link fs-6 navbar-brand" href="#misiones">MISION</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link fs-6 navbar-brand" href="#creadores">CREADORES</a>
+                <a class="nav-link active fs-6 navbar-brand" href="#">REGISTRARSE</a>
               </li>
             </ul>
           </div>
-  
-      </div>
-      </nav>
-      <div class="divfondo" id="fondo">
-        <div class="bntsPrinc">
-          <a href="vistas/sesiones/iniciosesion.html"><button>Iniciar Sesion</button></a>
-          <a href="vistas/sesiones/registro.html"><button>Registro</button></a>
-      </div>
-      </div>
-      
-      <div class="objetivos" id="objetivos">
-          <img src="img/saludapoyada.jpg" class="imagensita">
-        <div class="objetivo-text">
-          <h3 class="display-5 objetivo-h3">Objetivos</h3>
-          <p class="p-objetivos" class="text-center text-wrap" >Apoyar a mejorar la administración hospitalaria desde las posibilidades que ofrecen 
-            las nuevas tecnologías, basándose en el proyecto que se le conocerá como Nova 
-            Medic. Nova Medic será una página web que utilizará los medios tecnológicos 
-            necesarios para poder acompañar en la administración hospitalaria desde los 
-            campos que sean posibles, como, por ejemplo: El área de nutrición, psicología, 
-            consultas generales. Tomamos estos 3 puntos como base principal y primaria para 
-            el inicio del proyecto por los siguientes motivos.</p>
-            <ol class="objetivos-ol">
-              <li> Las ramas medicas elegidas pueden ser solucionadas en algunos casos sin
-                  necesidad de un estudio de laboratorio.</li>
-              <li>Casos como la psicología y la nutrición pueden ser tratadas durante sesiones
-                  virtuales, ya sea por chat o por videollamadas</li>
-              <li> Ramas como la psicología y nutrición podrán tener la posibilidad de empezar a 
-                  ser más utilizadas por las personas al poder ser accedidas de manera más sencillas.</li>
-          </ol>
-          </div> 
-      </div>
+    </nav>
 
-
-    <div class="Mision" id="misiones">
-       <img src="img/imagen45.jpg" class="imagen-mision">
-         <div class="Mision-text">
-          <h3 class="display-5 Mision-h3">Mision</h3>
-          <p class="p-mision" class="text-center ">No  intentamos ser una tienda online de consultas o venta de 
-            productos médicos. Nova Medic busca ser parte de las posibilidades que las 
-            personas tienen en nuestro país para recibir un diagnostico medico profesional. 
-            Por eso nuestra idea no va por el camino de una empresa privada en ganancias, si 
-            no en una posible org sin fines de lucro o una idea para implementar atreves de 
-            los servicios públicos del gobierno.
-            De esta forma nova Medic busca mejorar el sistema hospitalario, no suplantarlo, 
-            Nova Medic busca ser simplemente otra posibilidad más para poder atentos a 
-            nuestra salud apoyados por la tecnología</p>
+    <div class="div-form">
+      <form class="colorito" id="colorito">
+        <label for="colorito" class="text-white fs-5">REGISTRO</label>
+        <div class="row">
+          <div class="col">
+            <label for="form-control " class="text-white">Nombre</label>
+            <input type="text" class="form-control" placeholder="First name" required>
+          </div>
+          <div class="col">
+            <label for="form-control" class="text-white">Apellido</label>
+            <input type="text" class="form-control" placeholder="Last name" required>
+          </div>
         </div>
+        <div class="sexo">
+          <label for="form-check" class="text-white">Sexo</label>
+          <div class="sexotexts">
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+              <label class="form-check-label text-white" for="inlineRadio1">Hombre</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+              <label class="form-check-label text-white" for="inlineRadio2">Mujer</label>
+            </div>
+          </div>
+        </div>
+        <div class="fecha">
+          <label for="form-check" class="text-white">Fecha de nacimiento</label>
+          <input type="date" class="datapicker" data-date-format="mm/dd/yyyy">
+        </div>
+        <div class="count">
+          <div class="row">
+            <div class="col">
+              <label for="form-control " class="text-white">Correo</label>
+              <input type="email" class="form-control" placeholder="Email">
+            </div>
+            <div class="col">
+              <label for="form-control" class="text-white">Contraseña</label>
+              <input type="password" class="form-control" placeholder="Password">
+            </div>
+          </div>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Siguiente">
+      </form>
+      <div class="divimagen">
       </div>
+   </div>
+    
       
-      <section class="creadores-box" id="creadores">
-        <h3 class="display-5 Creadores-h3">Creadores</h3>
-      <div class="all-creadores">
-        <div class="creadores-cont">
-            <div class="container-creador1"></div>
-            <h3 class="nombre-creador" >creador</h3>
-        </div>
-        <div class="creadores-cont">
-            <div class="container-creador2"></div>
-            <h3 class="nombre-creador">creador</h3>
-        </div>
-        <div class="creadores-cont">
-            <div class="container-creador3"></div>
-            <h3 class="nombre-creador">creador</h3>
-        </div>
-        <div class="creadores-cont">
-            <div class="container-creador4"></div>
-            <h3 class="nombre-creador">creador</h3>
-        </div>
-        <div class="creadores-cont">
-            <div class="container-creador5"></div>
-            <h3 class="nombre-creador">creador</h3>
-        </div>
-    </div>
-     </section> 
       <!-- Footer -->
 <footer class="text-center text-lg-start bg-primary text-white footer">
   <!-- Section: Social media -->
@@ -226,8 +200,8 @@
   <!-- Copyright -->
 </footer>
 <!-- Footer -->
-<script src="js/index.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="../js/iniciodesesion.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
 </body>
 </body>
 </html>
