@@ -9,15 +9,17 @@ class Doctor{
     private $estado;
     private $titulos;
     private $fechaNac;
+    private $especialidad;
 
-    public function veriData($nombre,$apellido,$pass,$correo,$sexo,$fechaNac){
-        if(isset($nombre) && isset($apellido) && isset($pass) && isset($correo) && isset($sexo) && isset($fechaNac)){
+    public function veriData($nombre,$apellido,$pass,$correo,$sexo,$fechaNac,$especialidad){
+        if(isset($nombre) && isset($apellido) && isset($pass) && isset($correo) && isset($sexo) && isset($fechaNac) && isset($especialidad)){
             $this->nombre = $nombre;
             $this->apellido = $apellido;
             $this->pass = $pass;
             $this->correo = $correo;
             $this->sexo = $sexo;
             $this->fechaNac = $fechaNac;
+            $this->especialidad = $especialidad;
         }else{
             throw new Exception('Error, Tiene que rellenar todos los datos');
         }
@@ -26,7 +28,7 @@ class Doctor{
     public function newDoctor(){
         $dbh = new Conexion();
         $conexion = $dbh->get_conexion();
-        $sql = "insert into doctor (nombre, apellido, pass, correo, sexo, fecha_nac, estado) values (:nombre, :apellido, md5(:pass), :correo, :sexo, :fecha_nac, :estado)";
+        $sql = "insert into doctor (nombre, apellido, pass, correo, sexo, fecha_nac, espec) values (:nombre, :apellido, md5(:pass), :correo, :sexo, :fecha_nac, :espec)";
         $stmt = $conexion->prepare($sql) ;
         $stmt->bindParam(":nombre",$this->nombre);
         $stmt->bindParam(":apellido",$this->apellido);
@@ -34,7 +36,7 @@ class Doctor{
         $stmt->bindParam(":correo",$this->correo);
         $stmt->bindParam(":sexo",$this->sexo);
         $stmt->bindParam(":fecha_nac",$this->fechaNac);
-        $stmt->bindParam(":estado",0);
+        $stmt->bindParam(":espec",$this->especialidad);
         if(!$stmt){
             throw new Exception("Error. No se pudo conectar con la base de datos");
         }else{
@@ -107,6 +109,17 @@ class Doctor{
         }
     }
 
+    public function allDoctores(){
+        $dbh = new Conexion;
+        $conexion = $dbh->get_conexion();
+        $sql = 'SELECT * FROM doctor ORDER BY id';
+        $stmt = $conexion->prepare($sql);
+        $stmt->execute();
+        $doctores = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $doctores;
+    }
+
+
     public function setDoctor($user){
         $dbh = new Conexion;
         $conexion = $dbh->get_conexion();
@@ -165,6 +178,10 @@ class Doctor{
 
     public function getSexo(){
         return $this->sexo;
+    }
+
+    public function getEspecialdiad(){
+        return $this->getEspecialdiad;
     }
 }
 ?>

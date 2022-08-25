@@ -1,27 +1,19 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/iniciosesion.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../css/iniciarconsulta.css?v=<?php echo time(); ?>">
     <script src="../js/scrollreveal.js"></script>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <title>Inicio Sesión</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Prueba</title>
     <link rel="icon" href="../img/favicon.ico">
-    <?php
-      if(isset($_SESSION['cliente'])){
-        header("location: ../vistas/indexPaciente.php");
-      }else if(isset($_SESSION['doctor'])){
-        header("location: ../vistas/indexDoctor.php");
-      }else if(isset($_SESSION['admin'])){
-        header("location: ../vistas/indexAdmin.php");
-      }
-    ?>
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <nav class="navbar  navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
       <div class="container">
           <img src="../img/My project.png" width="90" height="90" class="d-inline-block align-top" alt="">
           <a class="navbar-brand fs-4" href="#" >NOVA MEDIC</a>
@@ -31,44 +23,83 @@
           <div class="collapse navbar-collapse " id="navbarNav">
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
-                <a class="nav-link  fs-6 navbar-brand" aria-current="page" href="../index.html" >INICIO</a>
+                <a class="nav-link  fs-6 navbar-brand" aria-current="page" href="indexPaciente.html" >INICIO</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active fs-6 navbar-brand" href="#" >INICIAR SESION</a>
+                <a class="nav-link fs-6 navbar-brand active" href="iniciarConsulta.html" >INICIAR CONSULTA</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link fs-6 navbar-brand" href="../vistas/registro.php">REGISTRARSE</a>
+                <a class="nav-link fs-6 navbar-brand" href="#">CHAT</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-6 navbar-brand" href="perfil.html">PERFIL</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-6 navbar-brand" href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>
               </li>
             </ul>
           </div>
-    </nav>
-
-    <div class="div-form">
-      <form class="colorito" id="colorito" method="POST" action="../controlador/crtInicioSesion.php">
-        <label for="colorito" class="text-white fs-5">INICIO DE SESION</label>
-        <?php
-            if(isset($errorLog)){
-                echo "<p class='text-white fs-5'>".$errorLog."</p>";
-            }
-        ?>
-        <div class="form-group text-white">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="mail" required>
-          <small id="emailHelp" class="form-text text-white">Recuerda Nunca compartir ni tu correo , ni tu contraseña con alguien.</small>
-        </div>
-        <div class="form-group text-white">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="pass" required>
-        </div>
-        <input type="submit" class="btn btn-primary mx-auto" value="Iniciar sesión">
-      </form>
-      <div class="divimagen">
+  
       </div>
-   </div>
+      </nav>
+      <!--<div class="divfondo" id="fondo">
+        <div class="bntsPrinc">
+          <a href="vistas/sesiones/iniciosesion.html"><button>Iniciar Sesion</button></a>
+          <a href="vistas/sesiones/registro.html"><button>Registro</button></a>
+      </div>
+      </div>
+     -->
+      <div class="info" id="info">
+        <div class="fondoprimario">
+        </div>
+        <div class="info-text">
+          <h3 class="display-5 objetivo-h3">CONSULTA GENERAL</h3>
+          <p class="p-objetivos" class="text-center text-wrap" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
+            mollit anim id est laborum</p>
+             <div class="bntsPrinc">
+                  <a href="consultaGeneral.html"><button>Ingresar</button></a>
+              </div>
+          </div>
+      </div>
+
+      <div class="info-mid" id="info-mid">
+        <div class="info-text">
+          <h3 class="display-5 objetivo-h3">PSICOLOGÍA</h3>
+          <p class="p-objetivos" class="text-center text-wrap" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
+            mollit anim id est laborum</p>
+            <div class="bntsPrinc">
+                <a href="psicologia.html"><button>Ingresar</button></a>
+            </div>
+          </div>
+          <div class="fondoprimario-mid">
+        </div>
+      </div>
+
+      <div class="info" id="info">
+        <div class="fondoprimario">
+        </div>
+        <div class="info-text">
+          <h3 class="display-5 objetivo-h3">NUTRICIONISTAS</h3>
+          <p class="p-objetivos" class="text-center text-wrap" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
+            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
+            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
+            mollit anim id est laborum</p>
+
+             <div class="bntsPrinc">
+                  <a href="nutricion.html"><button>Ingresar</button></a>
+              </div>
+ 
+          </div>
+      </div>
 
 
-    
-      
       <!-- Footer -->
 <footer class="text-center text-lg-start bg-primary text-white footer">
   <!-- Section: Social media -->
@@ -188,8 +219,12 @@
   <!-- Copyright -->
 </footer>
 <!-- Footer -->
-<script src="../js/iniciodesesion.js"></script>
+<script src="../js/pacienteindex.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    
 </body>
 </body>
 </html>

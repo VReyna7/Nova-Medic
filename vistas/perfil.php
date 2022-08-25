@@ -1,27 +1,21 @@
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/iniciosesion.css?v=<?php echo time(); ?>">
+    <link rel="stylesheet" href="../css/perfil.css?v=<?php echo time(); ?>">
     <script src="../js/scrollreveal.js"></script>
+    <script src="../js/editarPerfil.js"></script>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <title>Inicio Sesión</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Prueba</title>
     <link rel="icon" href="../img/favicon.ico">
-    <?php
-      if(isset($_SESSION['cliente'])){
-        header("location: ../vistas/indexPaciente.php");
-      }else if(isset($_SESSION['doctor'])){
-        header("location: ../vistas/indexDoctor.php");
-      }else if(isset($_SESSION['admin'])){
-        header("location: ../vistas/indexAdmin.php");
-      }
-    ?>
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <nav class="navbar  navbar-expand-lg navbar-dark bg-primary">
+    <!--Barra de navegación-->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
       <div class="container">
           <img src="../img/My project.png" width="90" height="90" class="d-inline-block align-top" alt="">
           <a class="navbar-brand fs-4" href="#" >NOVA MEDIC</a>
@@ -31,45 +25,52 @@
           <div class="collapse navbar-collapse " id="navbarNav">
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
-                <a class="nav-link  fs-6 navbar-brand" aria-current="page" href="../index.html" >INICIO</a>
+                <a class="nav-link  fs-6 navbar-brand" aria-current="page" href="indexPaciente.php" >INICIO</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active fs-6 navbar-brand" href="#" >INICIAR SESION</a>
+                <a class="nav-link fs-6 navbar-brand" href="../vistas/iniciarConsulta.php" >INICIAR CONSULTA</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link fs-6 navbar-brand" href="../vistas/registro.php">REGISTRARSE</a>
+                <a class="nav-link fs-6 navbar-brand" href="#">CHAT</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-6 navbar-brand active" href="../vistas/perfil.php">PERFIL</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-6 navbar-brand" href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>
               </li>
             </ul>
           </div>
+        </div>
     </nav>
-
-    <div class="div-form">
-      <form class="colorito" id="colorito" method="POST" action="../controlador/crtInicioSesion.php">
-        <label for="colorito" class="text-white fs-5">INICIO DE SESION</label>
-        <?php
-            if(isset($errorLog)){
-                echo "<p class='text-white fs-5'>".$errorLog."</p>";
-            }
-        ?>
-        <div class="form-group text-white">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="mail" required>
-          <small id="emailHelp" class="form-text text-white">Recuerda Nunca compartir ni tu correo , ni tu contraseña con alguien.</small>
-        </div>
-        <div class="form-group text-white">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="pass" required>
-        </div>
-        <input type="submit" class="btn btn-primary mx-auto" value="Iniciar sesión">
-      </form>
-      <div class="divimagen">
+    <!--Perfil-->
+    <div class="contenedor">
+      <div class="encabezado">
+        <h3>Información Personal</h3>
+        <input type="button" name="editar"  value="Editar" onclick="activateInputs()">
       </div>
-   </div>
+      <div class="contenido">
+        <div class="fotoPerfil">
+          <img src="../img/fotoperfil.webp">
+          <button>Cambiar foto de perfil</button>
+        </div>
+        <div class="datosUsuario">
+          
+          <form>
+              <label>Nombre:</label><input type="text" id="nombre" disabled placeholder="Juanito">
+              <label>Apellido:</label><input type="text" id="apellido" disabled placeholder="Alcachofa">
+              <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="Alcachofa@gmail.com">
+              <label>Contraseña:</label><input type="password" id="password" disabled placeholder="Alcachofa69">
+              <label id="confPasswordLabel">Confirmar Contraseña:</label><input type="password" id="confPassword" disabled placeholder="Alcachofa69">
+              <label>Sexo:</label><input type="text" id="sexo" disabled placeholder="Hombre">
+              <input type="submit" value="Confirmar Cambios" id="confCambios" class="confCambios" onclick="activateButton()">
+          </form>
+        </div> 
+      </div>
+    </div>
 
 
-    
-      
-      <!-- Footer -->
+    <!-- Footer -->
 <footer class="text-center text-lg-start bg-primary text-white footer">
   <!-- Section: Social media -->
   <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
@@ -188,8 +189,12 @@
   <!-- Copyright -->
 </footer>
 <!-- Footer -->
-<script src="../js/iniciodesesion.js"></script>
+<script src="../js/perfil.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    
 </body>
 </body>
 </html>

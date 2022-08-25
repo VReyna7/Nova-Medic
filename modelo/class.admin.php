@@ -24,7 +24,7 @@ class Admin{
     public function newAdmin(){
         $dbh = new Conexion();
         $conexion = $dbh->get_conexion();
-        $sql = "insert into cliente (nombre, apellido, pass, correo, sexo, fecha_nac) values (:nombre, :apellido, md5(:pass), :correo, :sexo, :fecha_nac)";
+        $sql = "insert into admin (nombre, apellido, pass, correo, sexo, fecha_nac) values (:nombre, :apellido, md5(:pass), :correo, :sexo, :fecha_nac)";
         $stmt = $conexion->prepare($sql) ;
         $stmt->bindParam(":nombre",$this->nombre);
         $stmt->bindParam(":apellido",$this->apellido);
@@ -43,7 +43,7 @@ class Admin{
     public function newDoctor(){
         $dbh = new Conexion();
         $conexion = $dbh->get_conexion();
-        $sql = "insert into doctor (nombre, apellido, pass, correo, sexo, fecha_nac, estado) values (:nombre, :apellido, md5(:pass), :correo, :sexo, :fecha_nac, :estado)";
+        $sql = "insert into admin (nombre, apellido, pass, correo, sexo, fecha_nac) values (:nombre, :apellido, md5(:pass), :correo, :sexo, :fecha_nac)";
         $stmt = $conexion->prepare($sql) ;
         $stmt->bindParam(":nombre",$this->nombre);
         $stmt->bindParam(":apellido",$this->apellido);
@@ -51,7 +51,6 @@ class Admin{
         $stmt->bindParam(":correo",$this->correo);
         $stmt->bindParam(":sexo",$this->sexo);
         $stmt->bindParam(":fecha_nac",$this->fechaNac);
-        $stmt->bindParam(":estado",0);
         if(!$stmt){
             throw new Exception("Error. No se pudo conectar con la base de datos");
         }else{
@@ -63,7 +62,7 @@ class Admin{
     public function extAdmin($user){
         $dbh = new Conexion;
         $conexion = $dbh->get_conexion();
-        $sql = 'Select * from doctor where correo=:correo';
+        $sql = 'Select * from admin where correo=:correo';
         $stmt = $conexion->prepare($sql);
         $stmt->bindParam(":correo",$user);
         if(!$stmt){
@@ -81,7 +80,7 @@ class Admin{
     public function searchAdmin($user, $pass){
         $dbh = new Conexion;
         $conexion = $dbh->get_conexion();
-        $sql = 'Select * from doctor where correo=:correo and pass=:pass';
+        $sql = 'Select * from admin where correo=:correo and pass=:pass';
         $stmt = $conexion->prepare($sql);
         $stmt->bindParam(":correo",$user);
         $stmt->bindParam(":pass",$pass);
@@ -97,10 +96,21 @@ class Admin{
         }
     }
 
+    public function allAdmins(){
+        $dbh = new Conexion;
+        $conexion = $dbh->get_conexion();
+        $sql = 'select * from admin order by id';
+        $stmt = $conexion->prepare($sql);
+        $stmt->execute();
+        $admins = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $admins;
+    }
+
+
     public function setAdmin($user){
         $dbh = new Conexion;
         $conexion = $dbh->get_conexion();
-        $sql = 'Select * from doctor where correo=:correo';
+        $sql = 'Select * from admin where correo=:correo';
         $stmt = $conexion->prepare($sql);
         $stmt->bindParam(":correo",$user);
         if(!$stmt){

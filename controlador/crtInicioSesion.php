@@ -16,25 +16,25 @@ $pass = isset($_POST['pass'])?$_POST['pass']:"";
 
 if(isset($_SESSION['cliente'])){
     //$clnt->setCliente($_SESSION['cliente']);
-    header("location: ../vistas/indexPaciente.html");
+    header("location: ../vistas/indexPaciente.php");
 }else if(isset($_SESSION['doctor'])){
     header("location: ../vistas/indexDoctor.php");
 }else if(isset($_SESSION['admin'])){
-    header("location: ../vistas/dashboard.php");
+    header("location: ../vistas/indexAdmin.php");
 }else if($clnt->searchCliente($mail,md5($pass))){
     $clnt->setCliente($mail);
     $sesion->setClienteActual($clnt->getId());
-    header("location: ../vistas/indexPaciente.html");
+    header("location: ../vistas/indexPaciente.php");
 }else if($doc->searchDoctor($mail, md5($pass))){
     $doc->setDoctor($mail);
     //cambia el estado de la sesion a activo
     $doc->cambiarEstado($doc->getId());
     $sesion->setDoctorActual($doc->getId());
-    header("location: ../vistas/indexDoctor.html");
-}else if($admin->searchAdmin($mail,$pass)){
+    header("location: ../vistas/indexDoctor.php");
+}else if($admin->searchAdmin($mail, md5($pass))){
     $admin->setAdmin($mail);
     $sesion->setAdminActual($admin->getId());
-    header("location: ../vistas/dashboard.php");
+    header("location: ../vistas/indexAdmin.php");
 }else{
     $errorLog = "Error. Correo o contraseña son incorrectos";
     include_once("../vistas/iniciosesion.php");

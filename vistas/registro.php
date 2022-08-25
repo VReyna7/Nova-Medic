@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/regis.css">
+    <link rel="stylesheet" href="../css/regis.css?v=<?php echo time(); ?>">
     <script src="../js/scrollreveal.js"></script>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <title>Registro</title>

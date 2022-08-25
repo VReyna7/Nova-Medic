@@ -44,7 +44,7 @@ body{
 .objetivo-text, .Mision-text{
     display: flex;
     justify-content: center;
-    text-align: center;
+    text-align: left;
     width: 100%;
     flex-direction: column;
     flex-wrap: wrap;
@@ -61,11 +61,13 @@ body{
     flex-direction: column;
     align-items: center;
     width: 98%;
+    text-align: left;
 }
 
 .objetivos-ol{
     width: 80%;
     padding-left: 140px;
+    text-align: left;
 }
 
 
@@ -73,6 +75,7 @@ body{
     flex-wrap: wrap;
     padding-left: 60px;
     padding-right: 100px;
+    text-align: left;
 }
 
 .Mision{
@@ -220,7 +223,7 @@ body{
 
     .objetivos{
         justify-content: center;
-        text-align: center;
+        text-align: left;
         padding: 0;
         margin: 0;
     }
@@ -246,12 +249,13 @@ body{
 
 @media screen and (max-width: 345px){
     .Mision{
-        text-align: center;
+        text-align: left;
         padding-bottom: 150px;
     }
 
     .objetivos{
-       text-align: center;
+
+       text-align: left;
     }
 
     .p-objetivos, .p-mision{
@@ -269,7 +273,7 @@ body{
 }
 
 
-@media screen and (max-width: 280px){
+@media screen and (max-width: 300px){
     
     .bntsPrinc button{
         width: 70px;

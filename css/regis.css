@@ -15,10 +15,14 @@ body{
     min-width: 200px;
 }
 
-.sexo{
+
+
+
+.sexo,.especialidad{
     margin-top: 20px;
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
 }
 
 .sexotexts{
@@ -49,7 +53,7 @@ body{
 .colorito{
     background-color: rgba(2, 2, 2, 0.97) !important ;
     width: 600px;
-    height: 500px;
+    height: auto;
     padding: 40px;
     margin-top: 120px;
     flex-direction: column;

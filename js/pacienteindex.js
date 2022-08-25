@@ -24,6 +24,17 @@ window.sr = ScrollReveal();
         distance: "100px"
     });
 
+    sr.reveal(".info2",{
+        duration: 2000,
+        origin: "left",
+        distance: "100px"
+    });
+
+    sr.reveal(".info3",{
+        duration: 2000,
+        origin: "left",
+        distance: "100px"
+    });
 
     sr.reveal(".containerblack",{
         duration: 3000,
