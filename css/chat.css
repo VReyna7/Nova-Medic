@@ -1,0 +1,349 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body{
+    margin-left: 80px;
+    margin-top: 80px;
+    transition: margin-left 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    overflow: hidden;
+}
+::-webkit-scrollbar { width: 9px; height: 9px;}
+::-webkit-scrollbar-button { width: 0px; height: 0px;}
+::-webkit-scrollbar-thumb { background: transparent; border: 0px none #fff; border-radius: 10px;}
+::-webkit-scrollbar-thumb:hover { background: #3d6077;}
+::-webkit-scrollbar-thumb:active { background: #8dd0d8;}
+::-webkit-scrollbar-track {background: transparent;border: 0px solid #aaa; border-radius: 5px;}
+::-webkit-scrollbar-track:hover { background: #e4e4e4;}
+::-webkit-scrollbar-track:active { background: #d2d2d2;}
+::-webkit-scrollbar-corner { background: transparent;}
+
+main{
+    padding: 20px;
+}
+
+
+.menu__side{
+    width: 500px;
+    height: 100%;
+    background: #007bff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: white;
+    font-size: 18px;
+    z-index: 300;
+    overflow: hidden;
+    overflow-y: scroll;
+  
+ 
+}
+
+/*Ocultar scroll para chrome, safari y opera*/
+.menu__side::-webkit-scrollbar{
+    display: none;
+}
+
+/*Ocultar scroll para IE, Edge y Firefox*/
+.menu__side{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+
+.name__page{
+    padding: 20px 30px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.name__page i{
+    width: 20px;
+    margin-right: 20px;
+}
+
+.options__menu{
+    padding: 20px 30px;
+    position: absolute;
+    top: 80px;
+}
+
+.options__menu a{
+    color: #ffffffb2;
+    cursor: default;
+    display: block;
+    position: relative;
+    transition: color 300ms;
+}
+
+.options__menu a:hover{
+    color: white;
+}
+
+.options__menu .option{
+    padding: 20px 0px;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.options__menu .option i{
+    width: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.options__menu .option h4{
+    font-weight: 300;
+    cursor: pointer;
+}
+
+a.selected{
+    color: #fff;
+}
+
+.selected:before{
+    content: '';
+    width: 3px;
+    height: 80%;
+    background: white;
+    position: absolute;
+    top: 10%;
+    left: -30px;
+}
+
+/*Clases para usar en JavaScript*/
+
+.body_move{
+    margin-left: 250px;
+}
+
+.menu__side_move{
+    width: 250px;
+}
+
+
+@media screen and (max-width: 760px){
+    .body_move{
+        margin-left: 0px;
+    }
+
+    .menu__side_move{
+        width: 80px;
+        left: -80px;
+    }
+}
+
+
+
+
+
+.chatDespliegue{
+    list-style: none;
+    margin: 0;
+    height: 400px;
+}
+.lischat{
+    list-style: none;
+    margin: 0;
+    height: 520px;
+    width: 500px;
+   
+}
+.chatDespliegue li{
+padding: 15px;
+position: relative;
+width: 200px;
+
+
+}
+.chatDespliegue  ul{
+    transition: all 0.3;
+    opacity: 0;
+    position: absolute;
+    visibility: hidden;
+    left: 100%;
+    top: -60px;
+    overflow-y: scroll;
+   
+   
+  
+    
+
+    
+}
+.chatDespliegue  li:hover > .lischat{
+    opacity: 1;
+    visibility: visible;
+}
+.lischat li{
+    width: 50%;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    border-top: 1px solid white;
+}
+.lischat li a{
+    color: #fff;
+    text-decoration: none;
+  
+}
+.lischat .chat{
+   
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+.lischat .chat img{
+    width: 40%;
+    border-radius: 50%;
+    margin: 8px;
+    
+}
+
+
+/*Cuerpo de char*/
+
+.ContKing{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+.chatBody{
+    position: relative;
+    border: none;
+    left: 250px;
+   top: 5px;
+    height: 450px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 65%;
+    border-radius: 10px;
+    padding: 20px;
+    margin: auto;
+  
+    background-color: rgba(255,255,255,0.5);
+    backdrop-filter: blur(15px);
+    color: White;
+    font-weight: lighter;
+}
+
+.panelMensajeDerecho,
+.panelMensajeIzquiendo{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.panelMensajeDerecho{
+    align-items: flex-end;
+}
+
+.panelMensajeDerecho .chat-cuerpo,
+.panelMensajeIzquiendo .chat-cuerpo {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: auto;
+    height: 50%;
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+    font-weight: lighter;
+    max-width: 50%;
+   
+    margin-left: 0.5rem;
+    border-radius: 0 20px 20px 20px;
+    padding: 10px 15px;
+    font-size: .9em;
+    margin-bottom: 9px;
+}
+.panelMensajeDerecho .chat-cuerpo {
+    margin-left: 0;
+    margin-right: 0.5rem;
+    border-radius: 20px 0 20px 20px;
+    background-color: #0b0b8e;
+}
+.panelMensajeIzquiendo .chat-cuerpo{
+    background-color: black;
+}
+
+
+.OpChat{
+    display: flex;
+    backdrop-filter: blur(15px);
+   
+    width: 800px;
+   margin-left: 600px;
+   margin-top: 20px;
+    padding: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    justify-content: space-between;
+    font-size: 25px;
+    align-items: flex-start;
+}
+.OpChat form{
+    width: 100%;
+}
+
+/*seccio de envio de mensaje*/
+.textMSG{
+
+    width: 75%;
+    font-size: 0.9em;
+    height: auto;
+    background-color: rgba(255,255,255,0.5);
+    backdrop-filter: blur(15px);
+    color: black;
+    font-weight: lighter;
+    border-radius: 30px;
+    padding: 6px 15px 6px 15px;
+    border: 1px solid #000000;
+    outline: none;
+    
+    
+}
+
+::placeholder { 
+    color: black; 
+    
+    font-size: 0.9em;
+}
+
+
+.enviar{
+    width: 70px;
+    font-size: 0.8em;
+    padding: 5px 0px 5px 0px;
+    transition-duration: 0.4s;
+    border-radius: 8px;
+    background-color: rgba(255,255,255,0.5);
+    backdrop-filter: blur(15px);
+    font-weight: lighter;
+}
+
+.enviar:hover {
+    background-color:#999999; 
+    color: white;
+}
+
+
+input[type="file"] {
+    display: none;
+}
+
+.labelFile{
+    color: black;
+    margin-left: 5px;
+    font-size: 28px;
+    display: flex;
+    padding-top: 10px;
+}
