@@ -18,6 +18,7 @@
 	  require_once("../modelo/class.cliente.php");
 	  require_once("../modelo/class.doctor.php");
 	  require_once("../modelo/class.sesion.php");
+	  require_once("../modelo/class.admin.php");
 
     error_reporting(0);
 
@@ -30,6 +31,10 @@
 	    }elseif(isset($_SESSION['cliente'])){
 	  	$user = new Cliente();
 	    $user->setCliente($userSession->getClienteActual());
+	    $cliente = true;
+	  }elseif(isset($_SESSION['admin'])){
+	  	$user = new Admin();
+	    $user->setAdmin($userSession->getAdminActual());
 	  }else
 		header("location: ../vistas/iniciosesion.php");
 	?>
@@ -64,7 +69,7 @@
                 <a class="nav-link fs-6 navbar-brand" href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>
               </li>
             </ul>';
-            }else{
+            }else if($cliente){
               echo '  <ul class="navbar-nav mx-auto">
               <li class="nav-item">
                 <a class="nav-link  fs-6 navbar-brand" aria-current="page" href="indexPaciente.php" >INICIO</a>
@@ -77,6 +82,27 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link fs-6 navbar-brand active" href="../vistas/perfil.php">PERFIL</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-6 navbar-brand" href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>
+              </li>
+            </ul>';
+            }else{
+                echo '  <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link  fs-6 navbar-brand" aria-current="page" href="indexAdmin.php" >INICIO</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-6 navbar-brand" href="../vistas/creacionCuentas.php" >CREACIÓN DE CUENTAS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-6 navbar-brand" href="../vistas/visualizaCuentas.php">USUARIOS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-6 navbar-brand" href="#">REPORTES</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-6 navbar-brand active" href="#">PERFIL</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link fs-6 navbar-brand" href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>
@@ -98,7 +124,8 @@
       <div class="contenido">
         <div class="fotoPerfil">
           <img src="../img/fotoperfil.webp">
-          <button class="uno">Cambiar foto de perfil</button>
+          <input type="button" id="fotoPerfil" onclick="fotoPerfil()" value="Cambiar foto de perfil">
+          <input type="file" id="subirArchivo" style="display:none;">
           <a href="../vistas/expediente.html"><button type="button"  class="btn btn-danger">Expediente Medico </button></a>
         </div>
         <div class="datosUsuario">
