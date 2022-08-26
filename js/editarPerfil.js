@@ -2,6 +2,7 @@ function activateButton(){
     document.getElementById("confCambios").style.display='block';
     document.getElementById("confPasswordLabel").style.display='block';
     document.getElementById("confPassword").style.display='block';
+    
 }
 
 function activateInputs(){
@@ -11,4 +12,8 @@ function activateInputs(){
     document.getElementById("password").disabled=false;
     document.getElementById("confPassword").disabled=false;
     activateButton();
+}
+
+function fotoPerfil(){
+    document.getElementById("subirArchivo").style.display='block'
 }
