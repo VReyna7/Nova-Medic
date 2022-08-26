@@ -16,4 +16,5 @@ function activateInputs(){
 
 function fotoPerfil(){
     document.getElementById("subirArchivo").style.display='block'
+    document.getElementById("confCambios").style.display='block';
 }
