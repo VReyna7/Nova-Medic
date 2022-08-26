@@ -24,54 +24,19 @@
 
 .fotoPerfil{
     display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
-    align-items: center;
+    float:left ;
     justify-content: center;
     
     padding: 40px;
 }
 
 .fotoPerfil img{
-    height: 350px;
-    width: 350px;
+    height: 120px;
+    width: 120px;
     clip-path: circle(50% at 50% 50%);
 }
 
-
-
-.uno{
-    color: white;
-    background-color: #0d6efd;
-    padding: 15px;
-    margin: 20px;
-    border-radius: 5px;
-    border: 0px;
-    font-size: 1.1em;
-}
-
-.encabezado{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    border-bottom: 2px solid lightgray;
-    align-items: center;
-    justify-content:space-between;
-    color: rgb(15, 71, 149);
-    width: 100%;
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-}
-
-.encabezado input{
-    background-color: #0d6efd;
-    color: white;
-    border: 0px;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
 
 .encabezado input:hover{
     transform: scale(1.05);
@@ -79,7 +44,7 @@
 }
 
 .datosUsuario{
-    width: 70%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -103,26 +68,7 @@
 .datosUsuario form label{
     margin-top: 10px;
     margin-left: 20px;
-    color: black;
-    font-size: 1.2em;
-}
-
-#confPasswordLabel{
-    color:rgb(233, 98, 2);
-    display: none;
-}
-
-#confPassword{
-    display: none;
-    border: 2px solid  rgb(233, 98, 2);
-}
-
-.confCambios{
-    background-color: #0d6efd;
-    color: white;
-    border: 0px;
-    margin: 0 auto;
-    display: none;
+    color: rgb(231, 0, 0);
     font-size: 1.2em;
 }
 
@@ -138,8 +84,8 @@
 
 @media screen and (max-width: 1000px){
     .fotoPerfil img{
-        height: 200px;
-        width: 200px;
+        height: 150px;
+        width: 150px;
     }
     .fotoPerfil{
         width: 100%;
