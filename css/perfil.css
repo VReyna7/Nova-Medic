@@ -40,7 +40,7 @@
 
 
 
-.uno{
+.fotoPerfil input{
     color: white;
     background-color: #0d6efd;
     padding: 15px;
@@ -131,7 +131,7 @@
     transition: 1s;
 }
 
-.fotoPerfil button:hover{
+.fotoPerfil input:hover{
     transform: scale(1.1);
     transition: 1s;
 }
