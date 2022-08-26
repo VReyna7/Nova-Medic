@@ -103,6 +103,7 @@
         <input type="button" id="fotoPerfil" onclick="fotoPerfil()" value="Cambiar foto de perfil">
         <form method="POST" action="../controlador/crtActuFoto.php" enctype="multipart/form-data">
           <input type="file" id="subirArchivo" name="foto" accept=".png, .jpeg" style="display:none;">
+          <input type="submit" value="Confirmar Cambios" id="confCambiosFoto" class="confCambios" style="display:none;>
         </form>
         <a href="../vistas/expediente.html"><button type="button" class="btn btn-danger">Expediente Medico </button></a>
       </div>
