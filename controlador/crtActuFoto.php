@@ -21,15 +21,17 @@ try {
   if (isset($_SESSION['cliente'])) {
     $id = $_SESSION['cliente'];
     mkdir('../uploads/cliente/' . $id);
-    $route = "../uploads/cliente/" . $id . "/" . $name . $ext;
+    $route = "../uploads/cliente/" . $id . "/" . $name;
+    //$clt->veriFoto($name, $ext);
     $clt->actuFoto($route);
     move_uploaded_file($_FILES['foto']['tmp_name'], $dir . "cliente/" . $id . "/" . $name);
-    header("location: ../vistas/perfil.php");
+    echo $route;
+    //header("location: ../vistas/perfil.php");
     //Subida para el administrador
   } else if ($_SESSION['admin']) {
     $id = $_SESSION['admin'];
     mkdir('../uploads/admin/' . $id);
-    $route = "../uploads/admin/" . $id . "/" . $name . $ext;
+    $route = "../uploads/admin/" . $id . "/" . $name;
     $admin->actuFoto($route);
     move_uploaded_file($_FILES['foto']['tmp_name'], $dir . "admin/" . $id . "/" . $name);
     header("location: ../vistas/perfil.php");
@@ -37,7 +39,7 @@ try {
   } else if ($_SESSION['doctor']) {
     $id = $_SESSION['doctor'];
     mkdir('../uploads/doctor/' . $id);
-    $route = "../uploads/doctor/" . $id . "/" . $name . $ext;
+    $route = "../uploads/doctor/" . $id . "/" . $name;
     $doc->actuFoto($route);
     move_uploaded_file($_FILES['foto']['tmp_name'], $dir . "doctor/" . $id . "/" . $name);
     header("location: ../vistas/perfil.php");
