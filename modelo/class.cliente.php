@@ -108,13 +108,20 @@ class Cliente
         }
     }
 
+    /*public function veriFoto($name, $ext)
+    {
+        if (isset($name) && isset($ext)) {
+            $this->foto == '../uploads/cliente/' . $_SESSION['cliente'] . '/' . $name;
+        }
+    }*/
+
     public function actuFoto($route)
     {
         $dbh = new Conexion;
         $conexion = $dbh->get_conexion();
         $sql = "update cliente set fotoPerfil=:fotoPerfil";
         $stmt = $conexion->prepare($sql);
-        $stmt->bindParam(":FotoPerfil", $route);
+        $stmt->bindParam(":fotoPerfil", $route);
         if (!$stmt) {
             throw new Exception("Error con la base de datos");
         } else {

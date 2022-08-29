@@ -179,7 +179,7 @@ class Doctor
         $conexion = $dbh->get_conexion();
         $sql = "update doctor set fotoPerfil=:fotoPerfil";
         $stmt = $conexion->prepare($sql);
-        $stmt->bindParam(":FotoPerfil", $route);
+        $stmt->bindParam(":fotoPerfil", $route);
         if (!$stmt) {
             throw new Exception("Error con la base de datos");
         } else {
