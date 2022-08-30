@@ -17,7 +17,7 @@ try{
     $cltn->veriData($nombre,$ape,$pass,$mail,$sexo,$fecha);
     if(!$cltn->extCliente($mail)){
         $cltn->newCliente();
-        $cltn->setCliente($mail);
+        $cltn->sesionCliente($mail);
         //Sesiones
         session_start();
         $sesion->setClienteActual($cltn->getId());
@@ -30,4 +30,3 @@ try{
     $error = $e->getMessage();
     include_once("../vistas/registro.php");
 }
-?>

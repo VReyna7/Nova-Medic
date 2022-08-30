@@ -17,6 +17,8 @@
         $admin->veriData($nombre, $apellido, $pass, $mail, $sex, $fech);
         if(!$admin->extAdmin($mail)){
             $admin->newAdmin();
+            $admin->sesionAdmin($mail);
+            $sesion->setAdminActual($admin->getId());
             header("location: ../vistas/creacionCuentas.php");
         }else{
             $error = "Error. Este correo ya esta en uso";
@@ -26,4 +28,3 @@
         $error = $e->getMessage();
         header("location: ../vistas/registroAdministradores.php");
     }
-?>
