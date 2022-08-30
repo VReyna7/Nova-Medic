@@ -7,7 +7,13 @@ require_once("../modelo/class.doctor.php");
 $sesion = new Sesion();
 $doc = new Doctor;
 
-
+if (isset($_SESSION['doctor'])) {
+  $doc->setDoctor($sesion->getDoctorActual());
+  if ($doc->getEstado() != 0) {
+    //Estado en 0 represenrta que esta desconetado
+    $doc->cambiarEstado('0');
+  }
+}
 
 $sesion->cerrarSesion();
 header("location: ../index.html");
