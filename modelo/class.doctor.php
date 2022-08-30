@@ -234,4 +234,9 @@ class Doctor
     {
         return $this->foto;
     }
+
+    public function getEstado()
+    {
+        return $this->estado;
+    }
 }
