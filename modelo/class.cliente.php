@@ -7,6 +7,7 @@ class Cliente
     private $pass;
     private $correo;
     private $sexo;
+    private $foto;
     private $fechaNac;
     private $id_exp;
 
@@ -86,7 +87,7 @@ class Cliente
         }
     }
 
-    public function setCliente($user)
+    public function sesionCliente($user)
     {
         $dbh = new Conexion;
         $conexion = $dbh->get_conexion();
@@ -99,11 +100,28 @@ class Cliente
             $stmt->execute();
             $datauser = $stmt->fetch(PDO::FETCH_ASSOC);
             $this->id = $datauser['id'];
+        }
+    }
+
+    public function setCliente($user)
+    {
+        $dbh = new Conexion;
+        $conexion = $dbh->get_conexion();
+        $sql = 'Select * from cliente where id=:id';
+        $stmt = $conexion->prepare($sql);
+        $stmt->bindParam(":id", $user);
+        if (!$stmt) {
+            throw new Exception("Error. Hubo un fallo en la base de datos");
+        } else {
+            $stmt->execute();
+            $datauser = $stmt->fetch(PDO::FETCH_ASSOC);
+            $this->id = $datauser['id'];
             $this->nombre = $datauser['nombre'];
             $this->apellido = $datauser['apellido'];
             $this->pass = $datauser['pass'];
             $this->correo = $datauser['correo'];
             $this->sexo = $datauser['sexo'];
+            $this->foto = $datauser['fotoPerfil'];
             $this->fechaNac = $datauser['fecha_nac'];
         }
     }
@@ -149,6 +167,21 @@ class Cliente
     public function getCorreo()
     {
         return $this->correo;
+    }
+
+    public function getSexo()
+    {
+        return $this->sexo;
+    }
+
+    public function getFecha()
+    {
+        return $this->fechaNac;
+    }
+
+    public function getFoto()
+    {
+        return $this->foto;
     }
 
     public function getIdExp()

@@ -7,6 +7,7 @@ class Admin
     private $pass;
     private $correo;
     private $sexo;
+    private $foto;
     private $fechaNac;
 
     public function veriData($nombre, $apellido, $pass, $correo, $sexo, $fechaNac)
@@ -113,14 +114,28 @@ class Admin
         return $admins;
     }
 
+    public function sesionAdmin($user)
+    {
+        $dbh = new Conexion;
+        $conexion = $dbh->get_conexion();
+        $sql = 'Select id from admin where correo=:correo';
+        $stmt = $conexion->prepare($sql);
+        $stmt->bindParam(":correo", $user);
+        if (!$stmt) {
+            throw new Exception("Error. Hubo un fallo en la base de datos");
+        } else {
+            $id = $stmt->execute();
+            $this->id = $id;
+        }
+    }
 
     public function setAdmin($user)
     {
         $dbh = new Conexion;
         $conexion = $dbh->get_conexion();
-        $sql = 'Select * from admin where correo=:correo';
+        $sql = 'Select * from admin where id=:id';
         $stmt = $conexion->prepare($sql);
-        $stmt->bindParam(":correo", $user);
+        $stmt->bindParam(":id", $user);
         if (!$stmt) {
             throw new Exception("Error. Hubo un fallo en la base de datos");
         } else {
@@ -135,6 +150,7 @@ class Admin
             $this->fechaNac = $datauser['fecha_nac'];
             $this->titulos = $datauser['titulos'];
             $this->estado = $datauser['estado'];
+            $this->foto = $datauser['fotoPerfil'];
         }
     }
 
@@ -153,15 +169,19 @@ class Admin
     }
 
     //funciones get
-
     public function getId()
     {
         return $this->id;
     }
 
-    public function getNombreCompleto()
+    public function getNombre()
     {
-        return $this->nombre . " " . $this->apellido;
+        return $this->nombre;
+    }
+
+    public function getApellido()
+    {
+        return $this->apellido;
     }
 
     public function getCorreo()
@@ -172,5 +192,15 @@ class Admin
     public function getSexo()
     {
         return $this->sexo;
+    }
+
+    public function getFecha()
+    {
+        return $this->fechaNac;
+    }
+
+    public function getFoto()
+    {
+        return $this->foto;
     }
 }

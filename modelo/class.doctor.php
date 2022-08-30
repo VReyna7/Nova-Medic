@@ -9,6 +9,7 @@ class Doctor
     private $sexo;
     private $estado;
     private $titulos;
+    private $foto;
     private $fechaNac;
     private $especialidad;
 
@@ -127,14 +128,28 @@ class Doctor
         return $doctores;
     }
 
+    public function sesionDoctor($user)
+    {
+        $dbh = new Conexion;
+        $conexion = $dbh->get_conexion();
+        $sql = 'Select id from doctor where correo=:correo';
+        $stmt = $conexion->prepare($sql);
+        $stmt->bindParam(":correo", $user);
+        if (!$stmt) {
+            throw new Exception("Error. Hubo un fallo en la base de datos");
+        } else {
+            $id = $stmt->execute();
+            $this->id = $id;
+        }
+    }
 
     public function setDoctor($user)
     {
         $dbh = new Conexion;
         $conexion = $dbh->get_conexion();
-        $sql = 'Select * from doctor where correo=:correo';
+        $sql = 'Select * from doctor where id=:id';
         $stmt = $conexion->prepare($sql);
-        $stmt->bindParam(":correo", $user);
+        $stmt->bindParam(":id", $user);
         if (!$stmt) {
             throw new Exception("Error. Hubo un fallo en la base de datos");
         } else {
@@ -148,6 +163,7 @@ class Doctor
             $this->sexo = $datauser['sexo'];
             $this->fechaNac = $datauser['fecha_nac'];
             $this->titulos = $datauser['titulos'];
+            $this->foto = $datauser['fotoPerfil'];
             $this->estado = $datauser['estado'];
         }
     }
@@ -195,7 +211,12 @@ class Doctor
 
     public function getNombre()
     {
-        return $this->nombre . "" . $this->apellido;
+        return $this->nombre;
+    }
+
+    public function getApellido()
+    {
+        return $this->apellido;
     }
 
     public function getCorreo()
@@ -208,8 +229,13 @@ class Doctor
         return $this->sexo;
     }
 
-    public function getEspecialdiad()
+    public function getFecha()
     {
-        return $this->getEspecialdiad;
+        return $this->fechaNac;
+    }
+
+    public function getFoto()
+    {
+        return $this->foto;
     }
 }
