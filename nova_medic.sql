@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1:3306
--- Tiempo de generación: 26-08-2022 a las 20:16:13
+-- Tiempo de generación: 30-08-2022 a las 15:02:11
 -- Versión del servidor: 5.7.36
 -- Versión de PHP: 7.4.26
 
@@ -36,7 +36,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `correo` int(255) NOT NULL,
   `sexo` int(20) NOT NULL,
   `fecha_nac` date NOT NULL,
-  `fotoPerfil` varchar(250) NOT NULL
+  `fotoPerfil` varchar(250) NOT NULL DEFAULT '../uploads/imgDefault.webp'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -54,11 +54,18 @@ CREATE TABLE IF NOT EXISTS `cliente` (
   `correo` varchar(50) NOT NULL,
   `sexo` varchar(20) NOT NULL,
   `fecha_nac` date NOT NULL,
-  `fotoPerfil` varchar(250) NOT NULL DEFAULT '../uploads/imgDefault.png',
+  `fotoPerfil` varchar(250) NOT NULL DEFAULT '../uploads/imgDefault.webp',
   `id_historial` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_historial` (`id_historial`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`id`, `nombre`, `apellido`, `pass`, `correo`, `sexo`, `fecha_nac`, `fotoPerfil`, `id_historial`) VALUES
+(10, 'Cristian ', 'Pineda', 'c4ca4238a0b923820dcc509a6f75849b', 'cristian.pineda2308@gmail.com', 'Hombre', '2022-08-14', '../uploads/imgDefault.webp', NULL);
 
 -- --------------------------------------------------------
 
@@ -77,6 +84,7 @@ CREATE TABLE IF NOT EXISTS `doctor` (
   `fecha_nac` date NOT NULL,
   `estado` int(11) DEFAULT NULL,
   `titulos` varchar(150) DEFAULT NULL,
+  `fotoPerfil` varchar(250) NOT NULL DEFAULT '../uploads/imgDefault.webp',
   PRIMARY KEY (`id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
@@ -98,14 +106,14 @@ CREATE TABLE IF NOT EXISTS `expediente` (
   `id_cliente` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_cliente` (`id_cliente`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `expediente`
 --
 
 INSERT INTO `expediente` (`id`, `peso`, `estatura`, `sangre`, `alergia`, `psico`, `alerMedi`, `id_cliente`) VALUES
-(3, 1, 1, 'O-', 'No', 'No', 'No', 20);
+(1, 170, 170, 'B+', 'Si', 'Si', 'Si', 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
