@@ -137,9 +137,10 @@ class Cliente
     {
         $dbh = new Conexion;
         $conexion = $dbh->get_conexion();
-        $sql = "update cliente set fotoPerfil=:fotoPerfil";
+        $sql = "update cliente set fotoPerfil=:fotoPerfil where id=:id";
         $stmt = $conexion->prepare($sql);
         $stmt->bindParam(":fotoPerfil", $route);
+        $stmt->bindParam(":id", $this->id);
         if (!$stmt) {
             throw new Exception("Error con la base de datos");
         } else {

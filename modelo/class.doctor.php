@@ -168,23 +168,18 @@ class Doctor
         }
     }
 
-    public function cambiarEstado($user)
+    //se utiliza para primero setear el doctor para saber el estado y luego verificarlo
+    public function cambiarEstado($estado)
     {
-        $dbh = new Conexion();
+        $dbh = new Conexion;
         $conexion = $dbh->get_conexion();
-        $sql = "select estado from doctor where id=:id";
+        $sql = "update doctor set estado=:estado where id=:id";
         $stmt = $conexion->prepare($sql);
-        $stmt->bindParam(":id", $user);
+        $stmt->bindParam(":estado", $estado);
+        $stmt->bindParam(":id", $this->id);
         if (!$stmt) {
-            throw new Exception("Error con la base de datos");
+            throw new Exception("Error al conectar con la base de datos");
         } else {
-            $valor = $stmt->execute();
-            if ($valor == 0 || $valor == null) {
-                $sql2 = "update doctor set estado=1";
-            } else {
-                $sql2 = "update doctor set estado=0";
-            }
-            $stmt = $conexion->prepare($sql2);
             $stmt->execute();
         }
     }
@@ -193,9 +188,10 @@ class Doctor
     {
         $dbh = new Conexion;
         $conexion = $dbh->get_conexion();
-        $sql = "update doctor set fotoPerfil=:fotoPerfil";
+        $sql = "update doctor set fotoPerfil=:fotoPerfil where id=:id";
         $stmt = $conexion->prepare($sql);
         $stmt->bindParam(":fotoPerfil", $route);
+        $stmt->bindParam(":id", $this->id);
         if (!$stmt) {
             throw new Exception("Error con la base de datos");
         } else {
