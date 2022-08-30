@@ -30,8 +30,10 @@
     $doctor = true;
   } elseif (isset($_SESSION['cliente'])) {
     $user = new Cliente();
-    echo $_SESSION['cliente'];
     $user->setCliente($userSession->getClienteActual());
+  } else if (isset($_SESSION['admin'])) {
+    $user = new Admin();
+    $user->setAdmin($userSession->getAdminActual());
   } else
     header("location: ../vistas/iniciosesion.php");
   ?>
@@ -113,12 +115,12 @@
       <div class="datosUsuario">
 
         <form>
-          <label>Nombre:</label><input type="text" id="nombre" disabled placeholder="<?php $user->getNombre() ?>">
-          <label>Apellido:</label><input type="text" id="apellido" disabled placeholder="Alcachofa">
-          <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="Alcachofa@gmail.com">
-          <label>Contraseña:</label><input type="password" id="password" disabled placeholder="Alcachofa69">
-          <label id="confPasswordLabel">Confirmar Contraseña:</label><input type="password" id="confPassword" disabled placeholder="Alcachofa69">
-          <label>Sexo:</label><input type="text" id="sexo" disabled placeholder="Hombre">
+          <label>Nombre:</label><input type="text" id="nombre" disabled value="<?php echo $user->getNombre() ?>">
+          <label>Apellido:</label><input type="text" id="apellido" disabled value="<?php echo $user->getApellido() ?>">
+          <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="<?php echo $user->getCorreo() ?>">
+          <label>Contraseña:</label><input type="password" id="password" disabled>
+          <label id="confPasswordLabel">Confirmar Contraseña:</label><input type="password" id="confPassword" disabled>
+          <label>Sexo:</label><input type="text" id="sexo" disabled placeholder="<?php echo $user->getSexo() ?>">
           <input type="submit" value="Confirmar Cambios" id="confCambios" class="confCambios" onclick="activateButton()">
         </form>
       </div>
