@@ -30,6 +30,7 @@
     $doctor = true;
   } elseif (isset($_SESSION['cliente'])) {
     $user = new Cliente();
+    echo $_SESSION['cliente'];
     $user->setCliente($userSession->getClienteActual());
   } else
     header("location: ../vistas/iniciosesion.php");
@@ -99,18 +100,20 @@
     </div>
     <div class="contenido">
       <div class="fotoPerfil">
-        <img src="../img/fotoperfil.webp">
+        <?php
+        echo '<img src="' . $user->getFoto() . '">';
+        ?>
         <input type="button" id="fotoPerfil" onclick="fotoPerfil()" value="Cambiar foto de perfil">
         <form method="POST" action="../controlador/crtActuFoto.php" enctype="multipart/form-data">
           <input type="file" id="subirArchivo" name="foto" accept=".png, .jpeg" style="display:none;">
           <input type="submit" value="Confirmar Cambios" id="confCambiosFoto" class="confCambios" style="display:none;>
         </form>
-        <a href="../vistas/expediente.html"><button type="button" class="btn btn-danger">Expediente Medico </button></a>
+        <a href=" ../vistas/expediente.html"><button type="button" class="btn btn-danger">Expediente Medico </button></a>
       </div>
       <div class="datosUsuario">
 
         <form>
-          <label>Nombre:</label><input type="text" id="nombre" disabled placeholder="Juanito">
+          <label>Nombre:</label><input type="text" id="nombre" disabled placeholder="<?php $user->getNombre() ?>">
           <label>Apellido:</label><input type="text" id="apellido" disabled placeholder="Alcachofa">
           <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="Alcachofa@gmail.com">
           <label>Contraseña:</label><input type="password" id="password" disabled placeholder="Alcachofa69">
