@@ -25,8 +25,7 @@ try {
     //$clt->veriFoto($name, $ext);
     $clt->actuFoto($route);
     move_uploaded_file($_FILES['foto']['tmp_name'], $dir . "cliente/" . $id . "/" . $name);
-    echo $route;
-    //header("location: ../vistas/perfil.php");
+    header("location: ../vistas/perfil.php");
     //Subida para el administrador
   } else if ($_SESSION['admin']) {
     $id = $_SESSION['admin'];
