@@ -56,7 +56,7 @@
     flex-wrap: wrap;
     border-bottom: 2px solid lightgray;
     align-items: center;
-    justify-content:space-between;
+    justify-content: space-between;
     color: rgb(15, 71, 149);
     width: 100%;
     margin-top: 20px;
@@ -64,13 +64,18 @@
     margin-right: 20px;
 }
 
-.encabezado input{
+.encabezado div input{
     background-color: #0d6efd;
     color: white;
     border: 0px;
     padding: 10px;
     border-radius: 5px;
     margin-bottom: 10px;
+    margin-left: 15px;
+}
+
+.encabezado div{
+    display: flex;
 }
 
 .btn{
@@ -105,6 +110,7 @@
     margin-top: 5px;
     padding: 10px;
     border-radius: 5px;
+    outline-color: rgb(15, 71, 149);
 }
 
 .datosUsuario form label{
@@ -114,14 +120,23 @@
     font-size: 1.2em;
 }
 
+
 #confPasswordLabel{
     color:rgb(233, 98, 2);
-    display: none;
 }
 
-#confPassword{
-    display: none;
+#confPassword, #contrasenia{    
     border: 2px solid  rgb(233, 98, 2);
+    outline-color: rgb(233, 98, 2);
+}
+
+#newPasss{
+    color:rgb(233, 98, 2);
+}
+
+#newPassInput{
+    border: 2px solid  rgb(233, 98, 2);
+    outline-color: rgb(233, 98, 2);
 }
 
 .confCambios{
@@ -133,14 +148,26 @@
     font-size: 1.2em;
 }
 
+.guardarCambios{
+    background-color: #0d6efd;
+    color: white;
+    border: 0px;
+    font-size: 1.2em;
+}
+
+.guardarCambios:hover{
+    transform: scale(1.02);
+    transition: 0.5s;
+}
+
 .confCambios:hover{
     transform: scale(1.02);
-    transition: 1s;
+    transition: 0.5s;
 }
 
 .fotoPerfil input:hover{
     transform: scale(1.1);
-    transition: 1s;
+    transition: 0.5s;
 }
 
 @media screen and (max-width: 1000px){
@@ -156,5 +183,8 @@
     }
     .datosUsuario{
         width: 100%;
+    }
+    .encabezado{
+        justify-content: center;
     }
 }
