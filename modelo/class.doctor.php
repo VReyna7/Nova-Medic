@@ -248,6 +248,23 @@ class Doctor
         }
     }
 
+	public function actuData($nombre,$ape,$mail,$sexo){
+		$dbh = new Conexion;
+		$conexion = $dbh->get_conexion();
+		$sql = 'update doctor set nombre=:nombre, apellido=:apellido, correo=:correo, sexo=:sexo where id=:id';
+		$stmt = $conexion->prepare($sql);
+		$stmt->bindParam(":nombre",$nombre);	
+		$stmt->bindParam(":apellido",$ape);	
+		$stmt->bindParam(":correo",$mail);	
+		$stmt->bindParam(":sexo",$sexo);	
+		$stmt->bindParam(":id",$this->id);	
+		if(!$stmt){
+			throw new Exception("Error con la base de datos");
+		}else{
+			$stmt->execute();
+		}
+	}
+
     //funciones get
     public function getId()
     {
@@ -268,6 +285,10 @@ class Doctor
     {
         return $this->correo;
     }
+
+	public function getPass(){
+		return $this->pass;
+	}
 
     public function getSexo()
     {
