@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,25 +11,26 @@
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/41bcea2ae3.js" crossorigin="anonymous"></script>
-    <!--<?php
-    /*require_once('../modelo/class.conexion.php');
+    <?php
+    require_once('../modelo/class.conexion.php');
     require_once('../modelo/class.cliente.php');
     require_once('../modelo/class.doctor.php');
     require_once('../modelo/class.sesion.php');
+    require_once('../modelo/class.chat.php');
 
-    $id = $_GET['id'];
-    $userSession = new userSession();
+    
+    $userSession = new Sesion();
 
       if(isset($_SESSION['cliente'])){
        $user = new Cliente();
-       $user->setCliente( $user->setDoctor($userSession->getdatauser()));
+       $user->setCliente( $userSession->getClienteActual());
       }else if(isset($_SESSION['doctor'])){
         $user = new Doctor();
-        $user->setDoctor($userSession->getdatauser());
-      }else 
+        $user->setDoctor($userSession->getDoctorActual());
+      }else{
            header("location: ../vistas/iniciosesion.php");
-      }*/
-    ?>-->
+      }
+    ?>
 </head>
 <div>
  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
@@ -162,25 +164,36 @@
     </li>
    
     </ul>
-    <!--
-      <?php
-				/*$chat = new Chat();
+      
+    
+            
+
+            
+
+      </div>
+       
+
+    </div>
+    <div class="ContKing">
+    <div class="chatBody">
+    <?php
+				$chat = new Chat();
 				if(isset($_SESSION['doctor'])){
-					$data = $chat->mostrarMsg($user->getId(),$id);
+					$data = $chat->mostrarMsg(1,11);
 					foreach($data as $msg){
-        			if($msg['tipo']==0){
+        			if($msg['tipo']==1){
 					echo '<div class="panelMensajeDerecho">';
             			echo '<div class="chat-cuerpo">';
-            	    		echo '<h3>'. $msg['user'] .'</h3>';
+            	    		echo '<h3>'. $msg['usuario'] .'</h3>';
             	    		echo '<div class="contenedorDeMensaje">';
             	        		echo '<p>'. $msg['msg'] .'</p>';
             	    		echo '</div>';
             			echo '</div>';
         			echo '</div>';
-					}elseif($msg['tipo']==1){
+					}elseif($msg['tipo']==0){
 					echo '<div class="panelMensajeIzquiendo">';
             			echo '<div class="chat-cuerpo">';
-            	    		echo '<h3>'. $msg['user'] .'</h3>';
+            	    		echo '<h3>'. $msg['usuario'] .'</h3>';
             	    		echo '<div class="contenedorDeMensaje">';
                		     		echo '<p>'. $msg['msg'] .'</p>';
                 			echo '</div>';
@@ -211,21 +224,10 @@
         			echo '</div>';
 					}
 					}
-				}*/
+				}
 			?>
-    -->
-            
-
-            
-
-      </div>
        
-
-    </div>
-    <div class="ContKing">
-    <div class="chatBody">
-       
-      <div class="panelMensajeDerecho">
+    <!--  <div class="panelMensajeDerecho">
           <div class="chat-cuerpo">
               <h3></h3>
               <div class="contenedorDeMensaje">
@@ -292,7 +294,7 @@
                 <p>hola</p>
         </div>
     </div>
-</div>
+</div>-->
       
 
    
