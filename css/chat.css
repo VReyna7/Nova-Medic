@@ -172,17 +172,13 @@ width: 200px;
     left: 80%;
     top: -60px;
     overflow-y: scroll;
-   
-   
-  
-    
-
-    
 }
+
 .chatDespliegue  li:hover > .lischat{
     opacity: 1;
     visibility: visible;
 }
+
 .lischat li{
     width: 50%;
     border-left: 1px solid white;
