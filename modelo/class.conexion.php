@@ -1,19 +1,18 @@
 <?php
-
 class Conexion{
+	//Estos datos se cambian al momento de meterlo a un hosting
 	public function get_conexion(){
-		$user = 'id17606117_root';
-		$pass = 'Rentaprofesional2022_';
+		$user = 'root';
+		$pass = '';
 		$host = "localhost";
-		$db = 'id17606117_rent_a_profesional';
+		$db = 'nova_medic';
 		try{
 			$dsn = "mysql:host=$host;dbname=$db;";
 			$dbh = new PDO($dsn, $user, $pass);
 			return $dbh;
 		}catch (PDOException $e){
-			echo "Error en la base de datos" . $e->getMessage();
+			echo "Error en la base de datos" . $e->getMessage();	
 		}
 	}
 }
-
 ?>

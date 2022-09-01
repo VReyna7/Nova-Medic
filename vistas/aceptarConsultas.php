@@ -73,7 +73,7 @@
            echo '<div class="doctores">
            <div class="fotoPerfil">
              <img src="'.$consul->getImagenPerfil($mostrar["cliente"]).'">
-             <button class="iniciarConsulta">Iniciar Consulta</button>
+             <a href="../controlador/crtListaChat.php?nameC='.$consul->getNombreCompleto($mostrar["cliente"]).'&NameDC='. $user->getNombre().'&idC='.$mostrar["cliente"].'&idDC='.$user->getId().'&espe='.$user->getEspec().'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Iniciar Consulta"></a>
              <a href="perfil.php?idClient='.$mostrar["cliente"].'&accion=Visualizar"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Ver Perfil"></a>
            </div>
            <div class="informacion">

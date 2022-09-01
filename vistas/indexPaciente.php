@@ -50,7 +50,7 @@
                 <a class="nav-link fs-6 navbar-brand" href="iniciarConsulta.php" >INICIAR CONSULTA</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link fs-6 navbar-brand" href="chat.html">CHAT</a>
+                <a class="nav-link fs-6 navbar-brand" href="chat.php">CHAT</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link fs-6 navbar-brand" href="perfil.php">PERFIL</a>

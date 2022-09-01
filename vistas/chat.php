@@ -18,14 +18,19 @@
     require_once('../modelo/class.sesion.php');
     require_once('../modelo/class.chat.php');
 
-    
+    $idDoc = isset($_GET['idDoc'])?$_GET['idDoc']:"";
+    $idC = isset($_GET['idC'])?$_GET['idC']:"";
+
+    $chat = new Chat();
     $userSession = new Sesion();
 
       if(isset($_SESSION['cliente'])){
        $user = new Cliente();
-       $user->setCliente( $userSession->getClienteActual());
+       $user->setCliente($userSession->getClienteActual());
+       $cliente = true;
       }else if(isset($_SESSION['doctor'])){
         $user = new Doctor();
+        $doctor = true;
         $user->setDoctor($userSession->getDoctorActual());
       }else{
            header("location: ../vistas/iniciosesion.php");
@@ -41,23 +46,45 @@
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse " id="navbarNav">
-              <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
-                  <a class="nav-link active fs-6 navbar-brand" aria-current="page" href="#" >INICIO</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link fs-6 navbar-brand" href="IniciarConsulta.html" >INICIAR CONSULTA</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link fs-6 navbar-brand" href="#">CHAT</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link fs-6 navbar-brand" href="#">PERFIL</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link fs-6 navbar-brand" href="#">CERRAR SESION</a>
-                </li>
-              </ul>
+             <?php 
+                if ($doctor){
+                  echo '<ul class="navbar-nav mx-auto">
+                      <li class="nav-item">
+                        <a class="nav-link  fs-6 navbar-brand" aria-current="page" href="indexDoctor.php" >INICIO</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link fs-6 navbar-brand" href="../vistas/aceptarConsultas.php" >INICIAR CONSULTA</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link fs-6 navbar-brand" href="chat.html">CHAT</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link fs-6 navbar-brand active" href="../vistas/perfil.php">PERFIL</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link fs-6 navbar-brand" href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>
+                      </li>
+                    </ul>';
+                }else if($cliente){
+                  echo '  <ul class="navbar-nav mx-auto">
+                      <li class="nav-item">
+                        <a class="nav-link  fs-6 navbar-brand" aria-current="page" href="indexPaciente.php" >INICIO</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link fs-6 navbar-brand" href="iniciarConsulta.php" >INICIAR CONSULTA</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link fs-6 navbar-brand" href="chat.php">CHAT</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link fs-6 navbar-brand active" href="perfil.php">PERFIL</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link fs-6 navbar-brand" href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>
+                      </li>
+                    </ul>';
+                }
+             ?>
             </div>
     
         </div>
@@ -81,14 +108,14 @@
             </a>
         <ul class="chatDespliegue">
             
-    <li>
-        <a href="#" class="selected">
+       <li>
+        <a href="" class="selected">
             <div class="option">
                 <i class="far fa-address-card" title="Psicologia"></i>
                 <h4>Psicologia</h4>
-                
             </div>
         </a>
+
         <a href="#" class="selected">
             <div class="option">
                 <i class="far fa-address-card" title="Medicina general"></i>
@@ -104,14 +131,21 @@
             </div>
         </a>
         <ul class="lischat">
-            <li>
-              <a href=""> 
-                <div class="chat">
-                <img src="img/disc-perfil-c-azul-948x640.jpg">
-                <p>Dr. Jose peña nieto</p>
-                </div>
-              </a>
-            </li>
+                  <?php 
+                          if($doctor){
+                            $chats = $chat->veriChatDoctor($userSession->getDoctorActual());
+                            foreach ($chats as $mostrar){
+                            echo '<li>
+                            <a href="chat.php?idC='.$mostrar["idC"].'&idDoc='.$mostrar["idDC"].'"> 
+                              <div class="chat">
+                              <img src="'.$chat->getImagenPerfilClient($mostrar["idC"]).'">
+                              <p>'.$mostrar["nameC"].'</p>
+                              </div>
+                            </a>
+                          </li>';
+                           }
+                          }
+                  ?>
             <li>
               <a href=""> 
                 <div class="chat">
@@ -174,12 +208,16 @@
        
 
     </div>
+    
     <div class="ContKing">
+
     <div class="chatBody">
     <?php
-				$chat = new Chat();
+          
+
+    /*
 				if(isset($_SESSION['doctor'])){
-					$data = $chat->mostrarMsg(1,11);
+					$data = $chat->mostrarMsg(1,$user->getId());
 					foreach($data as $msg){
         			if($msg['tipo']==1){
 					echo '<div class="panelMensajeDerecho">';
@@ -224,7 +262,7 @@
         			echo '</div>';
 					}
 					}
-				}
+				}*/
 			?>
        
     <!--  <div class="panelMensajeDerecho">
