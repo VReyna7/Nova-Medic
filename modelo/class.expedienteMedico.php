@@ -8,9 +8,11 @@ class Expediente{
     private $alerMedi;
     private $psico;
     private $id_cliente;
+    private $text_anima;
+    private $text_medicina;
 
     //veirfica que los datos no esten vacios
-    public function veriData($peso,$altura,$sangre,$alergia,$alerMedi,$psico){
+    public function veriData($peso,$altura,$sangre,$alergia,$alerMedi,$psico, $text_anima, $text_medicina){
         if(!empty($peso) && !empty($altura) && !empty($sangre) && !empty($alergia) && !empty($alerMedi) && !empty($psico)){
             $this->peso= $peso;
             $this->altura = $altura;
@@ -18,6 +20,9 @@ class Expediente{
             $this->alergia = $alergia;
             $this->alerMedi= $alerMedi;
             $this->psico = $psico;
+            $this->text_anima = $text_anima;
+            $this->text_medicina = $text_medicina;
+    
         }else{
             throw new Exception('Error, Tiene que rellenar todos los datos');
         }
@@ -27,7 +32,8 @@ class Expediente{
     public function newExpediente(){
         $dbh = new Conexion();
         $conexion = $dbh->get_conexion();
-        $sql = "insert into expediente (peso, estatura, sangre, alergia, psico, alerMedi, id_cliente) values (:peso, :estatura, :sangre, :alergia, :psico, :alerMedi, :id_cliente)";
+        $sql = "insert into expediente (peso, estatura, sangre, alergia, psico, alerMedi, id_cliente, text_anima, text_medicina) values (:peso, :estatura, :sangre, :alergia, :psico, :alerMedi, 
+        :id_cliente, :text_anima,:text_medicina)";
         $stmt = $conexion->prepare($sql) ;
         $stmt->bindParam(":peso",$this->peso);
         $stmt->bindParam(":estatura",$this->altura);
@@ -36,6 +42,8 @@ class Expediente{
         $stmt->bindParam(":psico",$this->psico);
         $stmt->bindParam(":alerMedi",$this->alerMedi);
         $stmt->bindParam(":id_cliente",$_SESSION['cliente']);
+        $stmt->bindParam(":text_anima",$this->text_anima);
+        $stmt->bindParam(":text_medicina",$this->text_medicina);
         if(!$stmt){
             throw new Exception("Error. No se pudo conectar con la base de datos");
         }else{
@@ -60,8 +68,10 @@ class Expediente{
             $this->altura = $datauser['estatura'];
             $this->sangre = $datauser['sangre'];
             $this->alergia= $datauser['alergia'];
-            $this->psico= $datauser['psico'];
             $this->alerMedi= $datauser['alerMedi'];
+            $this->psico= $datauser['psico'];
+            $this->text_anima = $datauser['text_anima'];
+            $this->text_medicina = $datauser['text_medicina'];
         }
     }
 
@@ -94,11 +104,20 @@ class Expediente{
     }
 
     public function getMedicina(){
-        return $this->medicina;
+        return $this->alerMedi;
     }
 
-    public function getPadecimiento(){
-        return $this->padecimiento;
+    public function getPsico(){
+        return $this->psico;
     }
+
+    public function getText_anima(){
+        return $this->text_anima;
+    }
+
+    public function getText_medicina(){
+        return $this->text_medicina;
+    }
+    
 }
 ?>

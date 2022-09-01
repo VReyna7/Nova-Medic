@@ -1,113 +1,119 @@
-<?php session_start(); ?>
+<?php  
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/psicologia.css">
+    <link rel="stylesheet" href="../css/expediente.css">
     <script src="../js/scrollreveal.js"></script>
+    <script src="../js/editarPerfil.js"></script>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Prueba</title>
     <link rel="icon" href="../img/favicon.ico">
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
-   <?php
-	  require_once("../modelo/class.conexion.php");
-	  require_once("../modelo/class.sesion.php");
-    require_once("../modelo/class.admin.php");
-    error_reporting(0);
+    <?php
+  require_once("../modelo/class.conexion.php");
+  require_once("../modelo/class.cliente.php");
+  require_once("../modelo/class.doctor.php");
+  require_once("../modelo/class.sesion.php");
+  require_once("../modelo/class.expedienteMedico.php");
 
-	  $userSession = new Sesion();
-    if (isset($_SESSION['admin'])) {
-      $user = new Admin();
-      $user->setAdmin($userSession->getAdminActual());
-    } else
-      header("location: ../vistas/iniciosesion.php");
-		
-	?>
+  error_reporting(0);
+  $userSession = new Sesion();
+
+  if (isset($_SESSION['doctor'])) {
+    $user = new Doctor();
+    $user->setDoctor($userSession->getDoctorActual());
+    $doctor = true;
+  } elseif (isset($_SESSION['cliente'])) {
+    $user = new Cliente();
+    $expe = new Expediente();
+    $expe->setExp($userSession->getClienteActual());
+  } else if (isset($_SESSION['admin'])) {
+    $user = new Admin();
+    $user->setAdmin($userSession->getAdminActual());
+  } else
+    header("location: ../vistas/iniciosesion.php");
+  ?>
+
 </head>
 <body>
+    <!--Barra de navegación-->
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
       <div class="container">
-          <img src="../img/My project.png" width="90" height="90" class="d-inline-block align-top" alt="">
+        <img src="../img/Logo 2 real.png" width="90" height="90" class="d-inline-block align-top" alt="">
           <a class="navbar-brand fs-4" href="#" >NOVA MEDIC</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse " id="navbarNav">
-          <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link  fs-6 navbar-brand" aria-current="page" href="indexAdmin.php">INICIO</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-6 navbar-brand" href="creacionCuentas.php">CREACIÓN DE CUENTAS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active fs-6 navbar-brand" href="visualizaCuentas.php">USUARIOS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-6 navbar-brand" href="#">REPORTES</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-6 navbar-brand" href="perfil.php">PERFIL</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-6 navbar-brand" href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>
-                    </li>
-                </ul>
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link  fs-6 navbar-brand" aria-current="page" href="indexPaciente.php" >INICIO</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-6 navbar-brand" href="../vistas/iniciarConsulta.php" >INICIAR CONSULTA</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-6 navbar-brand" href="#">CHAT</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-6 navbar-brand active" href="../vistas/perfil.php">PERFIL</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link fs-6 navbar-brand" href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>
+              </li>
+            </ul>
           </div>
-      </nav>
-
+        </div>
+    </nav>
+    <!--Perfil-->
     <div class="contenedor">
-      <?php 
-      require_once("../modelo/class.doctor.php");
-      require_once("../modelo/class.admin.php");
-      $tabla = isset($_GET['tabla'])?$_GET['tabla']:"";
-        if($tabla=="Doctores"){
-          echo '<h1>Cuentas de Médicos</h1>';
-          $doc = new Doctor();
-          $cuentas = $doc->allDoctores();
-          foreach($cuentas as $mostrar){
-              echo '<div class="doctores">
-               <div class="fotoPerfil">
-                <img src="../img/fotoperfil.webp">
-                </div>
-                <div class="informacion">
-                <h4><strong>Nombre:</strong> '. $mostrar['nombre'] ." ". $mostrar['apellido'] .'</h4>
-                <h4><strong>Especialidad:</strong> '.$mostrar['espec'] .'</h4>
-                <h4><strong>Estado:</strong>En línea</h4>
-                <h4><strong>Correo:</strong> '. $mostrar['correo'].'</h4>
-                <h4><strong>Descripción:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum amet laboriosam fugiat aperiam 
-                  deserunt hic mollitia iure eaque voluptatum, quod explicabo modi</h4>
-              </div>   
-            </div>';
-          }
-      }else if($tabla=="Admins"){
-        echo '<h1>Cuentas de Admin</h1>';
-        $admin = new Admin();
-        $cuentas = $admin->allAdmins();
-        foreach($cuentas as $mostrar){
-            echo '<div class="doctores">
-             <div class="fotoPerfil">
-              <img src="../img/fotoperfil.webp">
-              </div>
-              <div class="informacion">
-              <h4><strong>Nombre:</strong> '. $mostrar['nombre'] ." ". $mostrar['apellido'] .'</h4>
-              <h4><strong>Estado:</strong>En línea</h4>
-              <h4><strong>Correo:</strong> '. $mostrar['correo'].'</h4>
-              <h4><strong>Descripción:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum amet laboriosam fugiat aperiam 
-                deserunt hic mollitia iure eaque voluptatum, quod explicabo modi</h4>
-            </div>   
-          </div>';
-      }
-    }
+      <div class="contenido">
+        <div class="fotoPerfil">
+            <img src="../img/Logo real.png">
+          </div>
+        <div class="datosUsuario">
+       
+          <form>
+            <?php 
+            ?>
+              <label>¿Ha tenido reacciones alergicas a medicamentos?</label><input type="text" id="alergia" disabled placeholder="<?php if($expe->getMedicina() == "Si"){
+                echo $expe->getText_medicina(); 
+              }else{
+                echo "No. Según registro de expediente medico";
+              }
+               ?>">
 
-      ?>
+              <label>Tipo de sangre</label><input type="text" id="sangre" disabled placeholder="<?php echo $expe->getSangre()?>">
+              <label>¿Es alergico a algún animal o comida?</label><input id="comida" disabled placeholder="<?php if($expe->getAlergia() == "Si"){
+                echo $expe->getText_anima(); 
+              }else{
+                echo "No. Según registro de expediente medico";
+              }
+               ?>">
+              <label>¿Ha sido tratado psicologicamente alguna vez?</label><input id="psicologia" disabled placeholder="<?php if($expe->getPsico() == "Si"){
+                echo "Si. Según registro de expediente medico"; 
+              }else{
+                echo "No. Según registro de expediente medico";
+              }
+               ?>">
+
+              <label>¿Cual es su altura?</label><input id="altura" disabled placeholder="<?php echo $expe->getAltura()?>">
+              <label>¿Cual es su Peso?</label><input id="sexo" disabled placeholder="<?php echo $expe->getPeso()?>">
+          </form>
+        </div> 
+      </div>
     </div>
-        
 
-    <footer class="text-center text-lg-start bg-primary text-white footer">
+
+    <!-- Footer -->
+<footer class="text-center text-lg-start bg-primary text-white footer">
   <!-- Section: Social media -->
   <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
     <!-- Left -->
@@ -217,9 +223,8 @@
   <!-- Section: Links  -->
 </footer>
 <!-- Footer -->
-
-<script src="../js/iniciarConsultas.js"></script>
-<script src="../bootstrap/js/bootstrap.min.js"></script>
+<script src="../js/perfil.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

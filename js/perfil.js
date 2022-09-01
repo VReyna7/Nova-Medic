@@ -6,11 +6,6 @@ window.sr = ScrollReveal();
         distance: "100px"
     });
 
-    sr.reveal(".footer",{
-        duration: 2000,
-        origin: "bottom",
-        distance: "-100px"
-    });
 
     sr.reveal(".contenedor",{
         duration: 2000,

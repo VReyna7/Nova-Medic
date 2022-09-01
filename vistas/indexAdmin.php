@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,6 +14,21 @@
     <title>Prueba</title>
     <link rel="icon" href="../img/favicon.ico">
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <?php
+	  require_once("../modelo/class.conexion.php");
+	  require_once("../modelo/class.sesion.php");
+    require_once("../modelo/class.admin.php");
+    error_reporting(0);
+
+	  $userSession = new Sesion();
+    if (isset($_SESSION['admin'])) {
+      $user = new Admin();
+      $user->setAdmin($userSession->getAdminActual());
+    }else{
+      header("location: ../vistas/iniciosesion.php");
+    }
+	?>
 </head>
 
 <body>
@@ -33,13 +49,13 @@
                         <a class="nav-link fs-6 navbar-brand" href="creacionCuentas.php">CREACIÓN DE CUENTAS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-6 navbar-brand" href="visualizaCuentas.html">USUARIOS</a>
+                        <a class="nav-link fs-6 navbar-brand" href="visualizaCuentas.php">USUARIOS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-6 navbar-brand" href="#">REPORTES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-6 navbar-brand" href="perfil.html">PERFIL</a>
+                        <a class="nav-link fs-6 navbar-brand" href="perfil.php">PERFIL</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-6 navbar-brand" href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>

@@ -26,9 +26,6 @@
 	    if(isset($_SESSION['doctor'])){
 		  $user = new Doctor();
 	  	$user->setDoctor($userSession->getDoctorActual());
-	    }elseif(isset($_SESSION['cliente'])){
-	  	$user = new Cliente();
-	    $user->setCliente($userSession->getClienteActual());
 	    }else{
         header("location: ../vistas/iniciosesion.php");
       }

@@ -5,38 +5,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/aceptarConsulta.css">
+    <link rel="stylesheet" href="../css/psicologia.css?v=<?php echo time(); ?>">
     <script src="../js/scrollreveal.js"></script>
+    <script src="../js/doctoresConsul.js"></script>
+    <script src="../js/popUp.js"></script>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Prueba</title>
     <link rel="icon" href="../img/favicon.ico">
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
-
     <?php
 	  require_once("../modelo/class.conexion.php");
 	  require_once("../modelo/class.cliente.php");
 	  require_once("../modelo/class.doctor.php");
 	  require_once("../modelo/class.sesion.php");
-    require_once("../modelo/class.consulta.php");
-
+    $category = isset($_GET['category'])?$_GET['category']:"";
     error_reporting(0);
-
-	  $userSession = new Sesion();
-    $consul = new Consulta();
-
-
-	    if(isset($_SESSION['doctor'])){
-		  $user = new Doctor();
-	  	$user->setDoctor($userSession->getDoctorActual());
-      $consulta = $user->AceptarConsul($userSession->getDoctorActual());
-
+	    $userSession = new Sesion();
+      $docs = New Doctor();
+	    if(isset($_SESSION['cliente'])){
+	  	$user = new Cliente();
+	    $user->setCliente($userSession->getClienteActual());
 	    }else{
-		  header("location: ../vistas/iniciosesion.php");
-      } 
-      
+      header("location: ../vistas/iniciosesion.php");
+     }
+	
 	?>
-
 </head>
 <body>
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
@@ -49,10 +43,10 @@
           <div class="collapse navbar-collapse " id="navbarNav">
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
-                <a class="nav-link  fs-6 navbar-brand" aria-current="page" href="indexDoctor.php" >INICIO</a>
+                <a class="nav-link  fs-6 navbar-brand" aria-current="page" href="indexPaciente.php" >INICIO</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link fs-6 navbar-brand active" href="aceptarConsultas.php" >ACEPTAR CONSULTAS</a>
+                <a class="nav-link fs-6 navbar-brand active" href="iniciarConsulta.php" >INICIAR CONSULTA</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link fs-6 navbar-brand" href="#">CHAT</a>
@@ -65,32 +59,72 @@
               </li>
             </ul>
           </div>
-      </nav>
-    <div class="contenedor">
-      <h1>Pacientes en lista de espera</h1>
-      <?php 
-          foreach ($consulta as $mostrar){
-           echo '<div class="doctores">
-           <div class="fotoPerfil">
-             <img src="'.$consul->getImagenPerfil($mostrar["cliente"]).'">
-             <button class="iniciarConsulta">Iniciar Consulta</button>
-             <a href="perfil.php?idClient='.$mostrar["cliente"].'&accion=Visualizar"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Ver Perfil"></a>
-           </div>
-           <div class="informacion">
-             <h4><strong>Nombre:</strong> '.$consul->getNombreCompleto($mostrar["cliente"]).'</h4>
-             <h4><strong>Estado:</strong> En línea</h4>
-             <h4><strong>Motivo de Consulta:</strong> '.$mostrar["descripcion"].'</h4>
-             <h4><strong>Sexo:</strong> '.$consul->getSexo($mostrar["cliente"]).'</h4>
-           </div>
-         </div>';
-          }
-        ?>
-    </div>
-        
-    </div>
-</div>
+    </nav>
 
-      <!-- Footer -->
+  <div id="contKing">
+    <div class="contenedor" id="contenedor">
+      <h1>Médicos Disponibles</h1>
+      <?php 
+        if($category == "General"){
+          $cuentas =  $docs->docGenerales();
+          foreach ($cuentas as $mostrar){
+            echo '<div class="doctores">
+            <div class="fotoPerfil">
+              <img src="'.$mostrar["fotoPerfil"] .'">
+              <a href="consultacreacion.php?idDoc='.$mostrar["id"].'&category='.$category.'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Iniciar Consulta"></a>
+              <a href="perfil.php?idDoc='.$mostrar["id"].'&accion=Visualizar"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Ver Perfil"></a>
+              </div>
+            <div class="informacion">
+              <h4><strong>Nombre:</strong> '.  $mostrar["nombre"] . " " .$mostrar["apellido"] .'</h4>
+              <h4><strong>Especialidad:</strong> '. $mostrar["espec"] .'</h4>
+              <h4><strong>Estado:</strong> En línea</h4>
+              <h4><strong>Descripción:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum amet laboriosam fugiat aperiam 
+              deserunt hic mollitia iure eaque voluptatum, quod explicabo modi</h4>
+            </div></div>';
+          }
+        }else if($category == "Psico"){
+          $cuentas =  $docs->docPsicos();
+          foreach ($cuentas as $mostrar){
+            echo '<div class="doctores">
+            <div class="fotoPerfil">
+              <img src="'.$mostrar["fotoPerfil"] .'">
+              <a href="consultacreacion.php?idDoc='.$mostrar["id"].'&category='.$category.'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Iniciar Consulta"></a>
+              <a href="perfil.php?idDoc='.$mostrar["id"].'&accion=Visualizar"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Ver Perfil"></a>
+              </div>
+            <div class="informacion">
+              <h4><strong>Nombre:</strong> '.  $mostrar["nombre"] . " " .$mostrar["apellido"] .'</h4>
+              <h4><strong>Especialidad:</strong> '. $mostrar["espec"] .'</h4>
+              <h4><strong>Estado:</strong> En línea</h4>
+              <h4><strong>Descripción:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum amet laboriosam fugiat aperiam 
+                deserunt hic mollitia iure eaque voluptatum, quod explicabo modi</h4>
+            </div></div>';
+            }
+        }else if($category == "Nutri"){
+          $cuentas =  $docs->docNutri();
+          foreach ($cuentas as $mostrar){
+            echo '<div class="doctores">
+            <div class="fotoPerfil">
+              <img src="'.$mostrar["fotoPerfil"] .'">
+              <a href="consultacreacion.php?idDoc='.$mostrar["id"].'&category='.$category.'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Iniciar Consulta"></a>
+              <a href="perfil.php?idDoc='.$mostrar["id"].'&accion=Visualizar"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Ver Perfil"></a>
+            </div>
+            <div class="informacion">
+              <h4><strong>Nombre:</strong> '.  $mostrar["nombre"] . " " .$mostrar["apellido"] .'</h4>
+              <h4><strong>Especialidad:</strong> '. $mostrar["espec"] .'</h4>
+              <h4><strong>Estado:</strong> En línea</h4>
+              <h4><strong>Descripción:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum amet laboriosam fugiat aperiam 
+                deserunt hic mollitia iure eaque voluptatum, quod explicabo modi</h4>
+            </div></div>';
+            }
+        }
+        echo $idDoc;
+      ?>
+    </div>
+  </div>
+      </div>
+
+    
+    <!-- Footer -->
 <footer class="text-center text-lg-start bg-primary text-white footer">
   <!-- Section: Social media -->
   <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
@@ -210,10 +244,11 @@
 </footer>
 <!-- Footer -->
 <script src="../js/iniciarConsultas.js"></script>
-<script src="../bootstrap/js/bootstrap.min.js"></script>
+    <script src="../bootstrap/js/bootstrap.min.js"></script>
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     
+</body>
 </body>
 </html>

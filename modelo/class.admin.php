@@ -124,8 +124,9 @@ class Admin
         if (!$stmt) {
             throw new Exception("Error. Hubo un fallo en la base de datos");
         } else {
-            $id = $stmt->execute();
-            $this->id = $id;
+            $stmt->execute();
+            $datauser = $stmt->fetch(PDO::FETCH_ASSOC);
+            $this->id = $datauser['id'];
         }
     }
 
@@ -148,7 +149,6 @@ class Admin
             $this->correo = $datauser['correo'];
             $this->sexo = $datauser['sexo'];
             $this->fechaNac = $datauser['fecha_nac'];
-            $this->titulos = $datauser['titulos'];
             $this->estado = $datauser['estado'];
             $this->foto = $datauser['fotoPerfil'];
         }

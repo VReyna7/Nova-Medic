@@ -57,15 +57,15 @@ class Chat{
 		
 	}
 
-	public function enviarMsg($user, $msg, $idDC, $idC, $tipo){
+	public function enviarMsg($nombre,$msg,$idDoc,$idCliente,$tipo){
 		$conexion = new Conexion();
 		$dbh = $conexion->get_conexion();
-		$sql = "Insert into mensaje (user, msg, idDoctor, idCliente, tipo) values (:user, :msg, :idDC, :idC, :tipo)";
+		$sql = "Insert into mensaje (usuario,msg,idDoctor,idCliente,tipo) values (:nombre,:msg,:idDoc,:idCliente,:tipo)";
 		$stmt = $dbh->prepare($sql);
-		$stmt->bindParam(":user",$user);
+		$stmt->bindParam(":nombre",$nombre);
 		$stmt->bindParam(":msg",$msg);
-		$stmt->bindParam(":idDoctor",$idDC);
-		$stmt->bindParam(":idCliente",$idC);
+		$stmt->bindParam(":idDOC",$idDoc);
+		$stmt->bindParam(":idCliente",$idCliente);
 		$stmt->bindParam(":tipo",$tipo);
 		$stmt->execute();
 	}

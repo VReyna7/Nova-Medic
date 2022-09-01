@@ -97,6 +97,18 @@ class Doctor
         }
     }
 
+    public function AceptarConsul($id)
+    {
+        $dbh = new Conexion;
+        $conexion = $dbh->get_conexion();
+        $sql = 'Select * from consulta where doctor=:id';
+        $stmt = $conexion->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        $doctores = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $doctores;
+    }
+
     public function searchDoctor($user, $pass)
     {
         $dbh = new Conexion;
@@ -128,6 +140,42 @@ class Doctor
         return $doctores;
     }
 
+    public function docGenerales()
+    {
+        $dbh = new Conexion;
+        $conexion = $dbh->get_conexion();
+        $sql = 'SELECT * FROM doctor where espec = "Doctor General" ORDER BY id';
+        $stmt = $conexion->prepare($sql);
+        $stmt->execute();
+        $doctores = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $doctores;
+    }
+
+
+    public function docPsicos()
+    {
+        $dbh = new Conexion;
+        $conexion = $dbh->get_conexion();
+        $sql = 'SELECT * FROM doctor where espec = "Psicologia" ORDER BY id';
+        $stmt = $conexion->prepare($sql);
+        $stmt->execute();
+        $doctores = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $doctores;
+    }
+
+    public function docNutri()
+    {
+        $dbh = new Conexion;
+        $conexion = $dbh->get_conexion();
+        $sql = 'SELECT * FROM doctor where espec = "Nutricionista" ORDER BY id';
+        $stmt = $conexion->prepare($sql);
+        $stmt->execute();
+        $doctores = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $doctores;
+    }
+
+
+
     public function sesionDoctor($user)
     {
         $dbh = new Conexion;
@@ -138,8 +186,9 @@ class Doctor
         if (!$stmt) {
             throw new Exception("Error. Hubo un fallo en la base de datos");
         } else {
-            $id = $stmt->execute();
-            $this->id = $id;
+            $stmt->execute();
+            $datauser = $stmt->fetch(PDO::FETCH_ASSOC);
+            $this->id = $datauser['id'];
         }
     }
 

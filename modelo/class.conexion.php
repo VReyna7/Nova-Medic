@@ -2,10 +2,10 @@
 class Conexion{
 	//Estos datos se cambian al momento de meterlo a un hosting
 	public function get_conexion(){
-		$user = 'u655795966_root';
-		$pass = 'NovaMedic2022';
+		$user = 'root';
+		$pass = '';
 		$host = "localhost";
-		$db = 'u655795966_nova_medic';
+		$db = 'nova_medic';
 		try{
 			$dsn = "mysql:host=$host;dbname=$db;";
 			$dbh = new PDO($dsn, $user, $pass);

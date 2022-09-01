@@ -21,16 +21,13 @@
 
     error_reporting(0);
 	    $userSession = new Sesion();
-
-	    if(isset($_SESSION['doctor'])){
-		  $user = new Doctor();
-	  	$user->setDoctor($userSession->getDoctorActual());
-	    }elseif(isset($_SESSION['cliente'])){
+      
+	    if(isset($_SESSION['cliente'])){
 	  	$user = new Cliente();
 	    $user->setCliente($userSession->getClienteActual());
-	  }else{
+	    }else{
       header("location: ../vistas/iniciosesion.php");
-    }
+     }
 	
 	?>
 

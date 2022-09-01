@@ -56,7 +56,7 @@
                   </div>
                 </div>
               </div>
-            <input type="text" class="form-control especific-text-form espcifique1" placeholder="Especifique" id="especifique">
+            <input type="text" class="form-control especific-text-form espcifique1" placeholder="Especifique" id="especifique" name="text_medicina">
           </div>
 
           <div class="row">
@@ -113,7 +113,7 @@
                   </div>
                 </div>
               </div>
-            <input type="text" class="form-control especific-text-form2" placeholder="Especifique" id="especifique2">
+            <input type="text" class="form-control especific-text-form2" placeholder="Especifique" id="especifique2" name="Text_anima">
           </div>
 
           <div class="row">
@@ -135,16 +135,16 @@
 
           <div class="row">
             <div class="Options">
-                <label for="form-control " class="text-white">¿Cual es su altura?</label>
+                <label for="form-control " class="text-white">¿Cual es su altura? (En Metros)</label>
               </div>
-            <input type="text" class="form-control especific-text-form3" placeholder="Especifique" name="altura">
+            <input type="text" class="form-control especific-text-form3" placeholder="Especifique" name="altura" min="0">
           </div>
 
           <div class="row">
             <div class="Options">
-                <label for="form-control " class="text-white">¿Cual es su Peso?</label>
+                <label for="form-control " class="text-white">¿Cual es su Peso? (en kg)</label>
               </div>
-            <input type="text" class="form-control especific-text-form4" placeholder="Especifique" name="peso">
+            <input type="text" class="form-control especific-text-form4" placeholder="Especifique" name="peso" min="0">
           </div>
 
 

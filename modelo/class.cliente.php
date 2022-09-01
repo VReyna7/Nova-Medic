@@ -87,6 +87,8 @@ class Cliente
         }
     }
 
+
+
     public function sesionCliente($user)
     {
         $dbh = new Conexion;
@@ -125,6 +127,22 @@ class Cliente
             $this->fechaNac = $datauser['fecha_nac'];
         }
     }
+
+    public function setExpediente($id)
+    {
+        $dbh = new Conexion;
+        $conexion = $dbh->get_conexion();
+        $sql = 'Select * from expediente where id=:id';
+        $stmt = $conexion->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        if (!$stmt) {
+            throw new Exception("Error. Hubo un fallo en la base de datos");
+        } else {
+            $stmt->execute();
+            $datauser = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+    }
+
 
     /*public function veriFoto($name, $ext)
     {

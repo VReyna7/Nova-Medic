@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,8 +11,22 @@
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <title>Prueba</title>
     <link rel="icon" href="../img/favicon.ico">
-</head>
+    <?php
+	  require_once("../modelo/class.conexion.php");
+	  require_once("../modelo/class.sesion.php");
+    require_once("../modelo/class.admin.php");
+    error_reporting(0);
 
+	  $userSession = new Sesion();
+    if (isset($_SESSION['admin'])) {
+      $user = new Admin();
+      $user->setAdmin($userSession->getAdminActual());
+    } else
+      header("location: ../vistas/iniciosesion.php");
+		
+	?>
+</head>
+  
 <body>
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
@@ -24,22 +39,22 @@
             <div class="collapse navbar-collapse " id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link  fs-6 navbar-brand" aria-current="page" href="indexAdmin.html">INICIO</a>
+                        <a class="nav-link  fs-6 navbar-brand" aria-current="page" href="indexAdmin.php">INICIO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active fs-6 navbar-brand" href="creacionCuentas.html">CREACIÓN DE CUENTAS</a>
+                        <a class="nav-link active fs-6 navbar-brand" href="creacionCuentas.php">CREACIÓN DE CUENTAS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-6 navbar-brand" href="visualizaCuentas.html">USUARIOS</a>
+                        <a class="nav-link fs-6 navbar-brand" href="visualizaCuentas.php">USUARIOS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-6 navbar-brand" href="#">REPORTES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-6 navbar-brand" href="">PERFIL</a>
+                        <a class="nav-link fs-6 navbar-brand" href="perfil.php">PERFIL</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-6 navbar-brand" href="#">CERRAR SESION</a>
+                        <a class="nav-link fs-6 navbar-brand" href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>
                     </li>
                 </ul>
             </div>

@@ -16,21 +16,18 @@
     <?php
 	  require_once("../modelo/class.conexion.php");
 	  require_once("../modelo/class.cliente.php");
-	  require_once("../modelo/class.doctor.php");
 	  require_once("../modelo/class.sesion.php");
 
     error_reporting(0);
 
 	  $userSession = new Sesion();
 
-	    if(isset($_SESSION['doctor'])){
-		  $user = new Doctor();
-	  	$user->setDoctor($userSession->getDoctorActual());
-	    }elseif(isset($_SESSION['cliente'])){
+	    
+	    if(isset($_SESSION['cliente'])){
 	  	$user = new Cliente();
 	    $user->setCliente($userSession->getClienteActual());
 	  }else
-		header("location: ../vistas/iniciosesion.php");
+		  header("location: ../vistas/iniciosesion.php");
 	?>
 
 
@@ -84,7 +81,9 @@
             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
             mollit anim id est laborum</p>
              <div class="bntsPrinc">
-                  <a href="doctoresConsul.html"><button>Ingresar</button></a>
+             <?php 
+                echo "<a href='doctoresConsul.php?category=General'><button>Ingresar</button></a>"
+                ?>
               </div>
           </div>
       </div>
@@ -98,7 +97,9 @@
             cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
             mollit anim id est laborum</p>
             <div class="bntsPrinc">
-                <a href="doctoresConsul.html"><button>Ingresar</button></a>
+            <?php 
+                echo "<a href='doctoresConsul.php?category=Psico'><button>Ingresar</button></a>"
+                ?>
             </div>
           </div>
           <div class="fondoprimario-mid">
@@ -117,7 +118,9 @@
             mollit anim id est laborum</p>
 
              <div class="bntsPrinc">
-                  <a href="doctoresConsul.html"><button>Ingresar</button></a>
+             <?php 
+                echo "<a href='doctoresConsul.php?category=Nutri'><button>Ingresar</button></a>"
+                ?>
               </div>
  
           </div>
