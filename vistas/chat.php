@@ -144,7 +144,7 @@
                             </a>
                           </li>';
                            }
-                          }
+                        }
                   ?>
             <li>
               <a href=""> 
@@ -215,9 +215,9 @@
     <?php
           
 
-    /*
+    
 				if(isset($_SESSION['doctor'])){
-					$data = $chat->mostrarMsg(1,$user->getId());
+					$data = $chat->mostrarMsg( $idC ,$idDoc);
 					foreach($data as $msg){
         			if($msg['tipo']==1){
 					echo '<div class="panelMensajeDerecho">';
@@ -240,7 +240,7 @@
 					}
 					}
 				}elseif(isset($_SESSION['cliente'])){
-					$data = $chat->mostrarMsg($id, $user->getId());
+					$data = $chat->mostrarMsg($idDoc,$idC);
 					foreach($data as $msg){
 					if($msg['tipo']==0){
 					echo '<div class="panelMensajeDerecho">';
@@ -262,7 +262,7 @@
         			echo '</div>';
 					}
 					}
-				}*/
+				}
 			?>
        
     <!--  <div class="panelMensajeDerecho">
@@ -343,18 +343,18 @@
 	    <?php
 	     if(isset($_SESSION['cliente'])){
 	         
-       echo'<button type="sumbit" id="btnCall" name="solicitarlCall"><img src="../img/call.png" class="imgbutton" /></button>';
+       echo'<button type="sumbit" id="btnCall" name="solicitarlCall"><img src="../img/call.png" class="imgbutton" /></button>
+       <input type="hidden" name="id" value="'.$idDoc.'">';
        
       }else if(isset($_SESSION['doctor'])){
-         echo '<a href="http://meet.google.com/new"><img src="../img/call.png" class="imgbutton2" /></a>';
+         echo '<a href="http://meet.google.com/new"><img src="../img/call.png" class="imgbutton2" /></a>
+         <input type="hidden" name="id" value="'. $idC.'">';
+         
       }
            
       
 	    ?>
-	   
-	
-	
-   
+
 	  <input class="textMSG" placeholder="Escribe un mensaje aqui" type="text" name="msg" autocomplete="off">
 		<input type="submit" value="enviar" name="enviarMsg" class="enviar" id="btnEnviar">
 		</form>
