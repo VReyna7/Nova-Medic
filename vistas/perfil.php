@@ -126,11 +126,14 @@
   <div class="contenedor">
     <div class="encabezado">
       <h3>Información Personal</h3>
-      <?php 
-         if($accion != "Visualizar"){
-          echo '<input type="button" name="editar" value="Editar" onclick="activateInputs()">';
-         }
-      ?>
+      <div>
+        <?php 
+          if($accion != "Visualizar"){
+            echo '<input type="button" name="editar" value="Cambiar Contraseña" onclick="cambiarContrasenia()">';
+            echo '<input type="button" name="editar" value="Editar" onclick="activateInputs()">';
+          }
+        ?>
+      </div>
     </div>
     <div class="contenido">
     <?php
@@ -146,11 +149,17 @@
           echo '</div>';
           echo '<div class="datosUsuario">
           <form>
-            <label>Nombre:</label><input type="text" id="nombre" disabled value="'. $doc->getNombre() .'">
-            <label>Apellido:</label><input type="text" id="apellido" disabled value="'.$doc->getApellido().'">
-            <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="'.$doc->getCorreo().'">
-            <label>Sexo:</label><input type="text" id="sexo" disabled placeholder="'.$doc->getSexo().'">
+            <label>Nombre:</label><input type="text" id="nombre" disabled value="'. $user->getNombre() .'">
+            <label>Apellido:</label><input type="text" id="apellido" disabled value="'.$user->getApellido().'">
+            <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="'.$user->getCorreo().'">
+            <label>Sexo:</label><input type="text" id="sexo" disabled placeholder="'.$user->getSexo().'">
+            <label id="confPasswordLabel" style="display:none;">Contraseña:</label><input type="password" id="contrasenia" placeholder="Ingresar Contraseña..." required style="display: none;">
             <input type="submit" value="Confirmar Cambios" id="confCambios" class="confCambios" onclick="activateButton()">
+          </form>
+          <form id="cambiarContra" style="display:none;">
+            <label id="newPasss">Nueva Contraseña:</label><input type="password" id="newPassInput">
+            <label id="confPasswordLabel">Confirmar Contraseña:</label><input type="password" id="confPassword">
+            <input type="button" name="guardarCambios" value="Guardar Cambios" class="guardarCambios">;
           </form>
            </div>';
             }else if(!$cliente){
@@ -165,13 +174,19 @@
               }
              echo '</div>';
              echo '<div class="datosUsuario">
-          <form>
-            <label>Nombre:</label><input type="text" id="nombre" disabled value="'. $client->getNombre() .'">
-            <label>Apellido:</label><input type="text" id="apellido" disabled value="'.$client->getApellido().'">
-            <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="'.$client->getCorreo().'">
-            <label>Sexo:</label><input type="text" id="sexo" disabled placeholder="'.$client->getSexo().'">
-            <input type="submit" value="Confirmar Cambios" id="confCambios" class="confCambios" onclick="activateButton()">
-            </form>
+             <form>
+             <label>Nombre:</label><input type="text" id="nombre" disabled value="'. $user->getNombre() .'">
+             <label>Apellido:</label><input type="text" id="apellido" disabled value="'.$user->getApellido().'">
+             <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="'.$user->getCorreo().'">
+             <label>Sexo:</label><input type="text" id="sexo" disabled placeholder="'.$user->getSexo().'">
+             <label id="confPasswordLabel" style="display:none;">Contraseña:</label><input type="password" id="contrasenia" placeholder="Ingresar Contraseña..." required style="display: none;">
+             <input type="submit" value="Confirmar Cambios" id="confCambios" class="confCambios" onclick="activateButton()">
+           </form>
+           <form id="cambiarContra" style="display:none;">
+             <label id="newPasss">Nueva Contraseña:</label><input type="password" id="newPassInput">
+             <label id="confPasswordLabel">Confirmar Contraseña:</label><input type="password" id="confPassword">
+             <input type="button" name="guardarCambios" value="Guardar Cambios" class="guardarCambios">;
+           </form>
            </div>';
             }
         }else{
@@ -193,13 +208,17 @@
             <label>Nombre:</label><input type="text" id="nombre" disabled value="'. $user->getNombre() .'">
             <label>Apellido:</label><input type="text" id="apellido" disabled value="'.$user->getApellido().'">
             <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="'.$user->getCorreo().'">
-            <label>Contraseña:</label><input type="password" id="password" disabled>
-            <label id="confPasswordLabel">Confirmar Contraseña:</label><input type="password" id="confPassword" disabled>
             <label>Sexo:</label><input type="text" id="sexo" disabled placeholder="'.$user->getSexo().'">
+            <label id="confPasswordLabel" style="display:none;">Contraseña:</label><input type="password" id="contrasenia" placeholder="Ingresar Contraseña..." required style="display: none;">
             <input type="submit" value="Confirmar Cambios" id="confCambios" class="confCambios" onclick="activateButton()">
           </form>
-        </div>';
-        }
+          <form id="cambiarContra" style="display:none;">
+            <label id="newPasss">Nueva Contraseña:</label><input type="password" id="newPassInput">
+            <label id="confPasswordLabel">Confirmar Contraseña:</label><input type="password" id="confPassword">
+            <input type="button" name="guardarCambios" value="Guardar Cambios" class="guardarCambios">;
+          </form>
+        </div>'
+        ;}
         ?>
 
     </div>
