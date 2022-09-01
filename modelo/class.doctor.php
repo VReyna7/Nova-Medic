@@ -265,6 +265,20 @@ class Doctor
 		}
 	}
 
+	public function actuPass($pass){
+		$dbh = new Conexion;
+		$conexion = $dbh->get_conexion();
+		$sql = 'update doctor set pass=:pass where id=:id';
+		$stmt = $conexion->prepare($sql);
+		$stmt->bindParam(":pass",$pass);
+		$stmt->bindParam(":id",$this->id);
+		if(!$stmt){
+			throw new Exception("Error con la base de datos");
+		}else{
+			$stmt->execute();
+		}
+	}
+
     //funciones get
     public function getId()
     {
