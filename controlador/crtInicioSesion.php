@@ -26,15 +26,17 @@ if (isset($_SESSION['cliente'])) {
 } else if ($clnt->searchCliente($mail, md5($pass))) {
     $clnt->sesionCliente($mail);
     $sesion->setClienteActual($clnt->getId());
-    header("location: ../vistas/indexPaciente.php");
+   header("location: ../vistas/indexPaciente.php");
 } else if ($doc->searchDoctor($mail, md5($pass))) {
     $doc->sesionDoctor($mail);
     $sesion->setDoctorActual($doc->getId());
     header("location: ../vistas/indexDoctor.php");
-} else if ($admin->sesionAdmin($mail, md5($pass))) {
+} else if ($admin->searchAdmin($mail, md5($pass))) { 
+    echo $mail;
     $admin->sesionAdmin($mail);
+    echo $admin->getId();
     $sesion->setAdminActual($admin->getId());
-    header("location: ../vistas/indexAdmin.php");
+   header("location: ../vistas/indexAdmin.php");
 } else {
     $errorLog = "Error. Correo o contraseña son incorrectos";
     include_once("../vistas/iniciosesion.php");

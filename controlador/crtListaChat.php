@@ -12,15 +12,15 @@ $idC = isset($_GET['idC'])?$_GET['idC']:"";
 $apeC = isset($_GET['ApeC'])?$_GET['ApeC']:"";
 $apeDC = isset($_GET['apeDC'])?$_GET['apeDC']:"";
 
-$msg = "Hola Estoy Interesado en el trabajo";
+$msg = "Buendia";
 
 $veri = $chat->veriChat($nameC,$nameDC,$idC,$idDC,$apeDC,$apeC);
 try{
 		if(!empty($veri['nameP']) && !empty($veri['nameC']) && !empty($veri['apeP']) && !empty($veri['apeC'])){
-			header("location:../vistas/vis.chat.php?id=". $idC);
+			header("location:../vistas/chat.php?id=". $idC);
 		}else{
 			$chat->CrearChat($nameC,$nameP,$idC,$idP,$apeP,$apeC);
-			header("location:../vistas/vis.chat.php?id=". $idC);
+			header("location:../vistas/chat.php?id=". $idC);
 		}
 } catch (Exception $e) {
 	echo  "ekisde" . $e->getMessage();

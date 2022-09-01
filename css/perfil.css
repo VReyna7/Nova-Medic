@@ -73,6 +73,13 @@
     margin-bottom: 10px;
 }
 
+.btn{
+    margin-bottom: 20px;
+}
+
+.buttonReport{
+    margin-top: 20px;
+}
 .encabezado input:hover{
     transform: scale(1.05);
     transition: 1s;

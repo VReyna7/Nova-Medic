@@ -13,9 +13,12 @@ $sangre = isset($_POST['sangre'])?$_POST['sangre']:"";
 $alergia = isset($_POST['alergia'])?$_POST['alergia']:"";
 $psico = isset($_POST['psicologia'])?$_POST['psicologia']:"";
 $alerMedi = isset($_POST['alerMedi'])?$_POST['alerMedi']:"";
+$text_medicina = isset($_POST['text_medicina'])?$_POST['text_medicina']:"";
+$text_anima = isset($_POST['text_anima'])?$_POST['text_anima']:"";
+
 
 try{
-    $exp->veriData($peso,$estatura,$sangre,$alergia,$alerMedi,$psico);
+    $exp->veriData($peso,$estatura,$sangre,$alergia,$alerMedi,$psico,$text_anima,$text_medicina);
     $exp->newExpediente();
     $exp->setExp();
     $exp->updateId();

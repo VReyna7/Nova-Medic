@@ -14,7 +14,7 @@ $admin = new Admin;
 $name = basename($_FILES['foto']['name']);
 $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
 $tmp = $_FILES['foto']['tmp_name'];
-$dir = 'C:/wamp64/www/Nova-Medic/uploads/';
+$dir = 'C:/xampp/htdocs/Nova-Medic-main/uploads/';
 
 try {
   //Subida para el cliente
@@ -23,7 +23,7 @@ try {
     mkdir('../uploads/cliente/' . $id);
     $route = "../uploads/cliente/" . $id . "/" . $name;
     //$clt->veriFoto($name, $ext);
-    $clt->actuFoto($route);
+    $clt->actuFoto($route, $id);
     move_uploaded_file($_FILES['foto']['tmp_name'], $dir . "cliente/" . $id . "/" . $name);
     header("location: ../vistas/perfil.php");
     //Subida para el administrador
@@ -31,7 +31,7 @@ try {
     $id = $_SESSION['admin'];
     mkdir('../uploads/admin/' . $id);
     $route = "../uploads/admin/" . $id . "/" . $name;
-    $admin->actuFoto($route);
+    $admin->actuFoto($route, $id);
     move_uploaded_file($_FILES['foto']['tmp_name'], $dir . "admin/" . $id . "/" . $name);
     header("location: ../vistas/perfil.php");
     //Subida para el doctor
@@ -39,7 +39,7 @@ try {
     $id = $_SESSION['doctor'];
     mkdir('../uploads/doctor/' . $id);
     $route = "../uploads/doctor/" . $id . "/" . $name;
-    $doc->actuFoto($route);
+    $doc->actuFoto($route,  $id);
     move_uploaded_file($_FILES['foto']['tmp_name'], $dir . "doctor/" . $id . "/" . $name);
     header("location: ../vistas/perfil.php");
   } else {
