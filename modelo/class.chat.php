@@ -3,7 +3,7 @@ class Chat{
 	public function mostrarMsg($idDoc, $idClnt){
 		$conexion = new Conexion();
 		$dbh = $conexion->get_conexion();
-		$sql = "Select * from mensaje where idDoc=:idDoctor and idCliente=:idClnt";
+		$sql = "Select * from mensaje where idDoctor=:idDoctor and idCliente=:idClnt";
 		$stmt = $dbh->prepare($sql);
 		$stmt->bindParam(":idDoctor",$idDoc);
 		$stmt->bindParam(":idClnt",$idClnt);
@@ -15,7 +15,7 @@ class Chat{
 	public function verUltimoMsg($idDoc, $idClnt){
 			$conexion = new Conexion();
 			$dbh = $conexion->get_conexion();
-			$sql = "Select * from mensaje where idDoc=:idDoctor and idCliente=:idClnt order by id desc ";
+			$sql = "Select * from mensaje where idDoctor=:idDoctor and idCliente=:idClnt order by id desc ";
 			$stmt = $dbh->prepare($sql);
 			$stmt->bindParam(":idDoctor",$idDoc);
 			$stmt->bindParam(":idClnt",$idClnt);
@@ -57,23 +57,24 @@ class Chat{
 		
 	}
 
-	public function enviarMsg($nombre,$msg,$idDoc,$idCliente,$tipo){
+	public function enviarMsg($nombre,$msg,$idDoc,$idCliente,$tipo,$estado){
 		$conexion = new Conexion();
 		$dbh = $conexion->get_conexion();
-		$sql = "Insert into mensaje (usuario,msg,idDoctor,idCliente,tipo) values (:nombre,:msg,:idDoc,:idCliente,:tipo)";
+		$sql = "Insert into mensaje (usuario,msg,idDoctor,idCliente,tipo,estado) values (:nombre,:msg,:idDoc,:idCliente,:tipo,:estado)";
 		$stmt = $dbh->prepare($sql);
 		$stmt->bindParam(":nombre",$nombre);
 		$stmt->bindParam(":msg",$msg);
-		$stmt->bindParam(":idDOC",$idDoc);
+		$stmt->bindParam(":idDoc",$idDoc);
 		$stmt->bindParam(":idCliente",$idCliente);
 		$stmt->bindParam(":tipo",$tipo);
+		$stmt->bindParam(":estado",$estado);
 		$stmt->execute();
 	}
 
 	public function verChatP($user){
 		$conexion = new Conexion();
 		$dbh = $conexion->get_conexion();
-		$sql = "Select * from mensaje where user=:user";
+		$sql = "Select * from mensaje where usuario=:user";
 		$stmt = $dbh->prepare($sql);
 		$stmt->bindParam(":user",$user);
 		$stmt->execute();
