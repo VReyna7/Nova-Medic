@@ -27,7 +27,7 @@ class Expediente{
             throw new Exception('Error, Tiene que rellenar todos los datos');
         }
     }
-
+    
     //crear historial
     public function newExpediente(){
         $dbh = new Conexion();

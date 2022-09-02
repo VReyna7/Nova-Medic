@@ -67,6 +67,45 @@ class Consulta{
 		return $datos["sexo"];
 	}
 
+    public function searchConsulta($idC, $idDoctor)
+    {
+        $dbh = new Conexion;
+        $conexion = $dbh->get_conexion();
+        $sql = 'Select * from consulta where cliente=:idC and doctor=:idDC';
+        $stmt = $conexion->prepare($sql);
+        $stmt->bindParam(":idC", $idC);
+        $stmt->bindParam(":idDC", $idDoctor);
+        if (!$stmt) {
+            throw new Exception("Error. fallo en la base de datos");
+        } else {
+            $stmt->execute();
+            if ($stmt->rowCount()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    public function searchConsultTypes($idCliente, $categoria){
+        $conexion = new Conexion();
+		$dbh = $conexion->get_conexion();
+		$sql = "select * from consulta  where cliente=:cliente and categoria=:categoria";
+        $stmt = $dbh->prepare($sql);
+        $stmt->bindParam(":cliente", $idCliente);
+        $stmt->bindParam(":categoria", $categoria);
+        if (!$stmt) {
+            throw new Exception("Error. fallo en la base de datos");
+        } else {
+            $stmt->execute();
+            if ($stmt->rowCount()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+    
 
 
 }

@@ -55,7 +55,7 @@
                 <a class="nav-link fs-6 navbar-brand active" href="aceptarConsultas.php" >ACEPTAR CONSULTAS</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link fs-6 navbar-brand" href="#">CHAT</a>
+                <a class="nav-link fs-6 navbar-brand" href="chat.php">CHAT</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link fs-6 navbar-brand" href="perfil.php">PERFIL</a>
@@ -74,7 +74,7 @@
            <div class="fotoPerfil">
              <img src="'.$consul->getImagenPerfil($mostrar["cliente"]).'">
              <a href="../controlador/crtListaChat.php?nameC='.$consul->getNombreCompleto($mostrar["cliente"]).'&NameDC='. $user->getNombre().'&idC='.$mostrar["cliente"].'&idDC='.$user->getId().'&espe='.$user->getEspec().'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Iniciar Consulta"></a>
-             <a href="perfil.php?idClient='.$mostrar["cliente"].'&accion=Visualizar"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Ver Perfil"></a>
+             <a href="perfil.php?idClient='.$mostrar["cliente"].'&accion=Visualizar&rol=Cliente"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Ver Perfil"></a>
            </div>
            <div class="informacion">
              <h4><strong>Nombre:</strong> '.$consul->getNombreCompleto($mostrar["cliente"]).'</h4>

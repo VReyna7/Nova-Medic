@@ -105,15 +105,26 @@ class Chat{
 		$stmt->execute();
 	}
 
-	public function verChatP($user){
-		$conexion = new Conexion();
-		$dbh = $conexion->get_conexion();
-		$sql = "Select * from mensaje where usuario=:user";
-		$stmt = $dbh->prepare($sql);
-		$stmt->bindParam(":user",$user);
-		$stmt->execute();
-		$data = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		return $data;
-	}
+	public function searchChat($idC, $idDoctor)
+    {
+        $dbh = new Conexion;
+        $conexion = $dbh->get_conexion();
+        $sql = 'Select * from chat where idC=:idC and idDC=:idDC';
+        $stmt = $conexion->prepare($sql);
+        $stmt->bindParam(":idC", $idC);
+        $stmt->bindParam(":idDC", $idDoctor);
+        if (!$stmt) {
+            throw new Exception("Error. fallo en la base de datos");
+        } else {
+            $stmt->execute();
+            if ($stmt->rowCount()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+
 }
 ?>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-09-2022 a las 07:35:02
+-- Tiempo de generación: 02-09-2022 a las 23:18:44
 -- Versión del servidor: 10.4.24-MariaDB
 -- Versión de PHP: 8.1.6
 
@@ -65,7 +65,9 @@ CREATE TABLE `chat` (
 --
 
 INSERT INTO `chat` (`id`, `nameDR`, `nameC`, `idC`, `idDC`, `espec`) VALUES
-(7, 'Víctor Eduardo', 'Víctor  Reyna', 11, 1, 'Doctor General');
+(7, 'Víctor Eduardo', 'Víctor  Reyna', 11, 1, 'Doctor General'),
+(11, 'Juan Perez', 'Víctor  Reyna', 11, 4, 'Doctor General'),
+(12, 'Fernando Josue', 'Víctor  Reyna', 11, 2, 'Psicologia');
 
 -- --------------------------------------------------------
 
@@ -104,15 +106,17 @@ CREATE TABLE `consulta` (
   `id` int(11) NOT NULL,
   `cliente` varchar(500) NOT NULL,
   `doctor` varchar(500) NOT NULL,
-  `descripcion` varchar(500) NOT NULL
+  `descripcion` varchar(500) NOT NULL,
+  `categoria` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `consulta`
 --
 
-INSERT INTO `consulta` (`id`, `cliente`, `doctor`, `descripcion`) VALUES
-(2, '11', '1', 'Tengo atorado el pico ayuda porfavor\r\n');
+INSERT INTO `consulta` (`id`, `cliente`, `doctor`, `descripcion`, `categoria`) VALUES
+(9, '11', '4', 'Penesito\r\n', ''),
+(10, '11', '2', 'Pene\r\n', '');
 
 -- --------------------------------------------------------
 
@@ -206,7 +210,12 @@ INSERT INTO `mensaje` (`id`, `usuario`, `msg`, `idDoctor`, `idCliente`, `tipo`, 
 (9, 'Víctor Eduardo', 'dfafasfasfa', 1, 1, 1, 'Doctor'),
 (10, 'Víctor Eduardo', 'asdasdsada', 11, 1, 1, 'Doctor'),
 (11, 'Víctor Eduardo', 'dsadad', 11, 1, 1, 'Doctor'),
-(12, 'Víctor Eduardo', 'arroz', 11, 1, 1, 'Doctor');
+(12, 'Víctor Eduardo', 'arroz', 11, 1, 1, 'Doctor'),
+(13, 'Víctor ', 'El paciente solicita una video llamada', 11, 0, 0, 'Cliente'),
+(14, 'Víctor Eduardo', 'asdasdsadsadsad', 11, 1, 1, 'Doctor'),
+(15, 'Víctor Eduardo', 'sadsadsad', 11, 1, 1, 'Doctor'),
+(16, 'Víctor ', 'El paciente solicita una video llamada', 11, 1, 0, 'Cliente'),
+(17, 'Víctor ', 'El paciente solicita una video llamada', 11, 1, 0, 'Cliente');
 
 --
 -- Índices para tablas volcadas
@@ -270,7 +279,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT de la tabla `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente`
@@ -282,7 +291,7 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de la tabla `consulta`
 --
 ALTER TABLE `consulta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `doctor`
@@ -300,7 +309,7 @@ ALTER TABLE `expediente`
 -- AUTO_INCREMENT de la tabla `mensaje`
 --
 ALTER TABLE `mensaje`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

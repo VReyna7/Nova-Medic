@@ -21,11 +21,11 @@
   require_once("../modelo/class.admin.php");
   require_once("../modelo/class.sesion.php");
 
-  error_reporting(0);
+  //error_reporting(0);
   $idDoct = isset($_GET['idDoc'])?$_GET['idDoc']:"";
   $accion = isset($_GET['accion'])?$_GET['accion']:"";
   $idClient = isset($_GET['idClient'])?$_GET['idClient']:"";
-
+  $rol = isset($_GET['rol'])?$_GET['rol']:"";
   $userSession = new Sesion();
   if (isset($_SESSION['doctor'])) {
     $user = new Doctor();
@@ -67,7 +67,7 @@
                 <a class="nav-link fs-6 navbar-brand" href="../vistas/aceptarConsultas.php" >INICIAR CONSULTA</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link fs-6 navbar-brand" href="chat.html">CHAT</a>
+                <a class="nav-link fs-6 navbar-brand" href="chat.php">CHAT</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link fs-6 navbar-brand active" href="../vistas/perfil.php">PERFIL</a>
@@ -138,7 +138,7 @@
     <div class="contenido">
     <?php
         if($accion == "Visualizar"){
-          if(!$doctor){
+          if($rol == "Doctor"){
               $doc = new Doctor();
               $doc->setDoctor($idDoct);
               echo'<div class="fotoPerfil">
@@ -149,10 +149,10 @@
           echo '</div>';
           echo '<div class="datosUsuario">
           <form>
-            <label>Nombre:</label><input type="text" id="nombre" disabled value="'. $user->getNombre() .'">
-            <label>Apellido:</label><input type="text" id="apellido" disabled value="'.$user->getApellido().'">
-            <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="'.$user->getCorreo().'">
-            <label>Sexo:</label><input type="text" id="sexo" disabled placeholder="'.$user->getSexo().'">
+            <label>Nombre:</label><input type="text" id="nombre" disabled value="'. $doc->getNombre() .'">
+            <label>Apellido:</label><input type="text" id="apellido" disabled value="'.$doc->getApellido().'">
+            <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="'.$doc->getCorreo().'">
+            <label>Sexo:</label><input type="text" id="sexo" disabled placeholder="'.$doc->getSexo().'">
             <label id="confPasswordLabel" style="display:none;">Contraseña:</label><input type="password" id="contrasenia" placeholder="Ingresar Contraseña..." required style="display: none;">
             <input type="submit" value="Confirmar Cambios" id="confCambios" class="confCambios" onclick="activateButton()">
           </form>
@@ -162,7 +162,7 @@
             <input type="button" name="guardarCambios" value="Guardar Cambios" class="guardarCambios">;
           </form>
            </div>';
-            }else if(!$cliente){
+            }else if($rol == "Cliente"){
               $client = new Cliente();
               $client->setCliente($idClient);
               echo'<div class="fotoPerfil">
@@ -175,10 +175,10 @@
              echo '</div>';
              echo '<div class="datosUsuario">
              <form>
-             <label>Nombre:</label><input type="text" id="nombre" disabled value="'. $user->getNombre() .'">
-             <label>Apellido:</label><input type="text" id="apellido" disabled value="'.$user->getApellido().'">
-             <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="'.$user->getCorreo().'">
-             <label>Sexo:</label><input type="text" id="sexo" disabled placeholder="'.$user->getSexo().'">
+             <label>Nombre:</label><input type="text" id="nombre" disabled value="'. $client->getNombre() .'">
+             <label>Apellido:</label><input type="text" id="apellido" disabled value="'.$client->getApellido().'">
+             <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="'.$client->getCorreo().'">
+             <label>Sexo:</label><input type="text" id="sexo" disabled placeholder="'.$client->getSexo().'">
              <label id="confPasswordLabel" style="display:none;">Contraseña:</label><input type="password" id="contrasenia" placeholder="Ingresar Contraseña..." required style="display: none;">
              <input type="submit" value="Confirmar Cambios" id="confCambios" class="confCambios" onclick="activateButton()">
            </form>

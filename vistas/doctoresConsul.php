@@ -18,7 +18,11 @@
 	  require_once("../modelo/class.conexion.php");
 	  require_once("../modelo/class.cliente.php");
 	  require_once("../modelo/class.doctor.php");
+    require_once("../modelo/class.chat.php");
 	  require_once("../modelo/class.sesion.php");
+    require_once("../modelo/class.consulta.php");
+    $consul = new Consulta();
+    $chat = new Chat();
     $category = isset($_GET['category'])?$_GET['category']:"";
     error_reporting(0);
 	    $userSession = new Sesion();
@@ -49,7 +53,7 @@
                 <a class="nav-link fs-6 navbar-brand active" href="iniciarConsulta.php" >INICIAR CONSULTA</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link fs-6 navbar-brand" href="#">CHAT</a>
+                <a class="nav-link fs-6 navbar-brand" href="chat.php">CHAT</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link fs-6 navbar-brand" href="perfil.php">PERFIL</a>
@@ -70,9 +74,22 @@
           foreach ($cuentas as $mostrar){
             echo '<div class="doctores">
             <div class="fotoPerfil">
-              <img src="'.$mostrar["fotoPerfil"] .'">
-              <a href="consultacreacion.php?idDoc='.$mostrar["id"].'&category='.$category.'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Iniciar Consulta"></a>
-              <a href="perfil.php?idDoc='.$mostrar["id"].'&accion=Visualizar"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Ver Perfil"></a>
+              <img src="'.$mostrar["fotoPerfil"] .'">';
+              
+              if($chat->searchChat($userSession->getClienteActual(),$mostrar["id"])){
+                echo ' <a href="chat.php"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Consulta aceptada"></a>';
+               }else if($consul->searchConsulta($userSession->getClienteActual(), $mostrar["id"])){
+                echo ' <a href="doctoresConsul.php?idDoc='.$mostrar["id"].'&category='.$category.'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Consulta en proceso"></a>';
+               }else{
+                if($consul->searchConsultTypes($user->getId(),$category)){
+                  echo' <a href="doctoresConsul.php?category='.$category.'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Iniciar Consulta"></a>';
+                  
+                }else{
+                  echo ' <a href="consultacreacion.php?idDoc='.$mostrar["id"].'&category='.$category.'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Iniciar Consulta"></a>';
+              }
+               }
+               echo'
+               <a href="perfil.php?idDoc='.$mostrar["id"].'&accion=Visualizar&rol=Doctor"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Ver Perfil"></a>
               </div>
             <div class="informacion">
               <h4><strong>Nombre:</strong> '.  $mostrar["nombre"] . " " .$mostrar["apellido"] .'</h4>
@@ -87,9 +104,21 @@
           foreach ($cuentas as $mostrar){
             echo '<div class="doctores">
             <div class="fotoPerfil">
-              <img src="'.$mostrar["fotoPerfil"] .'">
-              <a href="consultacreacion.php?idDoc='.$mostrar["id"].'&category='.$category.'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Iniciar Consulta"></a>
-              <a href="perfil.php?idDoc='.$mostrar["id"].'&accion=Visualizar"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Ver Perfil"></a>
+              <img src="'.$mostrar["fotoPerfil"] .'">';
+              if($chat->searchChat($userSession->getClienteActual(),$mostrar["id"])){
+                echo ' <a href="chat.php"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Consulta aceptada"></a>';
+               }else if($consul->searchConsulta($userSession->getClienteActual(), $mostrar["id"])){
+                echo ' <a href="consultacreacion.php?idDoc='.$mostrar["id"].'&category='.$category.'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Consulta en proceso"></a>';
+               }else{
+                if($consul->searchConsultTypes($user->getId(),$category)){
+                  echo' <a href="doctoresConsul.php?category='.$category.'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Iniciar Consulta"></a>';
+                  
+               }else{
+                echo ' <a href="consultacreacion.php?idDoc='.$mostrar["id"].'&category='.$category.'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Iniciar Consulta"></a>';
+               }
+              }
+              echo'
+              <a href="perfil.php?idDoc='.$mostrar["id"].'&accion=Visualizar"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Ver Perfil"></a>;
               </div>
             <div class="informacion">
               <h4><strong>Nombre:</strong> '.  $mostrar["nombre"] . " " .$mostrar["apellido"] .'</h4>
@@ -104,8 +133,20 @@
           foreach ($cuentas as $mostrar){
             echo '<div class="doctores">
             <div class="fotoPerfil">
-              <img src="'.$mostrar["fotoPerfil"] .'">
-              <a href="consultacreacion.php?idDoc='.$mostrar["id"].'&category='.$category.'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Iniciar Consulta"></a>
+              <img src="'.$mostrar["fotoPerfil"] .'">';
+              if($chat->searchChat($userSession->getClienteActual(),$mostrar["id"])){
+                echo ' <a href="chat.php"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Consulta aceptada"></a>';
+               }else if($consul->searchConsulta($userSession->getClienteActual(), $mostrar["id"])){
+                echo ' <a href="consultacreacion.php?idDoc='.$mostrar["id"].'&category='.$category.'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Consulta en proceso"></a>';
+               }else{
+                if($consul->searchConsultTypes($user->getId(),$category)){
+                  echo' <a href="doctoresConsul.php?category='.$category.'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Iniciar Consulta"></a>';
+                  
+                }else{
+                  echo ' <a href="consultacreacion.php?idDoc='.$mostrar["id"].'&category='.$category.'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Iniciar Consulta"></a>';
+                }
+               }
+             echo '
               <a href="perfil.php?idDoc='.$mostrar["id"].'&accion=Visualizar"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Ver Perfil"></a>
             </div>
             <div class="informacion">

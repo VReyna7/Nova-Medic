@@ -60,7 +60,7 @@ session_start();
                 <a class="nav-link fs-6 navbar-brand" href="../vistas/iniciarConsulta.php" >INICIAR CONSULTA</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link fs-6 navbar-brand" href="#">CHAT</a>
+                <a class="nav-link fs-6 navbar-brand" href="chat.php">CHAT</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link fs-6 navbar-brand active" href="../vistas/perfil.php">PERFIL</a>

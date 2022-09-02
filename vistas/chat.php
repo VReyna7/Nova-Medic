@@ -20,7 +20,7 @@
 
     $idDoc = isset($_GET['idDoc'])?$_GET['idDoc']:"";
     $idC = isset($_GET['idC'])?$_GET['idC']:"";
-
+    //error_reporting(0);
     $chat = new Chat();
     $userSession = new Sesion();
 
@@ -28,6 +28,7 @@
        $user = new Cliente();
        $user->setCliente($userSession->getClienteActual());
        $cliente = true;
+       $doctor = false;
       }else if(isset($_SESSION['doctor'])){
         $user = new Doctor();
         $doctor = true;
@@ -143,8 +144,20 @@
                               </div>
                             </a>
                           </li>';
-                           }
+                           };
+                        }else if($cliente){
+                          $chats = $chat->veriChatClient($userSession->getClienteActual());
+                          foreach ($chats as $mostrar){
+                          echo '<li>
+                          <a href="chat.php?idC='.$mostrar["idC"].'&idDoc='.$mostrar["idDC"].'"> 
+                            <div class="chat">
+                            <img src="'.$chat->getImagenPerfilDoctor($mostrar["idDC"]).'">
+                            <p>'.$mostrar["nameDR"].'</p>
+                            </div>
+                          </a>
+                        </li>';
                         }
+                      }
                   ?>
             <li>
               <a href=""> 
@@ -240,12 +253,12 @@
 					}
 					}
 				}elseif(isset($_SESSION['cliente'])){
-					$data = $chat->mostrarMsg($idDoc,$idC);
+					$data = $chat->mostrarMsg($idC,$idDoc);
 					foreach($data as $msg){
 					if($msg['tipo']==0){
 					echo '<div class="panelMensajeDerecho">';
             			echo '<div class="chat-cuerpo">';
-                			echo '<h3>'. $msg['user'] .'</h3>';
+                			echo '<h3>'. $msg['usuario'] .'</h3>';
                 			echo '<div class="contenedorDeMensaje">';
                     			echo '<p>'. $msg['msg'] .'</p>';
               		  		echo '</div>';
@@ -254,7 +267,7 @@
 					}elseif($msg['tipo']==1){
 					echo '<div class="panelMensajeIzquiendo">';
             			echo '<div class="chat-cuerpo">';
-                			echo '<h3>'. $msg['user'] .'</h3>';
+                			echo '<h3>'. $msg['usuario'] .'</h3>';
                 			echo '<div class="contenedorDeMensaje">';
                     			echo '<p>'. $msg['msg'] .'</p>';
                 			echo '</div>';
@@ -347,7 +360,7 @@
        <input type="hidden" name="id" value="'.$idDoc.'">';
        
       }else if(isset($_SESSION['doctor'])){
-         echo '<a href="http://meet.google.com/new"><img src="../img/call.png" class="imgbutton2" /></a>
+         echo '<a href="http://meet.google.com/new" target="_blank"><img src="../img/call.png" class="imgbutton2" /></a>
          <input type="hidden" name="id" value="'. $idC.'">';
          
       }
