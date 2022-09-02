@@ -12,8 +12,14 @@ $idDC = isset($_GET['idDC'])?$_GET['idDC']:"";
 $idC = isset($_GET['idC'])?$_GET['idC']:"";
 $espec = isset($_GET['espe'])?$_GET['espe']:"";
 
-$chat->CrearChat($nameC,$nameDC,$idC,$idDC, $espec);
-header("location:../vistas/chat.php?");
+if($chat->searchChat($idC,$idDC)){
+    
+    header("location:../vistas/chat.php?");
+}else{
+    $chat->CrearChat($nameC,$nameDC,$idC,$idDC, $espec);
+    header("location:../vistas/chat.php?");
+}
+
 	
 
 ?>

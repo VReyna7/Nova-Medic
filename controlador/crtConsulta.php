@@ -11,6 +11,7 @@
     $idCliente = isset($_POST['idCliente'])?$_POST['idCliente']:"";  
 	$category = isset($_POST['category'])?$_POST['category']:"";  
 
+	
 	$consult->setConsul($idCliente, $idDoctor, $descripcion);
 	$consult->newConsulta();
 
