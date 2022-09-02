@@ -15,8 +15,10 @@ body{
     min-width: 200px;
 }
 
-
-
+.msgError{
+    color: red;
+    font-weight: bold;
+}
 
 .sexo,.especialidad{
     margin-top: 20px;
