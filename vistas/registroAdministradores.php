@@ -64,19 +64,20 @@
     <div class="div-form">
         <form class="colorito" id="colorito" method="POST" action="../controlador/ctrRegistroAdmin.php">
             <label for="colorito" class="text-white fs-5">REGISTRO</label>
+            <p class="msgError" id="msgError"></p>
             <?php
-          if(isset($error)){
+          /*if(isset($error)){
             echo "<p class='text-white fs-5'>".$error."</p>";
-          }
+          }*/
         ?>
             <div class="row">
                 <div class="col">
                     <label for="form-control " class="text-white">Nombre</label>
-                    <input type="text" class="form-control" placeholder="First name" name="nombre" required>
+                    <input type="text" class="form-control" placeholder="First name" name="nombre" id="nombre" autocomplete="off" required>
                 </div>
                 <div class="col">
                     <label for="form-control" class="text-white">Apellido</label>
-                    <input type="text" class="form-control" placeholder="Last name" name="ape" required>
+                    <input type="text" class="form-control" placeholder="Last name" name="ape" id="apellido" autocomplete="off" required>
                 </div>
             </div>
             <div class="sexo">
@@ -95,22 +96,23 @@
             </div>
             <div class="fecha">
                 <label for="form-check" class="text-white">Fecha de nacimiento</label>
-                <input type="date" class="datapicker" data-date-format="mm/dd/yyyy" name="fecha" required>
+                <input type="date" class="datapicker" data-date-format="mm/dd/yyyy" name="fecha" min="1900-01-01" max="2004-12-31" id="fecha" required>
             </div>
             <div class="count">
                 <div class="row">
                     <div class="col">
                         <label for="form-control " class="text-white">Correo</label>
-                        <input type="email" class="form-control" placeholder="Email" name="mail" required>
+                        <input type="email" class="form-control" placeholder="Email" name="mail" id="email" autocomplete="off" required>
                     </div>
                     <div class="col">
                         <label for="form-control" class="text-white">Contraseña</label>
-                        <input type="password" class="form-control" placeholder="Password" name="pass" required>
+                        <input type="password" class="form-control" placeholder="Password" name="pass" id="password" autocomplete="off" required>
                     </div>
                 </div>
             </div>
             <input type="submit" class="btn btn-primary" value="Siguiente">
         </form>
+        <script src="../js/registro.js"></script>
         <div class="divimagen">
         </div>
     </div>
