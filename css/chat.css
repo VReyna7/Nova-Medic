@@ -156,12 +156,18 @@ color: #fff;
     overflow-y: scroll;
 }
 .Add{
-    min-width: 30vh;
-    background: #333;
-    color: #eee;
-cursor: pointer;
-box-sizing: border-box;
+    color: white;
+    background-color: #0d6efd;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 5px;
+    border: 0px;
+    font-size: 1.1em;
 
+}
+.Add:hover{
+    transform: scale(1.05);
+    transition: 1s;
 }
 
 
