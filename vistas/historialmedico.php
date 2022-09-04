@@ -44,7 +44,7 @@
         <div></div>
         <div class="row">
             <div class="Options">
-                <label for="form-control " class="text-white">¿Ha tenido reacciones alergicas a medicamentos?</label>
+                <label for="form-control " class="text-white">¿Ha tenido reacciones alérgicas  a medicamentos?</label>
                 <div class="optiontexts">
                   <div class="form-check form-check-inline">
                     <input class="form-check-input alergiasSi" type="radio" name="alerMedi" id="inlineRadio1" value="Si">
@@ -101,7 +101,7 @@
         
           <div class="row">
             <div class="Options">
-                <label for="form-control " class="text-white">¿Es alergico a algún animal o comida?</label>
+                <label for="form-control " class="text-white">¿Es alérgico  a algún animal o comida?</label>
                 <div class="optiontexts">
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="alergia" id="inlineRadio4" value="Si" id="comidaSi">
@@ -118,7 +118,7 @@
 
           <div class="row">
             <div class="Options">
-                <label for="form-control " class="text-white">¿Ha sido tratado psicologicamente alguna vez?</label>
+                <label for="form-control " class="text-white">¿Ha sido tratado psicológicamente  alguna vez?</label>
                 <div class="optiontexts">
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="psicologia" id="inlineRadio6" value="Si">
@@ -135,14 +135,14 @@
 
           <div class="row">
             <div class="Options">
-                <label for="form-control " class="text-white">¿Cual es su altura? (En Metros)</label>
+                <label for="form-control " class="text-white">¿Cuál  es su altura? (En Metros)</label>
               </div>
             <input type="text" class="form-control especific-text-form3" placeholder="Especifique" name="altura" min="0">
           </div>
 
           <div class="row">
             <div class="Options">
-                <label for="form-control " class="text-white">¿Cual es su Peso? (en kg)</label>
+                <label for="form-control " class="text-white">¿Cuál  es su Peso? (en kg)</label>
               </div>
             <input type="text" class="form-control especific-text-form4" placeholder="Especifique" name="peso" min="0">
           </div>

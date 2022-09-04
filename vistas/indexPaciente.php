@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="../css/pacienteindex.css?v=<?php echo time(); ?>">
     <script src="../js/scrollreveal.js"></script>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Inicio</title>
     <link rel="icon" href="../img/favicon.ico">
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -73,15 +72,14 @@
      <div class="info" id="info">
         <div class="info-text">
           <h3 class="display-5 objetivo-h3">Como Iniciar Consulta</h3>
-          <p class="p-objetivos" class="text-center text-wrap" >Para iniciar tu consulta de una forma muy eficaz tendras que siguir los siguientes pasos para poder obter tu consulta eficazmente que la realizaremos con pocos pasos a seguir.
-          </p>
+          <p class="p-objetivos" class="text-center text-wrap" >Para iniciar tu consulta de una forma muy eficaz tendrás que seguir los siguientes pasos para poder obtener tu consulta eficazmente que la realizaremos con pocos pasos a seguir.  </p>
           <br>
           <br>
           <p class="p-objetivos" class="text-center text-wrap">
             Paso 1: Tener una cuenta con todos tus datos correctos.</p>
-          <p class="p-objetivos" class="text-center text-wrap">Paso 2: Ingresar al apartado llamado "Iniciar Consulta" que se muestra arriba en el menu desplegable.</p>
-           <p class="p-objetivos" class="text-center text-wrap"> Paso 3: Leer Cada uno de las secciones que se encuentran y dar click al boton "INGRESAR" para observar la lista de medicos y seleccionar de todos ellos.</p> 
-            <p class="p-objetivos" class="text-center text-wrap">Paso 4: Solicitar una cita con un medico de tu preferencia.</p>
+          <p class="p-objetivos" class="text-center text-wrap">Paso 2: Ingresar al apartado llamado "Iniciar Consulta" que se muestra arriba en el menú.</p>
+           <p class="p-objetivos" class="text-center text-wrap"> Paso 3: Leer Cada uno de las secciones que se encuentran y dar clic al botón "INGRESAR" para observar la lista de médicos y seleccionar de todos ellos.</p> 
+            <p class="p-objetivos" class="text-center text-wrap">Paso 4: Solicitar una cita con un médico de tu preferencia.</p>
       
           </div>
           <div id="carouselExampleSlidesOnly" class="carousel slide imagensita" data-bs-ride="carousel">
@@ -113,16 +111,14 @@
         </div>
          <div class="info2-text">
            <h3 class="display-5 Mision-h3">Utiliza nuestro Chat</h3>
-           <p class="p-mision" class="text-center ">Ponte en contacto con un doctor utilizando nuestro chat, para ponerte en contacto ahora mismo con un doctor y atienda tus problemas de salud de una forma
-            rapida y segura, ya que nuestros doctores estan 100% capacidades para brindarte un exelente servicio y salaguardar tu salud. </p>
+           <p class="p-mision" class="text-center ">Ponte en contacto con un doctor utilizando nuestro chat, para ponerte en contacto ahora mismo con un doctor y atienda tus problemas de salud de una forma rápida y segura, ya que nuestros doctores están 100% capacidades para brindarte un excelente servicio y salvaguardar tu salud. </p>
          </div>
        </div>
 
        <div class="info3" id="info">
         <div class="info-text">
           <h3 class="display-5 objetivo-h3">Tu Perfil</h3>
-          <p class="p-objetivos" class="text-center text-wrap" >Gracias por ingresar a nuestro sitio. En tu perfil encontraras toda tu informacion de sebera importancia
-            la cual podras cambiar a tu disposicion al igual que tu expediente medico con el cual tendras el control correcto a la hora de solicitar una cita con un doctor.</p>
+          <p class="p-objetivos" class="text-center text-wrap" >Gracias por ingresar a nuestro sitio. En tu perfil encontraras toda tu información de mucha importancia la cual podrás cambiar a tu disposición, al igual que tu expediente médico, con el cual tendrás el control a la hora de solicitar una cita con un doctor.</p>
           </div>
           <div id="carouselExampleSlidesOnly" class="carousel slide imagensita" data-bs-ride="carousel">
             <div class="carousel-inner">

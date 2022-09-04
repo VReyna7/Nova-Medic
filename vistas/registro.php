@@ -35,7 +35,11 @@
     <div class="div-form">
       <form class="colorito" id="colorito" method="POST" action="../controlador/crtRegistro.php">
         <label for="colorito" class="text-white fs-5">REGISTRO</label>
-        <p class="msgError" id="msgError"></p>
+        <?php
+          if(isset($error)){
+            echo "<p class='text-white fs-5'>".$error."</p>";
+          }
+        ?>
         <div class="row">
           <div class="col">
             <label for="form-control " class="text-white">Nombre</label>

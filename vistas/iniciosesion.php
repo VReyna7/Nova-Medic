@@ -53,12 +53,12 @@
         ?>
         <div class="form-group text-white">
           <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="mail" required>
-          <small id="emailHelp" class="form-text text-white">Recuerda Nunca compartir ni tu correo , ni tu contraseña con alguien.</small>
+          <input type="email" class="form-control" id="exampleInputEmail1" autocomplete="off" aria-describedby="emailHelp" placeholder="Enter email" name="mail" required>
+          <small id="emailHelp" class="form-text text-white">Recuerda Nunca compartir ni tu contraseña a otras personas, ¡Cuida tu cuenta!</small>
         </div>
         <div class="form-group text-white">
           <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" name="pass" required>
+          <input type="password" class="form-control" id="exampleInputPassword1" autocomplete="off" placeholder="Password" name="pass" required>
         </div>
         <input type="submit" class="btn btn-primary mx-auto" value="Iniciar sesión">
       </form>

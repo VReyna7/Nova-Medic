@@ -77,7 +77,7 @@
               <img src="'.$mostrar["fotoPerfil"] .'">';
               
               if($chat->searchChat($userSession->getClienteActual(),$mostrar["id"])){
-                echo ' <a href="chat.php"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Consulta aceptada"></a>';
+               echo '<a href="chat.php?idC='.$userSession->getClienteActual().'&idDoc='.$mostrar["id"].'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Consulta aceptada"></a>';
                }else if($consul->searchConsulta($userSession->getClienteActual(), $mostrar["id"])){
                 echo ' <a href="doctoresConsul.php?idDoc='.$mostrar["id"].'&category='.$category.'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Consulta en proceso"></a>';
                }else{
@@ -89,7 +89,7 @@
               }
                }
                echo'
-               <a href="perfil.php?idDoc='.$mostrar["id"].'&accion=Visualizar&rol=Doctor"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Ver Perfil"></a>
+               <a href="perfil.php?idDoc='.$mostrar["id"].'&accion=Visualizar&rol=Doctor&category='.$category.'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Ver Perfil"></a>
               </div>
             <div class="informacion">
               <h4><strong>Nombre:</strong> '.  $mostrar["nombre"] . " " .$mostrar["apellido"] .'</h4>
@@ -106,7 +106,7 @@
             <div class="fotoPerfil">
               <img src="'.$mostrar["fotoPerfil"] .'">';
               if($chat->searchChat($userSession->getClienteActual(),$mostrar["id"])){
-                echo ' <a href="chat.php"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Consulta aceptada"></a>';
+               echo '<a href="chat.php?idC='.$userSession->getClienteActual().'&idDoc='.$mostrar["id"].'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Consulta aceptada"></a>';
                }else if($consul->searchConsulta($userSession->getClienteActual(), $mostrar["id"])){
                 echo ' <a href="consultacreacion.php?idDoc='.$mostrar["id"].'&category='.$category.'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Consulta en proceso"></a>';
                }else{
@@ -118,7 +118,7 @@
                }
               }
               echo'
-              <a href="perfil.php?idDoc='.$mostrar["id"].'&accion=Visualizar"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Ver Perfil"></a>;
+              <a href="perfil.php?idDoc='.$mostrar["id"].'&accion=Visualizar&rol=Doctor&category='.$category.'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Ver Perfil"></a>
               </div>
             <div class="informacion">
               <h4><strong>Nombre:</strong> '.  $mostrar["nombre"] . " " .$mostrar["apellido"] .'</h4>
@@ -135,7 +135,7 @@
             <div class="fotoPerfil">
               <img src="'.$mostrar["fotoPerfil"] .'">';
               if($chat->searchChat($userSession->getClienteActual(),$mostrar["id"])){
-                echo ' <a href="chat.php"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Consulta aceptada"></a>';
+                echo '<a href="chat.php?idC='.$userSession->getClienteActual().'&idDoc='.$mostrar["id"].'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Consulta aceptada"></a>';
                }else if($consul->searchConsulta($userSession->getClienteActual(), $mostrar["id"])){
                 echo ' <a href="consultacreacion.php?idDoc='.$mostrar["id"].'&category='.$category.'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Consulta en proceso"></a>';
                }else{
@@ -147,7 +147,7 @@
                 }
                }
              echo '
-              <a href="perfil.php?idDoc='.$mostrar["id"].'&accion=Visualizar"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Ver Perfil"></a>
+             <a href="perfil.php?idDoc='.$mostrar["id"].'&accion=Visualizar&rol=Doctor&category='.$category.'"><input type="button"  class="iniciarConsulta" id="iniciarConsulta" value="Ver Perfil"></a>
             </div>
             <div class="informacion">
               <h4><strong>Nombre:</strong> '.  $mostrar["nombre"] . " " .$mostrar["apellido"] .'</h4>
@@ -158,7 +158,6 @@
             </div></div>';
             }
         }
-        echo $idDoc;
       ?>
     </div>
   </div>

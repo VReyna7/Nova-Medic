@@ -10,8 +10,7 @@
   <script src="../js/scrollreveal.js"></script>
   <script src="../js/editarPerfil.js"></script>
   <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <title>Prueba</title>
+  <title>Perfil</title>
   <link rel="icon" href="../img/favicon.ico">
   <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
   <?php
@@ -21,11 +20,14 @@
   require_once("../modelo/class.admin.php");
   require_once("../modelo/class.sesion.php");
 
-  //error_reporting(0);
+  error_reporting(0);
   $idDoct = isset($_GET['idDoc'])?$_GET['idDoc']:"";
   $accion = isset($_GET['accion'])?$_GET['accion']:"";
   $idClient = isset($_GET['idClient'])?$_GET['idClient']:"";
   $rol = isset($_GET['rol'])?$_GET['rol']:"";
+  $category = isset($_GET['category'])?$_GET['category']:"";
+
+
   $userSession = new Sesion();
   if (isset($_SESSION['doctor'])) {
     $user = new Doctor();
@@ -85,7 +87,7 @@
                 <a class="nav-link fs-6 navbar-brand" href="../vistas/iniciarConsulta.php" >INICIAR CONSULTA</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link fs-6 navbar-brand" href="chat.html">CHAT</a>
+                <a class="nav-link fs-6 navbar-brand" href="chat.php">CHAT</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link fs-6 navbar-brand active" href="../vistas/perfil.php">PERFIL</a>
@@ -106,7 +108,7 @@
               <a class="nav-link  fs-6 navbar-brand" href="visualizaCuentas.php">USUARIOS</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link fs-6 navbar-brand" href="#">REPORTES</a>
+              <a class="nav-link fs-6 navbar-brand" href="reporte.php">REPORTES</a>
           </li>
           <li class="nav-item">
               <a class="nav-link active fs-6 navbar-brand" href="#">PERFIL</a>
@@ -116,7 +118,6 @@
           </li>
       </ul>';
         }
-
         ?>
 
       </div>
@@ -141,10 +142,10 @@
           if($rol == "Doctor"){
               $doc = new Doctor();
               $doc->setDoctor($idDoct);
-              echo'<div class="fotoPerfil">
-              <img src="' . $doc->getFoto() . '"';
-              if($cliente){
-                echo '<a href=" ../vistas/expediente.php"><button type="button" class="btn buttonReport btn-danger">Reportar</button></a>';
+            echo'<div class="fotoPerfil">
+              <img src="' . $doc->getFoto() . '">';
+             if($cliente){
+              echo '<a href=" ../vistas/reportesCreacion.php?nombre='.$doc->getNombre().'&apellido=',$doc->getApellido().'&rol=Doctor&category='.$category.'"><input type="button" class="btn buttonReport btn-danger" value="Reportar"></a>';
               }
           echo '</div>';
           echo '<div class="datosUsuario">
@@ -166,9 +167,9 @@
               $client = new Cliente();
               $client->setCliente($idClient);
               echo'<div class="fotoPerfil">
-              <img src="' . $client->getFoto() . '"';
+              <img src="' . $client->getFoto() . '">';
               if($doctor){
-                echo '<a href=" ../vistas/expediente.php"><button type="button" class="btn buttonReport btn-danger">Reportar</button></a>';
+                echo '<a href=" ../vistas/reportesCreacion.php?nombre='.$client->getNombre().'&apellido=',$client->getApellido().'&rol=Paciente"><button type="button" class="btn buttonReport btn-danger">Reportar</button></a>';
                 echo '<a href=" ../vistas/expediente.php"><button type="button" class="btn btn-danger">Expediente Medico </button></a>';
                 echo '<a href="#"><button type="button" class="btn btn-danger">Historial Medico</button></a>';
               }

@@ -48,7 +48,7 @@
                         <a class="nav-link fs-6 navbar-brand" href="visualizaCuentas.php">USUARIOS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-6 navbar-brand" href="#">REPORTES</a>
+                        <a class="nav-link fs-6 navbar-brand" href="reporte.php">REPORTES</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-6 navbar-brand" href="perfil.php">PERFIL</a>
@@ -66,9 +66,9 @@
             <label for="colorito" class="text-white fs-5">REGISTRO</label>
             <p class="msgError" id="msgError"></p>
             <?php
-          /*if(isset($error)){
+          if(isset($error)){
             echo "<p class='text-white fs-5'>".$error."</p>";
-          }*/
+          }
         ?>
             <div class="row">
                 <div class="col">

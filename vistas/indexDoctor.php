@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="../css/pacienteindex.css?v=<?php echo time(); ?>">
     <script src="../js/scrollreveal.js"></script>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Prueba</title>
+    <title>Inicio</title>
     <link rel="icon" href="../img/favicon.ico">
     <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
 
@@ -73,9 +72,7 @@
      <div class="info" id="info">
         <div class="info-text">
           <h3 class="display-5 objetivo-h3">Como aceptar una consulta</h3>
-          <p class="p-objetivos" class="text-center text-wrap" >Hola Doctor!, Para poder apoyar a los usuarios a poder recibir una consulta
-            puedes ir al apartado de iniciar consulta en nuestro menu, en este te aparecen las solicitudes de los usuarios que han pedido
-            una consulta contigo, al presionar el boton y aceptar su solicitud, podras chatear con el para empezar su tratamiento. ¡Gracias por tu apoyo!.</p>
+          <p class="p-objetivos" class="text-center text-wrap" >¡Hola Doctor!, Para poder apoyar a los usuarios a poder recibir una consulta puedes ir al apartado de iniciar consulta en nuestro menú, en este te aparecen las solicitudes de los usuarios que han pedido una consulta contigo, al presionar el botón y aceptar su solicitud, podrás chatear con él para empezar su tratamiento. ¡Gracias por tu apoyo!.</p>
           </div>
           <div id="carouselExampleSlidesOnly" class="carousel slide imagensita" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -105,16 +102,17 @@
         </div>
          <div class="info2-text">
            <h3 class="display-5 Mision-h3">Utiliza nuestro Chat</h3>
-           <p class="p-mision" class="text-center ">El chat nos da una mejor comunicacion con el paciente para poder resolver los problemas de salud que el paciente presente y claramente ser concientes
-            del uso adecuado de chat, para no llegar a incomodar al paciente y entregarle un buen servicio.  </p>
+           <p class="p-mision" class="text-center ">El chat nos da una mejor comunicación con el paciente para poder resolver los problemas de salud que el paciente presente y claramente ser consientes
+            Del uso adecuado de chat, para no llegar a incomodar al paciente y entregarle un buen servicio.</p>
          </div>
        </div>
 
        <div class="info3" id="info">
         <div class="info-text">
           <h3 class="display-5 objetivo-h3">Visualizar expediente médico</h3>
-          <p class="p-objetivos" class="text-center text-wrap" >Realizar siempre la visualizacion del expediente medico de la persona antes de darle un diagnostico excelente y que no se presente una situacion 
-            en la cual puede llegar a perjudicar la vida del paciente.</p>
+          <p class="p-objetivos" class="text-center text-wrap" >Realizar siempre la visualización del expediente médico de la persona antes de darle un diagnostico excelente y que no se presente una situación 
+            en la cual puede llegar a perjudicar la vida del paciente.
+</p>
           </div>
           <div id="carouselExampleSlidesOnly" class="carousel slide imagensita" data-bs-ride="carousel">
             <div class="carousel-inner">
