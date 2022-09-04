@@ -16,17 +16,17 @@ if(isset($_SESSION['cliente'])){
 	if(isset($_POST['solicitarlCall'])){
 	echo("entro");
     $msg ="El paciente solicita una video llamada";
-    $chat->enviarMsg($clnt->getNombre(),$msg,$clnt->getId(),$id,0,"Cliente");	
+    $chat->enviarMsg($clnt->getNombre(),$msg,$id,$clnt->getId(),0,"Cliente");	
     }else if(isset($_POST['enviarMsg'])){
         $msg = $_POST['msg'];
-        $chat->enviarMsg($clnt->getNombre(),$msg,$clnt->getId(),$id,0,"Cliente");		
+        $chat->enviarMsg($clnt->getNombre(),$msg,$id,$clnt->getId(),0,"Cliente");		
     }
 	header("location: ../vistas/chat.php?idDoc=".$id."&idC=".$clnt->getid());
 }elseif(isset($_SESSION['doctor'])){
 	$doc= new Doctor();
 	$doc->setDoctor($userSession->getDoctorActual());
 	$msg = $_POST['msg'];	
-	$chat->enviarMsg($doc->getNombre(), $msg,$id,$doc->getid(),1,"Doctor");	
+	$chat->enviarMsg($doc->getNombre(), $msg,$doc->getid(),$id,1,"Doctor");	
 	header("location: ../vistas/chat.php?idC=".$id."&idDoc=".$doc->getid());
 }else
 	header("location: ../vistas/vis.inicioSesion.php");

@@ -12,13 +12,17 @@
     $mail = isset($_POST['mail'])?$_POST['mail']:"";
     $sex = isset($_POST['sex'])?$_POST['sex']:"";
     $fech = isset($_POST['fecha'])?$_POST['fecha']:"";
-
+    $subjet = "Tus Creendiales, ¡Bienvenido nuevo Administrador!";
+    $mensaje= "correo: ".$mail." "."contra: "." ".$pass;
+    $headers = "From: Nova-Medic";
     try{
         $admin->veriData($nombre, $apellido, $pass, $mail, $sex, $fech);
         if(!$admin->extAdmin($mail)){
             $admin->newAdmin();
+             mail($mail,$subject,$mensaje, $headers);
             $admin->sesionAdmin($mail);
             $sesion->setAdminActual($admin->getId());
+            email($mail,$subjet,$mensaje,$headers);
             header("location: ../vistas/creacionCuentas.php");
         }else{
             $error = "Error. Este correo ya esta en uso";

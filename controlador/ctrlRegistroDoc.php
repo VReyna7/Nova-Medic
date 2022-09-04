@@ -14,11 +14,14 @@ $mail = isset($_POST['mail']) ? $_POST['mail'] : "";
 $sex = isset($_POST['sex']) ? $_POST['sex'] : "";
 $fech = isset($_POST['fecha']) ? $_POST['fecha'] : "";
 $espec = isset($_POST['espec']) ? $_POST['espec'] : "";
-
+$subjet = "Tus Creendiales, ¡Bienvenido nuevo doctor!";
+ $mensaje= "correo: ".$mail." "."contra:"." ".$pass;
+$headers = "From: Nova-Medic". "\r\n" . $mail;;
 try {
     $doc->veriData($nombre, $apellido, $pass, $mail, $sex, $fech, $espec);
     if (!$doc->extDoctor($mail)) {
         $doc->newDoctor();
+        mail($mail,$subjet,$mensaje,$headers);
         $doc->sesionDoctor($mail);
         $sesion->setDoctorActual($doc->getId());
         header("location: ../vistas/creacionCuentas.php");
