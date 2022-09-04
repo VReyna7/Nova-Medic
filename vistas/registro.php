@@ -65,7 +65,7 @@
         </div>
         <div class="fecha">
           <label for="form-check" class="text-white">Fecha de nacimiento</label>
-          <input type="date" class="datapicker" data-date-format="mm/dd/yyyy" name="fecha" id="fecha"  min="1900-01-01" max="2000-12-31" required>
+          <input type="date" class="datapicker" data-date-format="mm/dd/yyyy" name="fecha" id="fecha"  min="1900-01-01" max="2015-12-31" required>
         </div>
         <div class="count">
           <div class="row">
