@@ -181,72 +181,10 @@
         </div>
      
            <div class="subContainer1">
-    
-           
-
 
     <div class="ContKing">
-       
-
         <div class="chatBody">
-          <?php
-          
-
-    
-          if(isset($_SESSION['doctor'])){
-            $data = $chat->mostrarMsg( $idDoc ,$idC);
-            foreach($data as $msg){
-                if($msg['tipo']==1){
-            echo '<div class="panelMensajeDerecho">';
-                    echo '<div class="chat-cuerpo">';
-                        echo '<h3>'. $msg['usuario'] .'</h3>';
-                        echo '<div class="contenedorDeMensaje">';
-                            echo '<p>'. $msg['msg'] .'</p>';
-                        echo '</div>';
-                    echo '</div>';
-                echo '</div>';
-            }elseif($msg['tipo']==0){
-            echo '<div class="panelMensajeIzquiendo">';
-                    echo '<div class="chat-cuerpo">';
-                        echo '<h3>'. $msg['usuario'] .'</h3>';
-                        echo '<div class="contenedorDeMensaje">';
-                              echo '<p>'. $msg['msg'] .'</p>';
-                        echo '</div>';
-                    echo '</div>';
-                echo '</div>';
-            }
-            }
-          }elseif(isset($_SESSION['cliente'])){
-            $data = $chat->mostrarMsg($idDoc,$idC);
-            foreach($data as $msg){
-            if($msg['tipo']==0){
-            echo '<div class="panelMensajeDerecho">';
-                    echo '<div class="chat-cuerpo">';
-                        echo '<h3>'. $msg['usuario'] .'</h3>';
-                        echo '<div class="contenedorDeMensaje">';
-                            echo '<p>'. $msg['msg'] .'</p>';
-                          echo '</div>';
-                    echo '</div>';
-                echo '</div>';
-            }elseif($msg['tipo']==1){
-            echo '<div class="panelMensajeIzquiendo">';
-                    echo '<div class="chat-cuerpo">';
-                        echo '<h3>'. $msg['usuario'] .'</h3>';
-                        echo '<div class="contenedorDeMensaje">';
-                            echo '<p>'. $msg['msg'] .'</p>';
-                        echo '</div>';
-                    echo '</div>';
-                echo '</div>';
-            }
-            }
-          }
-        ?>
-      
-        
-            
-      
-         
-           
+           <script src="../js/chat.js"></script>
       </div>
       <div class="OpChat">
           <form action="../controlador/crtEnviarMsg.php"  method="POST">
@@ -263,13 +201,9 @@
       }
 
 	    ?>
-        
-
-               
-        
       
-            <input class="textMSG" placeholder="Escribe un mensaje aqui" type="text" name="msg" autocomplete="off">
-              <input type="submit" value="enviar" name="enviarMsg" class="enviar" id="btnEnviar">
+            <input class="textMSG" placeholder="Escribe un mensaje aqui" type="text" name="msg" onclick="hastaAbajo()" autocomplete="off">
+              <input type="submit" value="enviar" name="enviarMsg" class="enviar" onclick="hastaAbajo()" id="btnEnviar">
               </form>
           </div>
       </div>
