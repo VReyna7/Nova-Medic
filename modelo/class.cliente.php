@@ -224,4 +224,9 @@ class Cliente
     {
         return $this->id_exp;
     }
+
+    public function getNombreCompleto()
+    {
+        return $this->nombre .' '.$this->apellido;
+    }
 }

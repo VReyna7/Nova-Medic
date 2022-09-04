@@ -20,6 +20,15 @@ body{
     font-weight: bold;
 }
 
+.divimagenDoc{
+    background-image: url("../img/fondo5.png");
+    width: 420px;
+    height: 574px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
 .sexo,.especialidad{
     margin-top: 20px;
     display: flex;
@@ -42,7 +51,7 @@ body{
 .divimagen{
     background-image: url("../img/fondo5.png");
     width: 420px;
-    height: 500px;
+    height: 484px;
     background-size: cover;
     background-repeat: no-repeat;
 }

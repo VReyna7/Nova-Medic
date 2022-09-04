@@ -48,7 +48,7 @@ body{
 .info-text, .info2-text{
     display: flex;
     justify-content: center;
-    text-align: center;
+    text-align: justify;
     width: 100%;
     flex-direction: column;
     flex-wrap: wrap;
@@ -56,7 +56,9 @@ body{
     padding-left: 80px;
 }
 
-
+.info-text>h3, .info2-text>h3{
+    text-align: center;
+}
 
 .info-mid{
     display: flex;

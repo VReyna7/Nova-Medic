@@ -32,13 +32,14 @@ body{
 .info-text, .info2-text{
     display: flex;
     justify-content: center;
-    text-align: left;
+    text-align: justify;
     width: 100%;
     flex-direction: column;
     flex-wrap: wrap;
     padding-right: 80px;
     padding-left: 80px;
 }
+
 
 .info2{
     display: flex;

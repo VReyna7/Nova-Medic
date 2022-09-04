@@ -312,4 +312,9 @@ class Doctor
     {
         return $this->estado;
     }
+
+    public function getNombreCompleto()
+    {
+        return $this->nombre .' '.$this->apellido;
+    }
 }

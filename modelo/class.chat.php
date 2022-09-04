@@ -24,6 +24,24 @@ class Chat{
 			return $data;
 	}
 
+	        
+    public function deleteMensajes($idC,$idD)
+    {
+        $dbh = new Conexion();
+        $conexion = $dbh->get_conexion();
+        $sql = "delete from mensaje where idCliente=:cliente and idDoctor=:doctor";
+        $stmt = $conexion->prepare($sql);
+        $stmt->bindParam(":cliente", $idC);
+        $stmt->bindParam(":doctor", $idD);
+        if (!$stmt) {
+            throw new Exception("Error. No se pudo conectar con la base de datos");
+        } else {
+            $stmt->execute();
+        }
+    }
+
+
+
 	public function CrearChat($nameC,$nameDC,$idC,$idDC, $espec){
 		$conexion = new Conexion();
 		$dbh = $conexion->get_conexion();
@@ -36,6 +54,22 @@ class Chat{
 		$stmt->bindParam(":espec",$espec);
 		$stmt->execute();
 	}
+
+	public function deleteChat($idC,$idD)
+    {
+        $dbh = new Conexion();
+        $conexion = $dbh->get_conexion();
+        $sql = "delete from chat where idC=:cliente and idDC=:doctor";
+        $stmt = $conexion->prepare($sql);
+        $stmt->bindParam(":cliente", $idC);
+        $stmt->bindParam(":doctor", $idD);
+        if (!$stmt) {
+            throw new Exception("Error. No se pudo conectar con la base de datos");
+        } else {
+            $stmt->execute();
+        }
+    }
+
 
 	public function veriChatClient($id){
 		$conexion = new Conexion();

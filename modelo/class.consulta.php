@@ -31,6 +31,23 @@ class Consulta{
         }
     }
 
+        
+    public function deleteConsulta($idC,$idD)
+    {
+        $dbh = new Conexion();
+        $conexion = $dbh->get_conexion();
+        $sql = "delete from consulta where cliente=:cliente and doctor=:doctor";
+        $stmt = $conexion->prepare($sql);
+        $stmt->bindParam(":cliente", $idC);
+        $stmt->bindParam(":doctor", $idD);
+        if (!$stmt) {
+            throw new Exception("Error. No se pudo conectar con la base de datos");
+        } else {
+            $stmt->execute();
+        }
+    }
+
+
 
     public function getNombreCompleto($idCliente){
 		$conexion = new Conexion();

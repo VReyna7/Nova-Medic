@@ -1,19 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
-
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    font-family: 'Open Sans', sans-serif;
-}
-
-body{
-    margin-left: 80px;
-    margin-top: 80px;
-    transition: margin-left 300ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-    overflow: hidden;
-}
 ::-webkit-scrollbar { width: 9px; height: 9px;}
 ::-webkit-scrollbar-button { width: 0px; height: 0px;}
 ::-webkit-scrollbar-thumb { background: transparent; border: 0px none #fff; border-radius: 10px;}
@@ -23,211 +8,186 @@ body{
 ::-webkit-scrollbar-track:hover { background: #e4e4e4;}
 ::-webkit-scrollbar-track:active { background: #d2d2d2;}
 ::-webkit-scrollbar-corner { background: transparent;}
+body{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
 
-main{
-    padding: 20px;
+
 }
+.containerbuton{
+    display: flex;
+    min-width: 40vh;
+    flex-wrap: wrap;
 
-
-.menu__side{
-    width: 500px;
-    height: 100%;
-    background: #007bff;
-    position: fixed;
-    top: 0;
-    left: 0;
-    color: white;
-    font-size: 18px;
-    z-index: 300;
-    overflow: hidden;
-    overflow-y: scroll;
-  
- 
 }
-
-/*Ocultar scroll para chrome, safari y opera*/
-.menu__side::-webkit-scrollbar{
+.subContainer1{
+    display: flex;
+    flex-direction: column;
+}
+#btn-menu{
+   
     display: none;
 }
-
-/*Ocultar scroll para IE, Edge y Firefox*/
-.menu__side{
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-
-.name__page{
-    padding: 20px 30px;
+.btn-menu{
     display: flex;
+    margin-left: 20px;
     align-items: center;
-    margin-top: 10px;
+    min-width: 20vh;
+    flex-wrap: wrap;
+
 }
 
-.name__page i{
-    width: 20px;
-    margin-right: 20px;
+.btn-menu label{
+    font-size: 30px;
 }
-
-.options__menu{
-    padding: 20px 30px;
+.container-menu{
     position: absolute;
-    top: 80px;
-}
-
-.options__menu a{
-    color: #ffffffb2;
-    cursor: default;
-    display: block;
-    position: relative;
-    transition: color 300ms;
-}
-
-.options__menu a:hover{
-    color: white;
-}
-
-.options__menu .option{
-    padding: 20px 0px;
-    display: flex;
-    align-items: center;
-    position: relative;
-}
-
-.options__menu .option i{
-    width: 20px;
-    margin-right: 20px;
-    cursor: pointer;
-}
-
-.options__menu .option h4{
-    font-weight: 300;
-    cursor: pointer;
-}
-
-a.selected{
-    color: #fff;
-}
-
-.selected:before{
-    content: '';
-    width: 3px;
-    height: 80%;
-    background: white;
-    position: absolute;
-    top: 10%;
-    left: -30px;
-}
-
-/*Clases para usar en JavaScript*/
-
-.body_move{
-    margin-left: 250px;
-}
-
-.menu__side_move{
-    width: 250px;
-}
-
-
-@media screen and (max-width: 760px){
-    .body_move{
-        margin-left: 0px;
-    }
-
-    .menu__side_move{
-        width: 80px;
-        left: -80px;
-    }
-}
-
-
-
-
-
-.chatDespliegue{
-    list-style: none;
-    margin: 0;
-    height: 400px;
-}
-.lischat{
-    list-style: none;
-    margin: 0;
-    height: 520px;
-    width: 500px;
-   
-}
-.chatDespliegue li{
-padding: 15px;
-position: relative;
-width: 200px;
-
-
-}
-.chatDespliegue  ul{
-    transition: all 0.3;
+    margin-top: 96px;
+    z-index: 2;
+    background: rgba(0,0,0,0.5);
+    width: 100%;
+    height: 100vh;
+    top: 0;left: 0;
+    transition: all 500ms ease;
     opacity: 0;
-    position: absolute;
     visibility: hidden;
-    left: 80%;
-    top: -60px;
-    overflow-y: scroll;
 }
-
-.chatDespliegue  li:hover > .lischat{
+#btn-menu:checked ~ .container-menu{
     opacity: 1;
     visibility: visible;
 }
-
-.lischat li{
-    width: 50%;
-    border-left: 1px solid white;
-    border-right: 1px solid white;
-    border-top: 1px solid white;
+.cont-menu{
+    width: 100%;
+    max-width: 250px;
+    background: #1c1c1c;
+    height: 100vh;
+    position: relative;
+    transition: all 500ms ease;
+    transform: translateX(-100%);
 }
-.lischat li a{
-    color: #fff;
+#btn-menu:checked ~ .container-menu .cont-menu{
+    transform: translateX(0%);
+}
+.cont-menu nav{
+    transform: translateY(15%);
+}
+.cont-menu nav a{
+    display: block;
     text-decoration: none;
-  
+    padding: 20px;
+    color: #c7c7c7;
+    border-left: 5px solid transparent;
+    transition: all 400ms ease;
 }
-.lischat .chat{
-   
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.cont-menu nav a:hover{
+    border-left: 5px solid #c7c7c7;
+    background: #1f1f1f;
+}
+.cont-menu label{
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+nav{
+    padding-top: 20px;
+}
+ul.acorh {
+margin: 10px auto;
+padding: 0;
+list-style: none;
+width: 100%;
+font-size: 18px;
+}
+ul.acorh li {
+list-style: none;
+}
+ul.acorh li a {
+display: block;
+padding: 10px 10px 10px 20px;
+background: #333;
+color: #eee;
+
+text-decoration: none;
+box-sizing: border-box;
+}
+ul.acorh li ul {
+max-height: 0;
+margin: 0;
+padding: 0;
+list-style: none;
+transition: .3s all ease-in;
+}
+ul.acorh li li a {
+padding: 10px 10px 10px 40px;
+background: #999;
+color: #000;
+font-size: 16px;
+border: 0;
+
+box-sizing: border-box;
+}
+ul.acorc li li:last-child a {
+border-bottom: 0;
+}
+ul.acorh li:hover ul {
+max-height: 300px;
+transition: .3s all ease-in;
+}
+ul.acorh li a:hover {
+background: #666;
+color: #fff;
+}
+.ulMediGenral{
+    height: 150px;
+    overflow-y: scroll;
+}
+.ulPsicologia{
+    height: 150px;
+    overflow-y: scroll;
+}
+.ulNutricion{
+    height: 150px;
+    overflow-y: scroll;
+}
+.Add{
+    min-width: 30vh;
+    background: #333;
+    color: #eee;
+cursor: pointer;
+box-sizing: border-box;
 
 }
-.lischat .chat img{
-    width: 40%;
-    border-radius: 50%;
-    margin: 8px;
-    
-}
+
 
 
 /*Cuerpo de char*/
 
 .ContKing{
+    margin-top: 10px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+   
     
 }
 .chatBody{
-    position: relative;
     border: none;
-    left: 250px;
-   top: 5px;
-    height: 450px;
-    overflow-y: auto;
+    min-width: 40vh;
+    height: 400px;
+ 
     overflow-x: hidden;
     width: 65%;
     border-radius: 10px;
     padding: 20px;
     margin: auto;
   
-    background-color: rgba(255,255,255,0.5);
-    backdrop-filter: blur(15px);
+    
     color: White;
     font-weight: lighter;
 }
@@ -274,11 +234,11 @@ width: 200px;
 
 .OpChat{
     display: flex;
-    backdrop-filter: blur(15px);
    
+   justify-content: center;
+   align-items: center;
     width: 800px;
-   margin-left: 530px;
-   margin-top: 20px;
+    min-width: 40vh;
     padding: 20px;
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
@@ -288,6 +248,9 @@ width: 200px;
 }
 .OpChat form{
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 a{
     margin-right: 5px;
@@ -346,14 +309,41 @@ a .imgbutton2{
     color: white;
 }
 
-
-
-
-
-.labelFile{
-    color: black;
-    margin-left: 5px;
-    font-size: 28px;
-    display: flex;
-    padding-top: 10px;
+a{
+    margin-right: 5px;
 }
+
+#btnCall{
+    width:5%;
+    outline:none;
+    border: none;
+    background:none;
+
+}
+.imgbutton{
+    width:100%;
+}
+a .imgbutton2{
+    width:5%;
+}
+
+@media screen and (max-width: 300px) { 
+   .container-menu{
+    margin-top: 135px;
+   }
+   .btn-menu{
+    margin-right: 130px;
+   }
+ }
+
+ @media screen and (max-width: 900px) {
+    body{
+        overflow-y: scroll;
+    }
+ }
+
+
+
+
+
+
