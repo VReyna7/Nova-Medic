@@ -1,0 +1,127 @@
+body{
+    background-color: rgb(17, 61, 118) !important;
+    overflow-x: hidden;
+    
+}
+
+.contenedor{
+    margin: 50px auto;
+    background-color: white;
+    width: 70%;
+    height: 500px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+}
+
+.contenedor h1{
+    text-align: center;
+}
+
+.histo{
+    width: 100%;
+    border: 2px solid lightgray;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px auto;
+    background-color: white;
+}
+
+.histo span{
+    padding: 10px;
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 5px;
+}
+
+.histo span:hover{
+    transform: scale(1.02);
+    transition: 0.3s;
+    background-color: rgb(15, 71, 149);
+    cursor: pointer;
+}
+
+.histo h4{
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+.encabezado{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(15, 71, 149);
+    border-bottom: 2px solid lightgray;
+}
+
+.encabezado span{
+    padding: 10px;
+    background-color: #0d6efd;
+    color: white;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.encabezado span:hover{
+    transform: scale(1.02);
+    transition: 0.3s
+}
+
+.contenido{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.desCon{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.desCon p{
+    width: 75%;
+    text-align: justify;
+}
+
+.receta{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.receta p{
+    width: 90%;
+    text-align: justify;
+}
+
+@media screen and (max-width: 1000px){
+    .contenedor{
+        width: 95%;
+    }
+    
+    .encabezado{
+        flex-direction: column;
+    }
+
+    .desCon{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .desCon p{
+        width: 100%;
+    }
+
+    .receta{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .receta p{
+        width: 100%;
+    }
+}
