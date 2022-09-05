@@ -73,15 +73,7 @@
     <div class="info" id="info">
         <div class="info-text">
             <h3 class="display-5 objetivo-h3">Tu función como administrador</h3>
-            <p class="p-objetivos" class="text-center text-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt
-                mollit anim id est laborum</p>
+            <p class="p-objetivos" class="text-center text-wrap">Tu función como administrador, es la función mas importante dentro de los roles de la página, ya que tus cuentas con las herramientas necesarias para crear nuevos usuarios dentro de la página, de igual forma tienes la capacidad de banear usuarios, sin antes a ver evaluado la magnitud del reporte del remitente.</p>
         </div>
         <div id="carouselExampleSlidesOnly" class="carousel slide imagensita" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -110,7 +102,7 @@
             </div>
         </div>
         <div class="info2-text">
-            <h3 class="display-5 Mision-h3">Crea cuentas para nuestros doctores</h3>
+            <h3 class="display-5 Mision-h3">En este apartado, se ingresan los datos de los nuevos usuarios que formaran parte de nuestro sistema de Doctores, tu tarea es ingresar de forma correcta los datos de los usuarios seleccionados para ser Doctores que ayudan con la atención de los usuarios pacientes dentro de la página</h3>
             <p class="p-mision" class="text-center ">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                 sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                 exercitation
@@ -125,15 +117,7 @@
     <div class="info" id="info">
         <div class="info-text">
             <h3 class="display-5 objetivo-h3">Crea otros administradores</h3>
-            <p class="p-objetivos" class="text-center text-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt
-                mollit anim id est laborum</p>
+            <p class="p-objetivos" class="text-center text-wrap">En este aparatado, se ingresan los datos para registrar nuevos usuarios que cumplirán con el rol de administradores, es importante que seas muy minucioso con los datos que ingresas y que solo ingreses datos autorizados por tu superior o datos autorizados por entes autorizados, ya que de esta forma no provocaras desastres o descontrol dentro de la página.</p>
         </div>
         <div id="carouselExampleSlidesOnly" class="carousel slide imagensita" data-bs-ride="carousel">
             <div class="carousel-inner">
