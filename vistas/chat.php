@@ -184,26 +184,26 @@
 
     <div class="ContKing">
         <div class="chatBody">
-           <script src="../js/chat.js"></script>
+
       </div>
       <div class="OpChat">
-          <form action="../controlador/crtEnviarMsg.php"  method="POST">
+          <form method="POST" class="enviarMensaje">
           <?php
 	     if(isset($_SESSION['cliente'])){
 	         
-       echo'<button type="sumbit" id="btnCall" name="solicitarlCall"><img src="../img/call.png" class="imgbutton" /></button>
-       <input type="hidden" name="id" value="'.$idDoc.'">';
+       echo'<i id="btnCall" name="solicitarlCall" onclick="solicitarlCall()"><img src="../img/call.png" class="imgbutton" /></i>
+       <input type="hidden" name="id" class="id" value="'.$idDoc.'">';
        
       }else if(isset($_SESSION['doctor'])){
          echo '   <a href="http://meet.google.com/new" id="btnCall" target="blank"><img src="../img/call.png" class="imgbutton" /></a>
-         <input type="hidden" name="id" value="'. $idC.'">';
+         <input type="hidden" name="id" class="id" value="'. $idC.'">';
          
       }
 
 	    ?>
       
-            <input class="textMSG" placeholder="Escribe un mensaje aqui" type="text" name="msg" onclick="hastaAbajo()" autocomplete="off">
-              <input type="submit" value="enviar" name="enviarMsg" class="enviar" onclick="hastaAbajo()" id="btnEnviar">
+            <input class="textMSG" placeholder="Escribe un mensaje aqui" type="text" name="msg"  autocomplete="off">
+              <input type="submit" value="enviar" name="enviarMsg" class="enviar" id="btnEnviar">
               </form>
           </div>
       </div>
@@ -321,4 +321,5 @@
       <!-- Footer --> 
        
 </body>
+<script src="../js/chat.js"></script>
 </html>
