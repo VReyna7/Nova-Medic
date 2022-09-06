@@ -229,4 +229,9 @@ class Cliente
     {
         return $this->nombre .' '.$this->apellido;
     }
+    
+    public function getPass()
+    {
+        return $this->pass;
+    }
 }
