@@ -221,4 +221,9 @@ class Admin
     {
         return $this->foto;
     }
+    
+    public function getPass()
+    {
+        return $this->pass;
+    }
 }
