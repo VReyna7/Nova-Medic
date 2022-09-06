@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@latest/dist/Chart.min.js"></script>
-    <link href="../css/reporte.css" rel="stylesheet">
+    <link href="../css/reporte.css?v=<?php echo time(); ?>" rel="stylesheet">
     <title>reportes</title>
     <?php
 	  require_once("../modelo/class.conexion.php");

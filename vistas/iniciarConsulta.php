@@ -74,11 +74,7 @@
         </div>
         <div class="info-text">
           <h3 class="display-5 objetivo-h3">CONSULTA GENERAL</h3>
-          <p class="p-objetivos" class="text-center text-wrap" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-            mollit anim id est laborum</p>
+          <p class="p-objetivos" class="text-center text-wrap" >En este aparatado, se encuentran el listado de Doctores disponibles para atender consultas generales, estos se enfocan en explorar a nivel subjetivo y objetivo una necesidad(malestares, dolor, sufrimiento o daño) del paciente, haciendo uso de sus conocimientos, intuición y conciencia para establecer un diagnostico o dar una indicación al paciente.</p>
              <div class="bntsPrinc">
              <?php 
                 echo "<a href='doctoresConsul.php?category=General'><button>Ingresar</button></a>"
@@ -90,11 +86,7 @@
       <div class="info-mid" id="info-mid">
         <div class="info-text">
           <h3 class="display-5 objetivo-h3">PSICOLOGÍA</h3>
-          <p class="p-objetivos" class="text-center text-wrap" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-            mollit anim id est laborum</p>
+          <p class="p-objetivos" class="text-center text-wrap" >En este aparatado, se encuentran el listado de terapeutas disponibles para atender problemas psicológicos, estos se encargan de evaluar y conocer los problemas por los que la persona busca ayuda, comprendiendo su origen y el malestar que producen tanto en el ámbito emocional o psicológico, físico como, con las personas de su entorno. Después de una evaluación adecuada, en función de la identificación de las áreas problema o diagnóstico, se establecen junto el paciente, los objetivos terapéuticos y la estrategia o tratamientos psicológico adecuados y necesarios para solucionar los problemas de forma individualizada en cada persona, junto con un seguimiento para comprobar si la mejora se mantiene a lo largo de todo el proceso psicoterapéutico.</p>
             <div class="bntsPrinc">
             <?php 
                 echo "<a href='doctoresConsul.php?category=Psico'><button>Ingresar</button></a>"
@@ -110,11 +102,7 @@
         </div>
         <div class="info-text">
           <h3 class="display-5 objetivo-h3">NUTRICIONISTAS</h3>
-          <p class="p-objetivos" class="text-center text-wrap" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation 
-            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt 
-            mollit anim id est laborum</p>
+          <p class="p-objetivos" class="text-center text-wrap" >En este aparatado, se encuentran el listado de especialistas disponibles para atender problemas nutricionales, estos se encargan de evaluar y conocer a partir de sus conocimientos, experiencias, conciencia e intuición, cual es el estado a nivel de organismo de cada individuo, para aplicar los cambios necesarios para una respectiva dieta, equilibrada que ayude al organismo del paciente.</p>
 
              <div class="bntsPrinc">
              <?php 

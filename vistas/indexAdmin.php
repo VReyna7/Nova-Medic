@@ -102,7 +102,7 @@
             </div>
         </div>
         <div class="info2-text">
-            <h3 class="display-5 Mision-h3">Crea cuentas para nuestro Doctores</h3>
+            <h3 class="display-5 Mision-h3">Crea cuentas para nuestro doctores</h3>
             <p class="p-mision" class="text-center ">En este apartado, se ingresan los datos de los nuevos usuarios que formaran parte de nuestro sistema de Doctores, tu tarea es ingresar de forma correcta los datos de los usuarios seleccionados para ser Doctores que ayudan con la atención de los usuarios pacientes dentro de la página</p>
         </div>
     </div>

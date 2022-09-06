@@ -76,15 +76,7 @@
         </div>
         <div class="info-text">
             <h3 class="display-5 objetivo-h3">Creacion Doctores</h3>
-            <p class="p-objetivos" class="text-center text-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt
-                mollit anim id est laborum</p>
+            <p class="p-objetivos" class="text-center text-wrap">En este apartado podrás apoyar a nuestros nuevos doctores otorgándoles una cuenta con la cual poder acceder y empezar a ayudar a nuestros pacientes, Recuerda que al llenar el formulario se les enviara un correo a estos nuevos doctores, Así que utiliza el correo que utiliza nuestro nuevo doctor. ¡Gracias por tu apoyo administrador!</p>
             <div class="bntsPrinc">
                 <a href="registroDoctores.php"><button>Crear</button></a>
             </div>
@@ -94,15 +86,7 @@
     <div class="info-mid" id="info-mid">
         <div class="info-text">
             <h3 class="display-5 objetivo-h3">Creación administradores</h3>
-            <p class="p-objetivos" class="text-center text-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt
-                mollit anim id est laborum</p>
+            <p class="p-objetivos" class="text-center text-wrap">En este apartado podrás apoyar a nuestros nuevos administradores otorgándoles una cuenta con la cual poder acceder y empezar a ayudarte a moderar nuestra página web y que las personas tengan un buen ambiente al navegarlo, Recuerda que al llenar el formulario se les enviara un correo a este nuevo administrador, Así que utiliza el correo que utiliza nuestro nuevo administrador. ¡Gracias por tu apoyo!</p>
             <div class="bntsPrinc">
                 <a href="registroAdministradores.php"><button>Crear</button></a>
             </div>

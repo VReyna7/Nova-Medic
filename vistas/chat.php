@@ -184,26 +184,40 @@
 
     <div class="ContKing">
         <div class="chatBody">
-
+        <?php 
+                    if(empty($idC) && empty($idDoc)){
+                        echo '<h4 class="h4_Text">Puedes entrar a los chats en el icono de ➢</h4>';
+                   }
+          ?>
       </div>
       <div class="OpChat">
           <form method="POST" class="enviarMensaje">
           <?php
 	     if(isset($_SESSION['cliente'])){
 	         
-       echo'<i id="btnCall" name="solicitarlCall" onclick="solicitarlCall()"><img src="../img/call.png" class="imgbutton" /></i>
-       <input type="hidden" name="id" class="id" value="'.$idDoc.'">';
+        if(!empty($idC) && !empty($idDoc)){
+          if(!empty($idC) && !empty($idDoc)){
+            echo'<button type="button" id="btnCall" name="solicitarlCall"><img src="../img/call.png" class="imgbutton" /></button>
+            <input type="hidden" name="id" value="'.$idDoc.'">';
+            }
+       
+        }
        
       }else if(isset($_SESSION['doctor'])){
-         echo '   <a href="http://meet.google.com/new" id="btnCall" target="blank"><img src="../img/call.png" class="imgbutton" /></a>
-         <input type="hidden" name="id" class="id" value="'. $idC.'">';
+        if(!empty($idC) && !empty($idDoc)){
+          echo '<a href="http://meet.google.com/new" id="btnCall" target="blank"><img src="../img/call.png" class="imgbutton" /></a>
+          <input type="hidden" name="id" class="id" value="'. $idC.'">';
+          }
          
       }
 
+      if(!empty($idC) && !empty($idDoc)){
+       echo '<input class="textMSG" placeholder="Escribe un mensaje aqui" type="text" name="msg" onclick="hastaAbajo()" autocomplete="off">
+      <input type="submit" value="enviar" name="enviarMsg" class="enviar" onclick="hastaAbajo()" id="btnEnviar">';
+       }
 	    ?>
       
-            <input class="textMSG" placeholder="Escribe un mensaje aqui" type="text" name="msg"  autocomplete="off">
-              <input type="submit" value="enviar" name="enviarMsg" class="enviar" id="btnEnviar">
+           
               </form>
           </div>
       </div>
@@ -321,5 +335,8 @@
       <!-- Footer --> 
        
 </body>
+<?php 
+  if(!empty($idC) && !empty($idDoc)){}
+?>
 <script src="../js/chat.js"></script>
 </html>

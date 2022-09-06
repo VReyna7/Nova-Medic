@@ -88,7 +88,23 @@ class Reportes{
             $stmt->execute();
             return  $stmt->rowCount();
         }
-    
+        
+              
+    public function deleteConsulta($idC,$idD)
+    {
+        $dbh = new Conexion();
+        $conexion = $dbh->get_conexion();
+        $sql = "delete from reportes where cliente=:cliente and doctor=:doctor";
+        $stmt = $conexion->prepare($sql);
+        $stmt->bindParam(":cliente", $idC);
+        $stmt->bindParam(":doctor", $idD);
+        if (!$stmt) {
+            throw new Exception("Error. No se pudo conectar con la base de datos");
+        } else {
+            $stmt->execute();
+        }
+    }
+
 
     public function getNombreCompletoDoc($idDoc){
         $conexion = new Conexion();

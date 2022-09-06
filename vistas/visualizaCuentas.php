@@ -74,15 +74,7 @@
         </div>
         <div class="info-text">
             <h3 class="display-5 objetivo-h3">Visualizar Doctores</h3>
-            <p class="p-objetivos" class="text-center text-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt
-                mollit anim id est laborum</p>
+            <p class="p-objetivos" class="text-center text-wrap">Nuestra opción para visualizar la cuenta de nuestros doctores registrados, te puede permitir hacer una revisión de que doctores existen, sus nombres y apellidos, su especialidad. Esta herramienta te puede ayudar a revisar si a la hora de crear una nueva cuenta de doctor se registró correctamente, ¡Utilízala!</p>
             <div class="bntsPrinc">
                 <?php 
                 echo "<a href='tablaCuentas.php?tabla=Doctores'><button>Ingresar</button></a>"
@@ -94,15 +86,7 @@
     <div class="info-mid" id="info-mid">
         <div class="info-text">
             <h3 class="display-5 objetivo-h3">Visualizar Administradores</h3>
-            <p class="p-objetivos" class="text-center text-wrap">Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                voluptate velit esse
-                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt
-                mollit anim id est laborum</p>
+            <p class="p-objetivos" class="text-center text-wrap">Nuestra opción para visualizar la cuenta de nuestros administradores registrados, te puede permitir hacer una revisión de que administradores existen, sus nombres y apellidos. Esta herramienta te puede ayudar a revisar si a la hora de crear una nueva cuenta de administrador se registró correctamente, ¡Utilízala!</p>
             <div class="bntsPrinc">
               <?php 
                 echo "<a href='tablaCuentas.php?tabla=Admins'><button>Ingresar</button></a>"
