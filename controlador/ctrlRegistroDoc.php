@@ -33,3 +33,4 @@ try {
     $error = $e->getMessage();
     header("location: ../vistas/registroDoctores.php");
 }
+?>

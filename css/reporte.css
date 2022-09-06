@@ -17,10 +17,15 @@ body{
     width: 100%;
     display: flex;
     z-index: 4;
-    flex-wrap: wrap;
     margin-top: 40px;
     margin-bottom: 40px;
 }
+
+h2{
+    width: 100%;
+    text-align: center;
+}
+
 .contenSub1{
     display: flex;
     overflow-y: scroll;
@@ -33,6 +38,7 @@ body{
     color: white;
     border-radius: 20px;
     margin: 5px 5px;
+    padding: 10px;
 }
 
 canvas{
@@ -46,7 +52,7 @@ canvas{
     width: 55%;
     min-width: 40vh;
     overflow-y: scroll;
-    
+    padding: 10px;
     height: 643px;
     float: right;
     justify-content: center;
@@ -59,7 +65,7 @@ canvas{
     
 }
 .subConten2_1{
-    min-width: 80vh;
+    width: auto;
     margin: 5px 5px;
     height: auto;
     padding: 10px 10px;
@@ -69,6 +75,7 @@ canvas{
     align-items: center;
     background-color: black;
     border-radius: 10px;
+    font-size: 15px !important;
 }
 .ContenidoReporte1{
    width: 50%;
@@ -86,4 +93,30 @@ canvas{
     color: white;
 }
 
+@media screen and (max-width: 1100px){
 
+   .h4, h4{
+     font-size: 15px !important;
+   }
+}
+
+
+@media screen and (max-width: 800px){
+
+    .contenMain{
+        flex-wrap: wrap;
+    }
+    .contenSub2{
+        width: 100%;
+    }
+
+    .contenSub1{
+        width: 100%;
+    }
+
+    .subConten2_1{
+      flex-wrap: wrap;
+      width: 100%;
+      margin: 0;
+    }
+}

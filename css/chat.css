@@ -94,6 +94,11 @@ body{
     font-size: 18px;
 }
 
+.h4_Text{
+    color: #000;
+    text-align: center;
+}
+
 nav{
     padding-top: 20px;
 }
