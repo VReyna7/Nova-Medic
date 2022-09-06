@@ -97,7 +97,7 @@
       <label for="btn-menu">➢</label>
       <?php
       if ($doctor) {
-        echo '<a href=""><input type="submit" value="Agregar expediente" name="agregarExpediente" class="Add" id="agregarExpe"></a>';
+        echo '<a href=""><input type="submit" value="Crear Historial" name="agregarExpediente" class="Add" id="agregarExpe"></a>';
         echo '<a href="../controlador/crtFinalizarConsult.php?idDoc=' . $idDoc . '&dC=' . $idC . '"><input type="submit" value="Finalizar consulta" name="agregarExpediente" class="Add" id="agregarExpe"></a>';
       }
 
