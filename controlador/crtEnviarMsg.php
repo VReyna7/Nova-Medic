@@ -13,28 +13,20 @@ $id = $_POST["id"];
 if(isset($_SESSION['cliente'])){
 	$clnt = new Cliente();
 	$clnt->setCliente($userSession->getClienteActual());
-	if(isset($_POST['solicitarlCall'])){
-	echo("entro");
-    $msg ="El paciente solicita una video llamada";
-    $chat->enviarMsg($clnt->getNombre(),$msg,$id,$clnt->getId(),0,"Cliente");	
-    }else if(isset($_POST['enviarMsg'])){
+	//if(isset($_POST['solicitarlCall'])){
+	//echo("entro");
+    //$msg ="El paciente solicita una video llamada";
+    //$chat->enviarMsg($clnt->getNombre(),$msg,$id,$clnt->getId(),0,"Cliente");	
+    if(isset($_POST['enviarMsg'])){
         $msg = $_POST['msg'];
-		if(empty($msg)){
-
-		}else{
-			$chat->enviarMsg($clnt->getNombre(),$msg,$id,$clnt->getId(),0,"Cliente");	
-		}
+        $chat->enviarMsg($clnt->getNombre(),$msg,$id,$clnt->getId(),0,"Cliente");		
     }
-	header("location: ../vistas/chat.php?idDoc=".$id."&idC=".$clnt->getid());
+	//header("location: ../vistas/chat.php?idDoc=".$id."&idC=".$clnt->getid());
 }elseif(isset($_SESSION['doctor'])){
 	$doc= new Doctor();
 	$doc->setDoctor($userSession->getDoctorActual());
 	$msg = $_POST['msg'];	
-	if(empty($msg)){
-
-	}else{
-		$chat->enviarMsg($doc->getNombre(), $msg,$doc->getid(),$id,1,"Doctor");		
-	}
+	$chat->enviarMsg($doc->getNombre(), $msg,$doc->getid(),$id,1,"Doctor");	
 	header("location: ../vistas/chat.php?idC=".$id."&idDoc=".$doc->getid());
 }else
 	header("location: ../vistas/vis.inicioSesion.php");
