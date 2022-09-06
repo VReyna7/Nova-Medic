@@ -14,38 +14,41 @@
   <link rel="icon" href="../img/favicon.ico">
   <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
   <?php
-  require_once("../modelo/class.conexion.php");
-  require_once("../modelo/class.cliente.php");
-  require_once("../modelo/class.doctor.php");
-  require_once("../modelo/class.admin.php");
-  require_once("../modelo/class.sesion.php");
+require_once("../modelo/class.conexion.php");
+require_once("../modelo/class.cliente.php");
+require_once("../modelo/class.doctor.php");
+require_once("../modelo/class.admin.php");
+require_once("../modelo/class.sesion.php");
 
-  error_reporting(0);
-  $idDoct = isset($_GET['idDoc'])?$_GET['idDoc']:"";
-  $accion = isset($_GET['accion'])?$_GET['accion']:"";
-  $idClient = isset($_GET['idClient'])?$_GET['idClient']:"";
-  $rol = isset($_GET['rol'])?$_GET['rol']:"";
-  $category = isset($_GET['category'])?$_GET['category']:"";
+error_reporting(0);
+$idDoct = isset($_GET['idDoc']) ? $_GET['idDoc'] : "";
+$accion = isset($_GET['accion']) ? $_GET['accion'] : "";
+$idClient = isset($_GET['idClient']) ? $_GET['idClient'] : "";
+$rol = isset($_GET['rol']) ? $_GET['rol'] : "";
+$category = isset($_GET['category']) ? $_GET['category'] : "";
 
 
-  $userSession = new Sesion();
-  if (isset($_SESSION['doctor'])) {
-    $user = new Doctor();
-    $user->setDoctor($userSession->getDoctorActual());
-    $doctor = true;
-    $cliente = false;
-  } elseif (isset($_SESSION['cliente'])) {
-    $user = new Cliente();
-    $cliente = true;
-    $doctor = false;
-    $user->setCliente($userSession->getClienteActual());
-  } else if (isset($_SESSION['admin'])) {
-    $user = new Admin();
-    $user->setAdmin($userSession->getAdminActual());
-    $admin = true;
-  } else
-    header("location: ../vistas/iniciosesion.php");
-  ?>
+$userSession = new Sesion();
+if (isset($_SESSION['doctor'])) {
+  $user = new Doctor();
+  $user->setDoctor($userSession->getDoctorActual());
+  $doctor = true;
+  $cliente = false;
+}
+elseif (isset($_SESSION['cliente'])) {
+  $user = new Cliente();
+  $cliente = true;
+  $doctor = false;
+  $user->setCliente($userSession->getClienteActual());
+}
+else if (isset($_SESSION['admin'])) {
+  $user = new Admin();
+  $user->setAdmin($userSession->getAdminActual());
+  $admin = true;
+}
+else
+  header("location: ../vistas/iniciosesion.php");
+?>
 
 </head>
 
@@ -55,13 +58,14 @@
     <div class="container">
       <img src="../img/Logo 2 real.png" width="90" height="90" class="d-inline-block align-top" alt="">
       <a class="navbar-brand fs-4" href="#">NOVA MEDIC</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse " id="navbarNav">
         <?php
-        if ($doctor){
-          echo '<ul class="navbar-nav mx-auto">
+if ($doctor) {
+  echo '<ul class="navbar-nav mx-auto">
               <li class="nav-item">
                 <a class="nav-link  fs-6 navbar-brand" aria-current="page" href="indexDoctor.php" >INICIO</a>
               </li>
@@ -78,8 +82,9 @@
                 <a class="nav-link fs-6 navbar-brand" href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>
               </li>
             </ul>';
-        } else if($cliente){
-          echo '  <ul class="navbar-nav mx-auto">
+}
+else if ($cliente) {
+  echo '  <ul class="navbar-nav mx-auto">
               <li class="nav-item">
                 <a class="nav-link  fs-6 navbar-brand" aria-current="page" href="indexPaciente.php" >INICIO</a>
               </li>
@@ -96,8 +101,9 @@
                 <a class="nav-link fs-6 navbar-brand" href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>
               </li>
             </ul>';
-        }else if($admin){
-          echo '  <ul class="navbar-nav mx-auto">
+}
+else if ($admin) {
+  echo '  <ul class="navbar-nav mx-auto">
           <li class="nav-item">
               <a class="nav-link  fs-6 navbar-brand" aria-current="page" href="indexAdmin.php">INICIO</a>
           </li>
@@ -117,8 +123,8 @@
               <a class="nav-link fs-6 navbar-brand" href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>
           </li>
       </ul>';
-        }
-        ?>
+}
+?>
 
       </div>
     </div>
@@ -128,32 +134,33 @@
     <div class="encabezado">
       <h3>Información Personal</h3>
       <div>
-        <?php 
-          if($accion != "Visualizar"){
-            echo '<input type="button" name="editar" value="Cambiar Contraseña" onclick="cambiarContrasenia()">';
-            echo '<input type="button" name="editar" value="Editar" onclick="activateInputs()">';
-          }
-        ?>
+        <?php
+if ($accion != "Visualizar") {
+  echo '<input type="button" name="editar" value="Cambiar Contraseña" onclick="cambiarContrasenia()">';
+  echo '<input type="button" name="editar" value="Editar" onclick="activateInputs()">';
+}
+?>
       </div>
     </div>
     <div class="contenido">
-    <?php
-        if($accion == "Visualizar"){
-          if($rol == "Doctor"){
-              $doc = new Doctor();
-              $doc->setDoctor($idDoct);
-            echo'<div class="fotoPerfil">
+      <?php
+if ($accion == "Visualizar") {
+  if ($rol == "Doctor") {
+    $doc = new Doctor();
+    $doc->setDoctor($idDoct);
+    echo '<div class="fotoPerfil">
               <img src="' . $doc->getFoto() . '">';
-             if($cliente){
-              echo '<a href=" ../vistas/reportesCreacion.php?nombre='.$doc->getNombre().'&apellido=',$doc->getApellido().'&rol=Doctor&category='.$category.'"><input type="button" class="btn buttonReport btn-danger" value="Reportar"></a>';
-              }
-          echo '</div>';
-          echo '<div class="datosUsuario">
+    if ($cliente) {
+      echo '<a href=" ../vistas/reportesCreacion.php?nombre=' . $doc->getNombre() . '&apellido=', $doc->getApellido() . '&rol=Doctor&category=' . $category . '"><input type="button" class="btn buttonReport btn-danger" value="Reportar"></a>';
+    }
+    echo '</div>';
+    echo '<div class="datosUsuario">
           <form>
-            <label>Nombre:</label><input type="text" id="nombre" disabled value="'. $doc->getNombre() .'">
-            <label>Apellido:</label><input type="text" id="apellido" disabled value="'.$doc->getApellido().'">
-            <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="'.$doc->getCorreo().'">
-            <label>Sexo:</label><input type="text" id="sexo" disabled placeholder="'.$doc->getSexo().'">
+            <label>Nombre:</label><input type="text" id="nombre" disabled value="' . $doc->getNombre() . '">
+            <label>Apellido:</label><input type="text" id="apellido" disabled value="' . $doc->getApellido() . '">
+            <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="' . $doc->getCorreo() . '">
+            <label>Sexo:</label><input type="text" id="sexo" disabled placeholder="' . $doc->getSexo() . '">
+            <label>Titulos Profesionales:</label><textarea id="titulos" disabled placeholder="Titulos..."></textarea>
             <label id="confPasswordLabel" style="display:none;">Contraseña:</label><input type="password" id="contrasenia" placeholder="Ingresar Contraseña..." required style="display: none;">
             <input type="submit" value="Confirmar Cambios" id="confCambios" class="confCambios" onclick="activateButton()">
           </form>
@@ -163,23 +170,24 @@
             <input type="button" name="guardarCambios" value="Guardar Cambios" class="guardarCambios">;
           </form>
            </div>';
-            }else if($rol == "Cliente"){
-              $client = new Cliente();
-              $client->setCliente($idClient);
-              echo'<div class="fotoPerfil">
+  }
+  else if ($rol == "Cliente") {
+    $client = new Cliente();
+    $client->setCliente($idClient);
+    echo '<div class="fotoPerfil">
               <img src="' . $client->getFoto() . '">';
-              if($doctor){
-                echo '<a href=" ../vistas/reportesCreacion.php?nombre='.$client->getNombre().'&apellido=',$client->getApellido().'&rol=Paciente"><button type="button" class="btn buttonReport btn-danger">Reportar</button></a>';
-                echo '<a href=" ../vistas/expediente.php"><button type="button" class="btn btn-danger">Expediente Medico </button></a>';
-                echo '<a href="#"><button type="button" class="btn btn-danger">Historial Medico</button></a>';
-              }
-             echo '</div>';
-             echo '<div class="datosUsuario">
+    if ($doctor) {
+      echo '<a href=" ../vistas/reportesCreacion.php?nombre=' . $client->getNombre() . '&apellido=', $client->getApellido() . '&rol=Paciente"><button type="button" class="btn buttonReport btn-danger">Reportar</button></a>';
+      echo '<a href=" ../vistas/expediente.php"><button type="button" class="btn btn-danger">Expediente Medico </button></a>';
+      echo '<a href="#"><button type="button" class="btn btn-danger">Historial Medico</button></a>';
+    }
+    echo '</div>';
+    echo '<div class="datosUsuario">
              <form>
-             <label>Nombre:</label><input type="text" id="nombre" disabled value="'. $client->getNombre() .'">
-             <label>Apellido:</label><input type="text" id="apellido" disabled value="'.$client->getApellido().'">
-             <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="'.$client->getCorreo().'">
-             <label>Sexo:</label><input type="text" id="sexo" disabled placeholder="'.$client->getSexo().'">
+             <label>Nombre:</label><input type="text" id="nombre" disabled value="' . $client->getNombre() . '">
+             <label>Apellido:</label><input type="text" id="apellido" disabled value="' . $client->getApellido() . '">
+             <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="' . $client->getCorreo() . '">
+             <label>Sexo:</label><input type="text" id="sexo" disabled placeholder="' . $client->getSexo() . '">
              <label id="confPasswordLabel" style="display:none;">Contraseña:</label><input type="password" id="contrasenia" placeholder="Ingresar Contraseña..." required style="display: none;">
              <input type="submit" value="Confirmar Cambios" id="confCambios" class="confCambios" onclick="activateButton()">
            </form>
@@ -189,27 +197,25 @@
              <input type="button" name="guardarCambios" value="Guardar Cambios" class="guardarCambios">;
            </form>
            </div>';
-            }
-        }else{
-          echo'<div class="fotoPerfil">
+  }
+}
+else {
+  echo '<div class="fotoPerfil">
           <img src="' . $user->getFoto() . '">
           <input type="button" id="fotoPerfil" onclick="fotoPerfil()" value="Cambiar foto de perfil">
           <form method="POST" action="../controlador/crtActuFoto.php" enctype="multipart/form-data">
             <input type="file" id="subirArchivo" name="foto" accept=".png, .jpeg" style="display:none;">
             <input type="submit" value="Confirmar Cambios" id="confCambiosFoto" class="confCambios" style="display:none;">
           </form>';
-              if($cliente){
-                echo '<a href=" ../vistas/expediente.php"><button type="button" class="btn btn-danger">Expediente Medico </button></a>';
-              }else if($doctor){
-                echo '<a href="#"><button type="button" class="btn btn-danger">Titulos Profesionales</button></a>';
-              }
-          echo '</div>';
-          echo '<div class="datosUsuario">
+  if ($cliente) {
+    echo '<a href=" ../vistas/expediente.php"><button type="button" class="btn btn-danger">Expediente Medico </button></a>';
+    echo '</div>';
+    echo '<div class="datosUsuario">
           <form>
-            <label>Nombre:</label><input type="text" id="nombre" disabled value="'. $user->getNombre() .'">
-            <label>Apellido:</label><input type="text" id="apellido" disabled value="'.$user->getApellido().'">
-            <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="'.$user->getCorreo().'">
-            <label>Sexo:</label><input type="text" id="sexo" disabled placeholder="'.$user->getSexo().'">
+            <label>Nombre:</label><input type="text" id="nombre" disabled value="' . $user->getNombre() . '">
+            <label>Apellido:</label><input type="text" id="apellido" disabled value="' . $user->getApellido() . '">
+            <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="' . $user->getCorreo() . '">
+            <label>Sexo:</label><input type="text" id="sexo" disabled placeholder="' . $user->getSexo() . '">
             <label id="confPasswordLabel" style="display:none;">Contraseña:</label><input type="password" id="contrasenia" placeholder="Ingresar Contraseña..." required style="display: none;">
             <input type="submit" value="Confirmar Cambios" id="confCambios" class="confCambios" onclick="activateButton()">
           </form>
@@ -218,9 +224,32 @@
             <label id="confPasswordLabel">Confirmar Contraseña:</label><input type="password" id="confPassword">
             <input type="button" name="guardarCambios" value="Guardar Cambios" class="guardarCambios">;
           </form>
-        </div>'
-        ;}
-        ?>
+        </div>';
+  }
+  if ($doctor) {
+    echo '</div>';
+    echo '<div class="datosUsuario">
+          <form>
+            <label>Nombre:</label><input type="text" id="nombre" disabled value="' . $user->getNombre() . '">
+            <label>Apellido:</label><input type="text" id="apellido" disabled value="' . $user->getApellido() . '">
+            <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="' . $user->getCorreo() . '">
+            <label>Sexo:</label><input type="text" id="sexo" disabled placeholder="' . $user->getSexo() . '">
+            <label>Titulos Profesionales:</label><textarea id="titulos" disabled placeholder="Titulos..."></textarea>
+            <label id="confPasswordLabel" style="display:none;">Contraseña:</label><input type="password" id="contrasenia" placeholder="Ingresar Contraseña..." required style="display: none;">
+            <input type="submit" value="Confirmar Cambios" id="confCambios" class="confCambios" onclick="activateButton()">
+          </form>
+          <form id="cambiarContra" style="display:none;">
+            <label id="newPasss">Nueva Contraseña:</label><input type="password" id="newPassInput">
+            <label id="confPasswordLabel">Confirmar Contraseña:</label><input type="password" id="confPassword">
+            <input type="button" name="guardarCambios" value="Guardar Cambios" class="guardarCambios">;
+          </form>
+        </div>';
+  }
+  echo '</div>';
+
+
+}
+?>
 
     </div>
   </div>
@@ -270,7 +299,8 @@
               <i class="fas fa-gem me-3"></i>Nova-Medic.
             </h6>
             <p>
-              Nosotros somos Nova-medic y queremos darte las Gracias por confiar tu salud en nosotros. Disfruta Nova-Medic
+              Nosotros somos Nova-medic y queremos darte las Gracias por confiar tu salud en nosotros. Disfruta
+              Nova-Medic
             </p>
           </div>
           <!-- Grid column -->
@@ -341,8 +371,12 @@
   <script src="../js/perfil.js"></script>
   <script src="../bootstrap/js/bootstrap.min.js"></script>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
 
 </body>
 </body>
