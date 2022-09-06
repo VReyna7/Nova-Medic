@@ -1,8 +1,8 @@
-.body{
+.body {
     overflow-x: hidden;
 }
 
-.contenedor{
+.contenedor {
     width: 100%;
     height: 100%;
     display: flex;
@@ -12,27 +12,27 @@
     margin: 0 auto;
 }
 
-.contenido{
+.contenido {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     margin: 0 auto;
     width: 100%;
     justify-content: center;
-    
+
 }
 
-.fotoPerfil{
+.fotoPerfil {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    
+
     padding: 40px;
 }
 
-.fotoPerfil img{
+.fotoPerfil img {
     height: 350px;
     width: 350px;
     clip-path: circle(50% at 50% 50%);
@@ -40,7 +40,7 @@
 
 
 
-.fotoPerfil input{
+.fotoPerfil input {
     color: white;
     background-color: #0d6efd;
     padding: 15px;
@@ -50,7 +50,7 @@
     font-size: 1.1em;
 }
 
-.encabezado{
+.encabezado {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -64,7 +64,7 @@
     margin-right: 20px;
 }
 
-.encabezado div input{
+.encabezado div input {
     background-color: #0d6efd;
     color: white;
     border: 0px;
@@ -74,23 +74,24 @@
     margin-left: 15px;
 }
 
-.encabezado div{
+.encabezado div {
     display: flex;
 }
 
-.btn{
+.btn {
     margin-bottom: 20px;
 }
 
-.buttonReport{
+.buttonReport {
     margin-top: 20px;
 }
-.encabezado input:hover{
+
+.encabezado input:hover {
     transform: scale(1.05);
     transition: 1s;
 }
 
-.datosUsuario{
+.datosUsuario {
     width: 70%;
     display: flex;
     flex-direction: column;
@@ -99,13 +100,22 @@
     color: black;
 }
 
-.datosUsuario form{
+.datosUsuario form {
     display: flex;
     flex-direction: column;
     outline: none;
 }
 
-.datosUsuario form input{
+.datosUsuario form input {
+    margin: 20px;
+    margin-top: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    outline-color: rgb(15, 71, 149);
+}
+
+.datosUsuario form textarea {
     margin: 20px;
     margin-top: 5px;
     padding: 10px;
@@ -113,7 +123,7 @@
     outline-color: rgb(15, 71, 149);
 }
 
-.datosUsuario form label{
+.datosUsuario form label {
     margin-top: 10px;
     margin-left: 20px;
     color: black;
@@ -121,25 +131,26 @@
 }
 
 
-#confPasswordLabel{
-    color:rgb(233, 98, 2);
+#confPasswordLabel {
+    color: rgb(233, 98, 2);
 }
 
-#confPassword, #contrasenia{    
-    border: 2px solid  rgb(233, 98, 2);
+#confPassword,
+#contrasenia {
+    border: 2px solid rgb(233, 98, 2);
     outline-color: rgb(233, 98, 2);
 }
 
-#newPasss{
-    color:rgb(233, 98, 2);
+#newPasss {
+    color: rgb(233, 98, 2);
 }
 
-#newPassInput{
-    border: 2px solid  rgb(233, 98, 2);
+#newPassInput {
+    border: 2px solid rgb(233, 98, 2);
     outline-color: rgb(233, 98, 2);
 }
 
-.confCambios{
+.confCambios {
     background-color: #0d6efd;
     color: white;
     border: 0px;
@@ -148,43 +159,46 @@
     font-size: 1.2em;
 }
 
-.guardarCambios{
+.guardarCambios {
     background-color: #0d6efd;
     color: white;
     border: 0px;
     font-size: 1.2em;
 }
 
-.guardarCambios:hover{
+.guardarCambios:hover {
     transform: scale(1.02);
     transition: 0.5s;
 }
 
-.confCambios:hover{
+.confCambios:hover {
     transform: scale(1.02);
     transition: 0.5s;
 }
 
-.fotoPerfil input:hover{
+.fotoPerfil input:hover {
     transform: scale(1.1);
     transition: 0.5s;
 }
 
-@media screen and (max-width: 1000px){
-    .fotoPerfil img{
+@media screen and (max-width: 1000px) {
+    .fotoPerfil img {
         height: 200px;
         width: 200px;
     }
-    .fotoPerfil{
+
+    .fotoPerfil {
         width: 100%;
         height: fit-content;
         border-bottom: 2px solid lightgray;
         padding: 20px;
     }
-    .datosUsuario{
+
+    .datosUsuario {
         width: 100%;
     }
-    .encabezado{
+
+    .encabezado {
         justify-content: center;
     }
 }
