@@ -201,7 +201,7 @@
               if($cliente){
                 echo '<a href=" ../vistas/expediente.php"><button type="button" class="btn btn-danger">Expediente Medico </button></a>';
               }else if($doctor){
-              
+                echo '<a href="#"><button type="button" class="btn btn-danger">Titulos Profesionales</button></a>';
               }
           echo '</div>';
           echo '<div class="datosUsuario">
