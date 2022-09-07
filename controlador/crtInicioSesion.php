@@ -26,7 +26,8 @@ if (isset($_SESSION['cliente'])) {
     header("location: ../vistas/indexAdmin.php");
 } else if ($clnt->searchCliente($mail, md5($pass))) {
     $clnt->sesionCliente($mail);
-    if($clnt->getBaneo($clnt->getId())==1){
+	$clnt->setCliente($clnt->getId());
+    if($clnt->getBaneo()==1){
         $errorLog = "Tu cuenta ha sido suspendida.";
         include_once("../vistas/iniciosesion.php");
     }else{
@@ -35,9 +36,11 @@ if (isset($_SESSION['cliente'])) {
     }
 } else if ($doc->searchDoctor($mail, md5($pass))){
     $doc->sesionDoctor($mail);
-    if($doc->getBaneo($doc->getId())==1){
-        $errorLog = "Tu cuenta ha sido suspendida.";
+	$doc->setDoctor($doc->getId());
+    if($doc->getBaneo()==1){
+        $errorLog = "Tu cuenta ha sido suspendida.".$doc->getBaneo($doc->getId());
         include_once("../vistas/iniciosesion.php");
+		echo $doc->getBaneo($doc->getId());
     }else{
         $sesion->setDoctorActual($doc->getId());
         $verifiInnicioSSesion = $doc->getchangePass($doc->getId());
