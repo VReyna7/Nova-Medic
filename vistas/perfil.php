@@ -78,6 +78,13 @@ if ($doctor) {
               <li class="nav-item">
                 <a class="nav-link fs-6 navbar-brand active" href="../vistas/perfil.php">PERFIL</a>
               </li>
+				<li class="nav-item">
+                <button class="nav-link fs-6 navbar-brand" id="disponible" onclick="disponible()">Disponible</button>
+                <button class="nav-link fs-6 navbar-brand" id="ocupado" onclick="ocupado()">Ocupado</button>
+				<input type="hidden" id="selector" value="">
+				
+              </li>
+
               <li class="nav-item">
                 <a class="nav-link fs-6 navbar-brand" href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>
               </li>
@@ -168,7 +175,7 @@ if ($accion == "Visualizar") {
             <label>Apellido:</label><input type="text" id="apellido" disabled value="' . $doc->getApellido() . '">
             <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="' . $doc->getCorreo() . '">
             <label>Sexo:</label><input type="text" id="sexo" disabled placeholder="' . $doc->getSexo() . '">
-            <label>Titulos Profesionales:</label><textarea id="titulos" disabled placeholder="Titulos..."></textarea>
+            <label>Titulos Profesionales:</label><input type="text" id="titulos" disabled value="'.$doc->getTitulos().'" placeholder="Titulos..."></textarea>
             <label id="confPasswordLabel" style="display:none;">Contraseña:</label><input type="password" id="contrasenia" placeholder="Ingresar Contraseña..." required style="display: none;">
             <input type="submit" value="Confirmar Cambios" id="confCambios" class="confCambios" onclick="activateButton()">
           </form>
@@ -361,6 +368,7 @@ else {
   <script src="../js/perfil.js"></script>
   <script src="../bootstrap/js/bootstrap.min.js"></script>
 
+	<script src="../js/estado.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>

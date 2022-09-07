@@ -72,6 +72,11 @@
         if($category == "General"){
           $cuentas =  $docs->docGenerales();
           foreach ($cuentas as $mostrar){
+			if($mostrar['estado']==1){
+				$estado = "Libre";
+			}else if($mostrar['estado']==2){
+				$estado = 'Ocupado';
+			};
             echo '<div class="doctores">
             <div class="fotoPerfil">
               <img src="'.$mostrar["fotoPerfil"] .'">';
@@ -94,14 +99,18 @@
             <div class="informacion">
               <h4><strong>Nombre:</strong> '.  $mostrar["nombre"] . " " .$mostrar["apellido"] .'</h4>
               <h4><strong>Especialidad:</strong> '. $mostrar["espec"] .'</h4>
-              <h4><strong>Estado:</strong> En línea</h4>
-              <h4><strong>Descripción:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum amet laboriosam fugiat aperiam 
-              deserunt hic mollitia iure eaque voluptatum, quod explicabo modi</h4>
+              <h4><strong>Estado:</strong> '.$estado.'</h4>
+              <h4><strong>Titulos:</strong>'.$mostrar['titulos'].'</h4>
             </div></div>';
           }
         }else if($category == "Psico"){
           $cuentas =  $docs->docPsicos();
           foreach ($cuentas as $mostrar){
+			if($mostrar['estado']==1){
+				$estado = "Libre";
+			}else if($mostrar['estado']==2){
+				$estado = 'Ocupado';
+			};
             echo '<div class="doctores">
             <div class="fotoPerfil">
               <img src="'.$mostrar["fotoPerfil"] .'">';
@@ -123,14 +132,18 @@
             <div class="informacion">
               <h4><strong>Nombre:</strong> '.  $mostrar["nombre"] . " " .$mostrar["apellido"] .'</h4>
               <h4><strong>Especialidad:</strong> '. $mostrar["espec"] .'</h4>
-              <h4><strong>Estado:</strong> En línea</h4>
-              <h4><strong>Descripción:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum amet laboriosam fugiat aperiam 
-                deserunt hic mollitia iure eaque voluptatum, quod explicabo modi</h4>
+              <h4><strong>Estado:</strong>'.$estado.'</h4>
+              <h4><strong>Titulos:</strong>'.$mostrar['titulos'].'</h4>
             </div></div>';
             }
         }else if($category == "Nutri"){
           $cuentas =  $docs->docNutri();
           foreach ($cuentas as $mostrar){
+			if($mostrar['estado']==1){
+				$estado = "Libre";
+			}else if($mostrar['estado']==2){
+				$estado = 'Ocupado';
+			};
             echo '<div class="doctores">
             <div class="fotoPerfil">
               <img src="'.$mostrar["fotoPerfil"] .'">';
@@ -152,9 +165,8 @@
             <div class="informacion">
               <h4><strong>Nombre:</strong> '.  $mostrar["nombre"] . " " .$mostrar["apellido"] .'</h4>
               <h4><strong>Especialidad:</strong> '. $mostrar["espec"] .'</h4>
-              <h4><strong>Estado:</strong> En línea</h4>
-              <h4><strong>Descripción:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum amet laboriosam fugiat aperiam 
-                deserunt hic mollitia iure eaque voluptatum, quod explicabo modi</h4>
+			  <h4><strong>Estado:</strong>'.$estado.'</h4>
+              <h4><strong>Titulos:</strong>'.$mostrar['titulos'].'</h4>
             </div></div>';
             }
         }
