@@ -13,10 +13,19 @@ $nombreReportado = isset($_POST['nombreReportado']) ? $_POST['nombreReportado'] 
 $reportante = isset($_POST['Reportante']) ? $_POST['Reportante'] : "";
 $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : "";
 $category = isset($_POST['category']) ? $_POST['category'] : "";
+$idReportado = isset($_POST['idReportado']) ? $_POST['idReportado'] : "";
+$idReportante = isset($_POST['idReportante']) ? $_POST['idReportante'] : "";
 
 
-$report->setReporte($descripcion,$reportante,$nombreReportado,$rol);
+$report->setReporte($descripcion,$reportante,$nombreReportado,$rol,$idReportante,$idReportado);
 $report->subirReporte();
-header("location:../vistas/doctoresConsul.php?category=".$category);
+
+if($rol=="Doctor"){
+    header("location:../vistas/doctoresConsul.php?category=".$category);
+    
+}else{
+    header("location:../vistas/aceptarConsultas.php");
+}
+
 
 ?>
