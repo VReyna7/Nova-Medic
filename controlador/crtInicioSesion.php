@@ -30,13 +30,28 @@ if (isset($_SESSION['cliente'])) {
 } else if ($doc->searchDoctor($mail, md5($pass))) {
     $doc->sesionDoctor($mail);
     $sesion->setDoctorActual($doc->getId());
-    header("location: ../vistas/indexDoctor.php");
+     $verifiInnicioSSesion = $doc->getchangePass($doc->getId());
+
+    if($verifiInnicioSSesion == 0){
+        echo $doc->getId();
+        echo"epico";
+        header("location: ../vistas/cambiarContra.php");
+    }else{
+        header("location: ../vistas/indexDoctor.php");
+    }
 } else if ($admin->searchAdmin($mail, md5($pass))) { 
     echo $mail;
     $admin->sesionAdmin($mail);
     echo $admin->getId();
     $sesion->setAdminActual($admin->getId());
-   header("location: ../vistas/indexAdmin.php");
+    $verifiInnicioSSesion = $admin->getchangePass($admin->getId());
+    if($verifiInnicioSSesion == 0){
+        echo $admin->getId();
+        echo"epico";
+        header("location: ../vistas/cambiarContra.php");
+    }else{
+        header("location: ../vistas/indexAdmin.php");
+    }
 } else {
     $errorLog = "Error. Correo o contraseña son incorrectos";
     include_once("../vistas/iniciosesion.php");
