@@ -7,7 +7,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../css/perfil.css?v=<?php echo time(); ?>">
-	<link rel="stylesheet" href="../css/estado.css?v=<?php echo time(); ?>">
   <script src="../js/scrollreveal.js"></script>
   <script src="../js/editarPerfil.js"></script>
   <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -79,10 +78,6 @@ if ($doctor) {
               <li class="nav-item">
                 <a class="nav-link fs-6 navbar-brand active" href="../vistas/perfil.php">PERFIL</a>
               </li>
-	      <li class="nav-item">
-                <button class="nav-link fs-6 navbar-brand" id="disponible" onclick="disponible()">Disponible</button>
-                <button class="nav-link fs-6 navbar-brand" id="ocupado" onclick="ocupado()">Ocupado</button>
-              </li>
               <li class="nav-item">
                 <a class="nav-link fs-6 navbar-brand" href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>
               </li>
@@ -146,8 +141,12 @@ if ($accion != "Visualizar" && isset($_SESSION['cliente'])) {
 }else if($accion != "Visualizar" && isset($_SESSION['doctor'])){
 	echo '<input type="button" name="editar" value="Cambiar Contraseña" onclick="cambiarContrasenia()">';
   echo '<input type="button" name="editar" value="Editar" onclick="activateInputsDoc()">';
-
+}else if($accion != "Visualizar" && isset($_SESSION['admin'])){
+	echo '<input type="button" name="editar" value="Cambiar Contraseña" onclick="cambiarContrasenia()">';
+  echo '<input type="button" name="editar" value="Editar" onclick="activateInputsDoc()">';
 }
+
+
 ?>
       </div>
     </div>
@@ -160,7 +159,7 @@ if ($accion == "Visualizar") {
     echo '<div class="fotoPerfil">
               <img src="' . $doc->getFoto() . '">';
     if ($cliente) {
-      echo '<a href=" ../vistas/reportesCreacion.php?nombre=' . $doc->getNombre() . '&apellido=', $doc->getApellido() . '&rol=Doctor&category=' . $category . '"><input type="button" class="btn buttonReport btn-danger" value="Reportar"></a>';
+      echo '<a href=" ../vistas/reportesCreacion.php?nombre=' . $doc->getNombre() . '&apellido=', $doc->getApellido() . '&rol=Doctor&category=' . $category .'&idReportante='.$userSession->getClienteActual().'&idReportado='.$doc->getId() .'"><input type="button" class="btn buttonReport btn-danger" value="Reportar"></a>';
     }
     echo '</div>';
     echo '<div class="datosUsuario">
@@ -186,7 +185,7 @@ if ($accion == "Visualizar") {
     echo '<div class="fotoPerfil">
               <img src="' . $client->getFoto() . '">';
     if ($doctor) {
-      echo '<a href=" ../vistas/reportesCreacion.php?nombre=' . $client->getNombre() . '&apellido=', $client->getApellido() . '&rol=Paciente"><button type="button" class="btn buttonReport btn-danger">Reportar</button></a>';
+      echo '<a href=" ../vistas/reportesCreacion.php?nombre=' . $client->getNombre() . '&apellido=', $client->getApellido() . '&rol=Paciente&idReportante='.$userSession->getClienteActual().'&idReportado='.$client->getId() .'"><button type="button" class="btn buttonReport btn-danger">Reportar</button></a>';
       echo '<a href=" ../vistas/expediente.php"><button type="button" class="btn btn-danger">Expediente Medico </button></a>';
       echo '<a href="#"><button type="button" class="btn btn-danger">Historial Medico</button></a>';
     }
@@ -213,51 +212,33 @@ else {
           <img src="' . $user->getFoto() . '">
           <input type="button" id="fotoPerfil" onclick="fotoPerfil()" value="Cambiar foto de perfil">
           <form method="POST" action="../controlador/crtActuFoto.php" enctype="multipart/form-data">
-            <input type="file" id="subirArchivo" name="foto" accept=".png, .jpeg" style="display:none;">
-            <input type="submit" value="Confirmar Cambios" id="confCambiosFoto" class="confCambios" style="display:none;">
+          <input type="file" id="subirArchivo" name="foto" accept=".png, .jpeg" style="display:none;">
+          <input type="submit" value="Confirmar Cambios" id="confCambiosFoto" class="confCambios" style="display:none;">
           </form>';
-  if ($cliente) {
+  if ($cliente){ 
     echo '<a href=" ../vistas/expediente.php"><button type="button" class="btn btn-danger">Expediente Medico </button></a>';
-    echo '</div>';
-    echo '<div class="datosUsuario">
-		'.$error.'
-          <form method="POST" action="../controlador/crtActuData.php">
-            <label>Nombre:</label><input type="text" id="nombre" name="nombre" disabled value="' . $user->getNombre() . '">
-            <label>Apellido:</label><input type="text" id="apellido" name="ape" disabled value="' . $user->getApellido() . '">
-            <label>Correo Electrónico:</label><input type="email" id="email" name="mail" disabled value="' . $user->getCorreo() . '">
-            <label>Sexo:</label><input type="text" id="sexo" name="sexo" disabled value="' . $user->getSexo() . '">
-            <label id="confPasswordLabel" style="display:none;">Contraseña:</label><input type="password" id="contrasenia" name="passCon" placeholder="Ingresar Contraseña..." required style="display: none;">
-            <input type="submit" value="Confirmar Cambios" id="confCambios" class="confCambios" onclick="activateButton()">
-          </form>
-          <form id="cambiarContra" style="display:none;" method="POST" action="../controlador/crtActuPass.php">
-            <label id="newPasss">Nueva Contraseña:</label><input type="password" id="newPassInput" name="pass">
-            <label id="confPasswordLabel">Confirmar Contraseña:</label><input type="password" id="confPassword" name="passCon">
-            <input type="submit" name="guardarCambios" value="Guardar Cambios" class="guardarCambios">;
-          </form>
-        </div>';
-  }
-  if ($doctor) {
-    echo '</div>';
-    echo '<div class="datosUsuario">
-		'.$error.'
-          <form method="POST" action="../controlador/crtActuData.php">
-            <label>Nombre:</label><input type="text" id="nombre" name="nombre" disabled value="' . $user->getNombre() . '">
-            <label>Apellido:</label><input type="text" id="apellido" name="ape" disabled value="' . $user->getApellido() . '">
-            <label>Correo Electrónico:</label><input type="email" id="email" name="mail" disabled value="' . $user->getCorreo() . '">
-            <label>Sexo:</label><input type="text" id="sexo" name="sexo" disabled value="' . $user->getSexo() . '">
-            <label>Titulos Profesionales:</label><input type="text" id="titulos" name="titulo" disabled placeholder="Titulos..." value="'.$user->getTitulos().'"></textarea>
-            <label id="confPasswordLabel" style="display:none;">Contraseña:</label><input type="password" id="contrasenia" name="passCon" placeholder="Ingresar Contraseña..." required style="display: none;">
-            <input type="submit" value="Confirmar Cambios" id="confCambios" class="confCambios" onclick="activateButton()">
-          </form>
-          <form id="cambiarContra" style="display:none;" method="POST" action="../controlador/crtActuPass.php">
-            <label id="newPasss">Nueva Contraseña:</label><input type="password" id="newPassInput" name="pass">
-            <label id="confPasswordLabel">Confirmar Contraseña:</label><input type="password" id="confPassword" name="passCon">
-            <input type="submit" name="guardarCambios" value="Guardar Cambios" class="guardarCambios">;
-          </form>
-        </div>';
   }
   echo '</div>';
+    echo '<div class="datosUsuario">
+		'.$error.'
+          <form method="POST" action="../controlador/crtActuData.php">
+            <label>Nombre:</label><input type="text" id="nombre" name="nombre" disabled value="' . $user->getNombre() . '">
+            <label>Apellido:</label><input type="text" id="apellido" name="ape" disabled value="' . $user->getApellido() . '">
+            <label>Correo Electrónico:</label><input type="email" id="email" name="mail" disabled value="' . $user->getCorreo() . '">
+            <label>Sexo:</label><input type="text" id="sexo" name="sexo" disabled value="' . $user->getSexo() . '">';
+          if($doctor){
+            echo ' <label>Titulos Profesionales:</label><input type="text" id="titulos" name="titulo" disabled placeholder="Titulos..." value="'.$user->getTitulos().'"></textarea>';
+          }
 
+            echo '<label id="confPasswordLabel" style="display:none;">Contraseña:</label><input type="password" id="contrasenia" name="passCon" placeholder="Ingresar Contraseña..." required style="display: none;">
+            <input type="submit" value="Confirmar Cambios" id="confCambios" class="confCambios" onclick="activateButton()">
+          </form>
+          <form id="cambiarContra" style="display:none;" method="POST" action="../controlador/crtActuPass.php">
+            <label id="newPasss">Nueva Contraseña:</label><input type="password" id="newPassInput" name="pass">
+            <label id="confPasswordLabel">Antigua Contraseña:</label><input type="password" id="confPassword" name="passCon">
+            <input type="submit" name="guardarCambios" value="Guardar Cambios" class="guardarCambios">;
+          </form>
+        </div>';
 
 }
 ?>
@@ -379,8 +360,7 @@ else {
   <!-- Footer -->
   <script src="../js/perfil.js"></script>
   <script src="../bootstrap/js/bootstrap.min.js"></script>
-<script src="../js/estado.js"></script>
-	
+
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
     integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous"></script>

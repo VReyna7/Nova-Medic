@@ -18,6 +18,8 @@
       $apellidoReportado = isset($_GET['apellido'])?$_GET['apellido']:"";
       $rolReportado = isset($_GET['rol'])?$_GET['rol']:"";
       $category = isset($_GET['category'])?$_GET['category']:"";
+      $idReportante = isset($_GET['idReportante'])?$_GET['idReportante']:"";
+      $idReportado = isset($_GET['idReportado'])?$_GET['idReportado']:"";
       $nombreCompletoReportado = $nombreReportado .' '. $apellidoReportado;
 
       error_reporting(0);
@@ -78,6 +80,8 @@
           <input type="hidden" name="nombreReportado" value="<?php echo $nombreCompletoReportado; ?>">   
           <input type="hidden" name="Reportante" value="<?php echo $user->getNombreCompleto(); ?>">
           <input type="hidden" name="category" value="<?php echo $category; ?>">
+          <input type="hidden" name="idReportado" value="<?php echo $idReportado; ?>">
+          <input type="hidden" name="idReportante" value="<?php echo  $idReportante; ?>">
           <input type="submit" value="Enviar" name="enviar" class="btnPopUp">
         </form>
     </div>

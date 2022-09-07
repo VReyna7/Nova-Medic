@@ -13,11 +13,15 @@
 	  require_once("../modelo/class.conexion.php");
 	  require_once("../modelo/class.sesion.php");
     require_once("../modelo/class.admin.php");
+    require_once("../modelo/class.doctor.php");
+    require_once("../modelo/class.cliente.php");
     require_once("../modelo/class.reportes.php");
     error_reporting(0);
-
+    $client = new Cliente();
+    $doc = new Doctor();
 	  $userSession = new Sesion();
     $reporte = new Reportes();
+
     if (isset($_SESSION['admin'])) {
       $user = new Admin();
       $user->setAdmin($userSession->getAdminActual());
@@ -76,9 +80,26 @@
                 <div class="subConten2_1">
                 <div class="ContenidoReporte1">
                 <h4>Reportante :'.$mostrar["reportante"].'</h4> 
-                <h4>Reportado : '.$mostrar["reportado"].'</h4> 
-                <input type="button" value="Banear" class="btn btn-danger">
-                <a href=""><input type="button" value="Eliminar Reporte" class="btn btn-danger"></a>
+                <h4>Reportado : '.$mostrar["reportado"].'</h4>';
+                if($mostrar["rolReportado"]=="Doctor"){
+                  if($doc->getBaneo($mostrar["idReportado"]) == 0 ){
+                    echo '  <a href="../controlador/crtBanyDelReport.php?idReportado='.$mostrar["idReportado"].'&idReportante='.$mostrar["idReportante"].'&rol='.$mostrar["rolReportado"].'&accion=Banear"><input type="button" value="Banear" class="btn btn-danger"></a>
+                    <a href="../controlador/crtBanyDelReport.php?idReportado='.$mostrar["idReportado"].'&idReportante='.$mostrar["idReportante"].'&rol='.$mostrar["rolReportado"].'&accion=Eliminar"><input type="button" value="Eliminar Reporte" class="btn btn-danger"></a>';
+                  }else{
+                  echo ' <a href="#"><input type="button" value="Usuario Baneado" class="btn btn-danger"></a>
+                  <a href="../controlador/crtBanyDelReport.php?idReportado='.$mostrar["idReportado"].'&idReportante='.$mostrar["idReportante"].'&rol='.$mostrar["rolReportado"].'&accion=Eliminar"><input type="button" value="Eliminar Reporte" class="btn btn-danger"></a>';
+                 }
+                }else{
+                  if($client->getBaneo($mostrar["idReportado"]) == 0){
+                    echo '  <a href="../controlador/crtBanyDelReport.php?idReportado='.$mostrar["idReportado"].'&idReportante='.$mostrar["idReportante"].'&rol='.$mostrar["rolReportado"].'&accion=Banear"><input type="button" value="Banear" class="btn btn-danger"></a>
+                    <a href="../controlador/crtBanyDelReport.php?idReportado='.$mostrar["idReportado"].'&idReportante='.$mostrar["idReportante"].'&rol='.$mostrar["rolReportado"].'&accion=Eliminar"><input type="button" value="Eliminar Reporte" class="btn btn-danger"></a>';
+                  }else{
+                    echo ' <a href="#"><input type="button" value="Usuario Baneado" class="btn btn-danger"></a>
+                    <a href="../controlador/crtBanyDelReport.php?idReportado='.$mostrar["idReportado"].'&idReportante='.$mostrar["idReportante"].'&rol='.$mostrar["rolReportado"].'&accion=Eliminar"><input type="button" value="Eliminar Reporte" class="btn btn-danger"></a>';
+                  }
+                }
+              
+              echo '
              </div>
              <div class="ContenidoReporte2">
                  <h4>Descripcion de reporte:</h4>
