@@ -15,6 +15,7 @@ $sesion = new Sesion;
 $mail = isset($_POST['mail']) ? $_POST['mail'] : "";
 $pass = isset($_POST['pass']) ? $_POST['pass'] : "";
 
+
 if (isset($_SESSION['cliente'])) {
     //$clnt->setCliente($_SESSION['cliente']);
     header("location: ../vistas/indexPaciente.php");
@@ -25,12 +26,23 @@ if (isset($_SESSION['cliente'])) {
     header("location: ../vistas/indexAdmin.php");
 } else if ($clnt->searchCliente($mail, md5($pass))) {
     $clnt->sesionCliente($mail);
-    $sesion->setClienteActual($clnt->getId());
-   header("location: ../vistas/indexPaciente.php");
-} else if ($doc->searchDoctor($mail, md5($pass))) {
+    if($clnt->getBaneo($clnt->getId())==1){
+        $errorLog = "Tu cuenta ha sido suspendida.";
+        include_once("../vistas/iniciosesion.php");
+    }else{
+        $sesion->setClienteActual($clnt->getId());
+        header("location: ../vistas/indexPaciente.php");
+    }
+} else if ($doc->searchDoctor($mail, md5($pass))){
     $doc->sesionDoctor($mail);
-    $sesion->setDoctorActual($doc->getId());
-    $verifiInnicioSSesion = $doc->getchangePass($doc->getId());
+    if($doc->getBaneo($doc->getId())==1){
+        $errorLog = "Tu cuenta ha sido suspendida.";
+        include_once("../vistas/iniciosesion.php");
+    }else{
+        $sesion->setDoctorActual($doc->getId());
+        $verifiInnicioSSesion = $doc->getchangePass($doc->getId());
+    }
+    
 
     if($verifiInnicioSSesion == 0){
         echo $doc->getId();
