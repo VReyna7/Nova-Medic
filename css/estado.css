@@ -1,0 +1,24 @@
+#disponible{
+    background-color: rgb(27, 181, 27);
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+    height: min-content;
+}
+#disponible:hover{
+    background-color: rgb(178, 41, 41);
+    transform: scale(1.05);
+}
+
+#ocupado{
+    background-color: rgb(178, 41, 41);
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+    height: min-content;
+    display: none;
+}
+#ocupado:hover{
+    background-color: rgb(27, 181, 27);
+    transform: scale(1.05);
+}
