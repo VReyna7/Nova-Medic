@@ -280,6 +280,41 @@ class Doctor
             $stmt->execute();
         }
     }
+	 public function getchangePass($id){
+		$conexion = new Conexion();
+		$dbh = $conexion->get_conexion();
+		$sql = "select changePass from doctor where id=:id";
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindParam(":id",$id);
+		$stmt->execute();
+		$datos = $stmt->fetch(PDO::FETCH_ASSOC);
+		return $datos["changePass"];
+	}
+	 public function actuContraDoc($id){
+		$conexion = new Conexion();
+		$dbh = $conexion->get_conexion();
+		$sql = "select changePass from doctor where id=:id";
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindParam(":id",$id);
+		$stmt->execute();
+		$datos = $stmt->fetch(PDO::FETCH_ASSOC);
+		return $datos["changePass"];
+	}
+
+    public function modificarContra($id,$pass,$changePass){
+		$conexion = new Conexion();
+		$dbh = $conexion->get_conexion();
+		$sql = "update doctor set pass = md5(:pass), changePass = :changePass where id=:id";
+		$stmt = $dbh->prepare($sql);
+		$stmt->bindParam(":id",$id);
+        $stmt->bindParam(":pass",$pass);
+        $stmt->bindParam(":changePass",$changePass);
+        if (!$stmt) {
+            throw new Exception("Error con la base de datos");
+        } else {
+            $stmt->execute();
+        }
+	}
 
     //funciones get
     public function getId()
