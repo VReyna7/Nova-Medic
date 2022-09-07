@@ -16,11 +16,12 @@ $nombre = isset($_POST['nombre'])?$_POST['nombre']:"";
 $ape = isset($_POST['ape'])?$_POST['ape']:"";
 $mail = isset($_POST['mail'])?$_POST['mail']:"";
 $sexo = isset($_POST['sexo'])?$_POST['sexo']:"";
+$passCon = isset($_POST['passCon'])?$_POST['passCon']:"";
 
 try{
 	if(isset($_SESSION['cliente'])){
 		$clnt->setCliente($sesion->getClienteActual());
-		if($pass==$clnt->getPass()){
+		if($passCon==$clnt->getPass()){
 			$clnt->actuData($nombre,$ape,$mail,$sexo);
 			header("location: ../vistas/perfil.php");
 		}else{
@@ -28,9 +29,10 @@ try{
 			include "../vistas/perfil.php";
 		}
 	}else if(isset($_SESSION['doctor'])){
+		$titulo = isset($_POST['titulo'])?$_POST['titulo']:"";
 		$doc->setDoctor($sesion->getDoctorActual());
-		if($pass==$doc->getPass()){
-			$doc->actuData($nombre,$ape,$mail,$sexo);
+		if(md5($passCon)==$doc->getPass()){
+			$doc->actuData($nombre,$ape,$mail,$sexo,$titulo);
 			header("location: ../vistas/perfil.php");
 		}else{
 			$error = "Error, la contraseña esta incorrecta";

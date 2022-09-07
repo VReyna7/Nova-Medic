@@ -1,4 +1,5 @@
 <?php session_start();
+error_reporting(0);
 require_once("../modelo/class.conexion.php");
 require_once("../modelo/class.cliente.php");
 require_once("../modelo/class.doctor.php");
@@ -16,7 +17,7 @@ $passCon = isset($_POST['passCon'])?$_POST['passCon']:"";
 try{
 	if(isset($_SESSION['cliente'])){
 		$clnt->setCliente($sesion->getClienteActual());
-		if($passCon == $clnt->getPass()){
+		if(md5($passCon) == $clnt->getPass()){
 			$clnt->actuPass($pass);
 			header("location: ../vistas/perfil.php");
 		}else{
@@ -25,7 +26,7 @@ try{
 		}
 	}else if(isset($_SESSION['doctor'])){
 		$doc->setDoctor($sesion->getDoctorActual());
-		if($passCon == $doc->getPass()){
+		if(md5($passCon) == $doc->getPass()){
 			$doc->actuPass($pass);
 			header("location: ../vistas/perfil.php");
 		}else{
@@ -34,7 +35,7 @@ try{
 		}
 	}else if(isset($_SESSION['admin'])){
 		$admin->setAdmin($sesion->getAdminActual());
-		if($passCon == $clnt->getPass()){
+		if(md5($passCon) == $clnt->getPass()){
 			$admin->actuPass($pass);
 			header("location: ../vistas/perfil.php");
 		}else{
