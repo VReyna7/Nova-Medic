@@ -5,8 +5,10 @@ class Reportes{
     public $reportante;
     public $reportado;
     public $rol;
+    public $idReportante;
+    public $idReportado;
     
-    public function setReporte($descripcion,$reportante,$reportado,$rol){   
+    public function setReporte($descripcion,$reportante,$reportado,$rol,$idReportante,$idReportado){   
 
         if(!empty($descripcion)){
             $this->descripcion = $descripcion;
@@ -26,6 +28,18 @@ class Reportes{
             throw new Exception("Error, Descripción vacia");
         }
 
+        if(!empty($idReportante)){
+            $this->idReportante = $idReportante;
+        }else {
+            throw new Exception("Error, Descripción vacia");
+        }
+
+        if(!empty($idReportado)){
+            $this->idReportado = $idReportado;
+        }else {
+            throw new Exception("Error, Descripción vacia");
+        }
+
         if(!empty($rol)){
             $this->rol = $rol;
         }else {
@@ -38,13 +52,15 @@ class Reportes{
         $cn = new Conexion();
         //data base handle
         $dbh = $cn->get_conexion();
-        $sql = "INSERT INTO reportes (descripcion,reportante,reportado,Rolreportado) VALUES (:descripcion,:reportante,:reportado,:rol)";
+        $sql = "INSERT INTO reportes(descripcion,reportante,reportado,Rolreportado,idReportante,idReportado) VALUES (:descripcion,:reportante,:reportado,:rol,:idReportante,:idReportado)";
         try{
             $stmt = $dbh->prepare($sql);
             $stmt-> bindParam(':descripcion', $this->descripcion);
             $stmt->bindParam(':reportante', $this->reportante);
             $stmt->bindParam(':reportado', $this->reportado);
             $stmt->bindParam(':rol', $this->rol);
+            $stmt->bindParam(':idReportante', $this->idReportante);
+            $stmt->bindParam(':idReportado', $this->idReportado);
             $stmt->execute();
         }catch(PDOException $e){
             echo "Error: ". $e->getMessage();
@@ -90,14 +106,14 @@ class Reportes{
         }
         
               
-    public function deleteConsulta($idC,$idD)
+    public function deleteReport($idReportante,$idReportado)
     {
         $dbh = new Conexion();
         $conexion = $dbh->get_conexion();
-        $sql = "delete from reportes where cliente=:cliente and doctor=:doctor";
+        $sql = "delete from reportes where idReportante=:idReportante and idReportado=:idReportado";
         $stmt = $conexion->prepare($sql);
-        $stmt->bindParam(":cliente", $idC);
-        $stmt->bindParam(":doctor", $idD);
+        $stmt->bindParam(":idReportante", $idReportante);
+        $stmt->bindParam(":idReportado", $idReportado);
         if (!$stmt) {
             throw new Exception("Error. No se pudo conectar con la base de datos");
         } else {
