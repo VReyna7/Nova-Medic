@@ -78,13 +78,6 @@ if ($doctor) {
               <li class="nav-item">
                 <a class="nav-link fs-6 navbar-brand active" href="../vistas/perfil.php">PERFIL</a>
               </li>
-				<li class="nav-item">
-                <button class="nav-link fs-6 navbar-brand" id="disponible" onclick="disponible()">Disponible</button>
-                <button class="nav-link fs-6 navbar-brand" id="ocupado" onclick="ocupado()">Ocupado</button>
-				<input type="hidden" id="selector" value="">
-				
-              </li>
-
               <li class="nav-item">
                 <a class="nav-link fs-6 navbar-brand" href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>
               </li>
