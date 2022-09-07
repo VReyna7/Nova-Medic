@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CHAT</title>
   <link rel="stylesheet" href="../css/chat.css">
+  <link rel="stylesheet" href="../css/estado.css?v=<?php echo time(); ?>">
   <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
   <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
   <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -62,6 +63,10 @@
                       </li>
                       <li class="nav-item">
                         <a class="nav-link fs-6 navbar-brand " href="../vistas/perfil.php">PERFIL</a>
+                      </li>
+                      <li class="nav-item">
+                        <button class="nav-link fs-6 navbar-brand" id="disponible" onclick="disponible()">Disponible</button>
+                        <button class="nav-link fs-6 navbar-brand" id="ocupado" onclick="ocupado()">Ocupado</button>
                       </li>
                       <li class="nav-item">
                         <a class="nav-link fs-6 navbar-brand" href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>
@@ -339,5 +344,5 @@ if (!empty($idC) && !empty($idDoc)) {
 }
 ?>
 <script src="../js/chat.js"></script>
-
+<script src="../js/estado.js"></script>
 </html>
