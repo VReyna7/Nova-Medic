@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/aceptarConsulta.css?v=<?php echo time(); ?>">
+	<link rel="stylesheet" href="../css/estado.css?v=<?php echo time(); ?>">
     <script src="../js/scrollreveal.js"></script>
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <title>Consultas</title>
@@ -58,6 +59,10 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link fs-6 navbar-brand" href="perfil.php">PERFIL</a>
+              </li>
+		<li class="nav-item">
+                <button class="nav-link fs-6 navbar-brand" id="disponible" onclick="disponible()">Disponible</button>
+                <button class="nav-link fs-6 navbar-brand" id="ocupado" onclick="ocupado()">Ocupado</button>
               </li>
               <li class="nav-item">
                 <a class="nav-link fs-6 navbar-brand" href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>
@@ -210,7 +215,7 @@
 <!-- Footer -->
 <script src="../js/iniciarConsultas.js"></script>
 <script src="../bootstrap/js/bootstrap.min.js"></script>
-
+<script src="../js/estado.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     
