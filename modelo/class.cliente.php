@@ -104,6 +104,37 @@ class Cliente
             $this->id = $datauser['id'];
         }
     }
+	
+	    public function Baneo($id)
+    {
+        $dbh = new Conexion;
+        $conexion = $dbh->get_conexion();
+        $sql = "update cliente set baneo=1 where id=:id";
+        $stmt = $conexion->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        if (!$stmt) {
+            throw new Exception("Error al conectar con la base de datos");
+        } else {
+            $stmt->execute();
+        }
+    }
+
+    public function getBaneo($id)
+    {
+        $dbh = new Conexion;
+        $conexion = $dbh->get_conexion();
+        $sql = "select baneo from cliente where id=:id";
+        $stmt = $conexion->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        if (!$stmt) {
+            throw new Exception("Error al conectar con la base de datos");
+        } else {
+            $stmt->execute();
+            $datauser = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $datauser['baneo'];
+        }
+    }
+
 
     public function setCliente($user)
     {
