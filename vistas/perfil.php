@@ -14,13 +14,13 @@
   <link rel="icon" href="../img/favicon.ico">
   <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
   <?php
+error_reporting(0);
 require_once("../modelo/class.conexion.php");
 require_once("../modelo/class.cliente.php");
 require_once("../modelo/class.doctor.php");
 require_once("../modelo/class.admin.php");
 require_once("../modelo/class.sesion.php");
 
-error_reporting(0);
 $idDoct = isset($_GET['idDoc']) ? $_GET['idDoc'] : "";
 $accion = isset($_GET['accion']) ? $_GET['accion'] : "";
 $idClient = isset($_GET['idClient']) ? $_GET['idClient'] : "";
@@ -135,9 +135,13 @@ else if ($admin) {
       <h3>Información Personal</h3>
       <div>
         <?php
-if ($accion != "Visualizar") {
+if ($accion != "Visualizar" && isset($_SESSION['cliente'])) {
   echo '<input type="button" name="editar" value="Cambiar Contraseña" onclick="cambiarContrasenia()">';
-  echo '<input type="button" name="editar" value="Editar" onclick="activateInputs()">';
+  echo '<input type="button" name="editar" value="Editar" onclick="activateInputsCliente()">';
+}else if($accion != "Visualizar" && isset($_SESSION['doctor'])){
+	echo '<input type="button" name="editar" value="Cambiar Contraseña" onclick="cambiarContrasenia()">';
+  echo '<input type="button" name="editar" value="Editar" onclick="activateInputsDoc()">';
+
 }
 ?>
       </div>
@@ -211,37 +215,39 @@ else {
     echo '<a href=" ../vistas/expediente.php"><button type="button" class="btn btn-danger">Expediente Medico </button></a>';
     echo '</div>';
     echo '<div class="datosUsuario">
-          <form>
-            <label>Nombre:</label><input type="text" id="nombre" disabled value="' . $user->getNombre() . '">
-            <label>Apellido:</label><input type="text" id="apellido" disabled value="' . $user->getApellido() . '">
-            <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="' . $user->getCorreo() . '">
-            <label>Sexo:</label><input type="text" id="sexo" disabled placeholder="' . $user->getSexo() . '">
-            <label id="confPasswordLabel" style="display:none;">Contraseña:</label><input type="password" id="contrasenia" placeholder="Ingresar Contraseña..." required style="display: none;">
+		'.$error.'
+          <form method="POST" action="../controlador/crtActuData.php">
+            <label>Nombre:</label><input type="text" id="nombre" name="nombre" disabled value="' . $user->getNombre() . '">
+            <label>Apellido:</label><input type="text" id="apellido" name="ape" disabled value="' . $user->getApellido() . '">
+            <label>Correo Electrónico:</label><input type="email" id="email" name="mail" disabled value="' . $user->getCorreo() . '">
+            <label>Sexo:</label><input type="text" id="sexo" name="sexo" disabled value="' . $user->getSexo() . '">
+            <label id="confPasswordLabel" style="display:none;">Contraseña:</label><input type="password" id="contrasenia" name="passCon" placeholder="Ingresar Contraseña..." required style="display: none;">
             <input type="submit" value="Confirmar Cambios" id="confCambios" class="confCambios" onclick="activateButton()">
           </form>
-          <form id="cambiarContra" style="display:none;">
-            <label id="newPasss">Nueva Contraseña:</label><input type="password" id="newPassInput">
-            <label id="confPasswordLabel">Confirmar Contraseña:</label><input type="password" id="confPassword">
-            <input type="button" name="guardarCambios" value="Guardar Cambios" class="guardarCambios">;
+          <form id="cambiarContra" style="display:none;" method="POST" action="../controlador/crtActuPass.php">
+            <label id="newPasss">Nueva Contraseña:</label><input type="password" id="newPassInput" name="pass">
+            <label id="confPasswordLabel">Confirmar Contraseña:</label><input type="password" id="confPassword" name="passCon">
+            <input type="submit" name="guardarCambios" value="Guardar Cambios" class="guardarCambios">;
           </form>
         </div>';
   }
   if ($doctor) {
     echo '</div>';
     echo '<div class="datosUsuario">
-          <form>
-            <label>Nombre:</label><input type="text" id="nombre" disabled value="' . $user->getNombre() . '">
-            <label>Apellido:</label><input type="text" id="apellido" disabled value="' . $user->getApellido() . '">
-            <label>Correo Electrónico:</label><input type="email" id="email" disabled placeholder="' . $user->getCorreo() . '">
-            <label>Sexo:</label><input type="text" id="sexo" disabled placeholder="' . $user->getSexo() . '">
-            <label>Titulos Profesionales:</label><textarea id="titulos" disabled placeholder="Titulos..."></textarea>
-            <label id="confPasswordLabel" style="display:none;">Contraseña:</label><input type="password" id="contrasenia" placeholder="Ingresar Contraseña..." required style="display: none;">
+		'.$error.'
+          <form method="POST" action="../controlador/crtActuData.php">
+            <label>Nombre:</label><input type="text" id="nombre" name="nombre" disabled value="' . $user->getNombre() . '">
+            <label>Apellido:</label><input type="text" id="apellido" name="ape" disabled value="' . $user->getApellido() . '">
+            <label>Correo Electrónico:</label><input type="email" id="email" name="mail" disabled value="' . $user->getCorreo() . '">
+            <label>Sexo:</label><input type="text" id="sexo" name="sexo" disabled value="' . $user->getSexo() . '">
+            <label>Titulos Profesionales:</label><input type="text" id="titulos" name="titulo" disabled placeholder="Titulos..." value="'.$user->getTitulos().'"></textarea>
+            <label id="confPasswordLabel" style="display:none;">Contraseña:</label><input type="password" id="contrasenia" name="passCon" placeholder="Ingresar Contraseña..." required style="display: none;">
             <input type="submit" value="Confirmar Cambios" id="confCambios" class="confCambios" onclick="activateButton()">
           </form>
-          <form id="cambiarContra" style="display:none;">
-            <label id="newPasss">Nueva Contraseña:</label><input type="password" id="newPassInput">
-            <label id="confPasswordLabel">Confirmar Contraseña:</label><input type="password" id="confPassword">
-            <input type="button" name="guardarCambios" value="Guardar Cambios" class="guardarCambios">;
+          <form id="cambiarContra" style="display:none;" method="POST" action="../controlador/crtActuPass.php">
+            <label id="newPasss">Nueva Contraseña:</label><input type="password" id="newPassInput" name="pass">
+            <label id="confPasswordLabel">Confirmar Contraseña:</label><input type="password" id="confPassword" name="passCon">
+            <input type="submit" name="guardarCambios" value="Guardar Cambios" class="guardarCambios">;
           </form>
         </div>';
   }
@@ -250,10 +256,8 @@ else {
 
 }
 ?>
-
     </div>
   </div>
-
 
   <!-- Footer -->
   <footer class="text-center text-lg-start bg-primary text-white ">
