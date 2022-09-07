@@ -183,6 +183,36 @@ class Doctor
         return $doctores;
     }
 
+	
+    public function Baneo($id)
+    {
+        $dbh = new Conexion;
+        $conexion = $dbh->get_conexion();
+        $sql = "update doctor set baneo=1 where id=:id";
+        $stmt = $conexion->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        if (!$stmt) {
+            throw new Exception("Error al conectar con la base de datos");
+        } else {
+            $stmt->execute();
+        }
+    }
+
+    public function getBaneo($id)
+    {
+        $dbh = new Conexion;
+        $conexion = $dbh->get_conexion();
+        $sql = "select baneo from doctor where id=:id";
+        $stmt = $conexion->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        if (!$stmt) {
+            throw new Exception("Error al conectar con la base de datos");
+        } else {
+            return $stmt->execute();
+            $datauser = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $datauser['baneo'];
+        }
+    }
 
     public function docPsicos()
     {
