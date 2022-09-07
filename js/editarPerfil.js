@@ -4,10 +4,21 @@ function activateButton(){
     document.getElementById("confPasswordLabel").style.display='block';
 }
 
-function activateInputs(){
+function activateInputsCliente(){
     document.getElementById("nombre").disabled=false;
     document.getElementById("apellido").disabled=false;
     document.getElementById("email").disabled=false;
+    document.getElementById("sexo").disabled=false;
+    document.getElementById("cambiarContra").style.display='none';
+    activateButton();
+}
+
+function activateInputsDoc(){
+    document.getElementById("nombre").disabled=false;
+    document.getElementById("apellido").disabled=false;
+    document.getElementById("email").disabled=false;
+    document.getElementById("sexo").disabled=false;
+    document.getElementById("titulos").disabled=false;
     document.getElementById("cambiarContra").style.display='none';
     activateButton();
 }
