@@ -9,6 +9,7 @@ class Cliente
     private $sexo;
     private $foto;
     private $fechaNac;
+	private $baneo;
     private $id_exp;
 
     public function veriData($nombre, $apellido, $pass, $correo, $sexo, $fechaNac)
@@ -105,7 +106,7 @@ class Cliente
         }
     }
 	
-	    public function Baneo($id)
+	public function Baneo($id)
     {
         $dbh = new Conexion;
         $conexion = $dbh->get_conexion();
@@ -119,7 +120,7 @@ class Cliente
         }
     }
 
-    public function getBaneo($id)
+    /*public function getBaneo($id)
     {
         $dbh = new Conexion;
         $conexion = $dbh->get_conexion();
@@ -130,10 +131,8 @@ class Cliente
             throw new Exception("Error al conectar con la base de datos");
         } else {
             $stmt->execute();
-            $datauser = $stmt->fetch(PDO::FETCH_ASSOC);
-            return $datauser['baneo'];
         }
-    }
+	}*/
 
 
     public function setCliente($user)
@@ -156,6 +155,7 @@ class Cliente
             $this->sexo = $datauser['sexo'];
             $this->foto = $datauser['fotoPerfil'];
             $this->fechaNac = $datauser['fecha_nac'];
+			$this->baneo = $datauser['baneo'];
         }
     }
 
@@ -278,4 +278,8 @@ class Cliente
     {
         return $this->pass;
     }
+
+	public function getBaneo(){
+		return $this->baneo;
+	}
 }

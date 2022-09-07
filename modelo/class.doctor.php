@@ -11,6 +11,7 @@ class Doctor
     private $titulos;
     private $foto;
     private $fechaNac;
+	private $baneo;
     private $especialidad;
 
     public function veriData($nombre, $apellido, $pass, $correo, $sexo, $fechaNac, $especialidad)
@@ -198,7 +199,7 @@ class Doctor
         }
     }
 
-    public function getBaneo($id)
+    /*public function getBaneo($id)
     {
         $dbh = new Conexion;
         $conexion = $dbh->get_conexion();
@@ -212,7 +213,7 @@ class Doctor
             $datauser = $stmt->fetch(PDO::FETCH_ASSOC);
             return $datauser['baneo'];
         }
-    }
+	}*/
 
     public function docPsicos()
     {
@@ -277,6 +278,7 @@ class Doctor
             $this->foto = $datauser['fotoPerfil'];
             $this->estado = $datauser['estado'];
             $this->especialidad = $datauser['espec'];
+			$this->baneo = $datauser['baneo'];
         }
     }
 
@@ -404,5 +406,9 @@ class Doctor
 
 	public function getTitulos(){
 		return $this->titulos;
+	}
+
+	public function getBaneo(){
+		return $this->baneo;
 	}
 }
