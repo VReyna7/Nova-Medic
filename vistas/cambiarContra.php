@@ -13,12 +13,12 @@ session_start();
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/cambioPass.css">
     <script src="../js/scrollreveal.js"></script>
-    <!--<script type="text/javascript">
+    <script type="text/javascript">
         window.history.forward();
         function noBack() {
             window.history.forward();
         }
-    </script>-->
+    </script>
    
 </head>
 <?php
