@@ -129,16 +129,16 @@ class Doctor
         }
     }
 
-
-    public function actuData($nombre,$ape,$mail,$sexo){
+    public function actuData($nombre,$ape,$mail,$sexo,$titulos){
         $dbh = new Conexion;
         $conexion = $dbh->get_conexion();
-        $sql = 'update doctor set nombre=:nombre, apellido=:apellido, correo=:correo, sexo=:sexo where id=:id';
+        $sql = 'update doctor set nombre=:nombre, apellido=:apellido, correo=:correo, sexo=:sexo, titulos=:titulos where id=:id';
         $stmt = $conexion->prepare($sql);
         $stmt->bindParam(":nombre",$nombre);
         $stmt->bindParam(":apellido",$ape);
         $stmt->bindParam(":correo",$mail);
         $stmt->bindParam(":sexo",$sexo);
+        $stmt->bindParam(":titulos",$titulos);
         $stmt->bindParam(":id",$this->id);
         if(!$stmt){
             throw new Exception("Error con la base de datos");
@@ -146,6 +146,20 @@ class Doctor
             $stmt->execute();
         }
     }
+
+	public function actuPass($pass){
+		$dbh = new Conexion;
+		$conexion = $dbh->get_conexion();
+		$sql = 'update doctor set pass=md5(:pass) where id=:id';
+		$stmt = $conexion->prepare($sql);
+		$stmt->bindParam(":pass",$pass);
+		$stmt->bindParam(":id",$this->id);
+		if(!$stmt){
+			throw new Exception("Error con la base de datos");
+		}else{
+			$stmt->execute();
+		}
+	}
 
     public function allDoctores()
     {
@@ -322,4 +336,8 @@ class Doctor
     {
         return $this->pass;
     }
+
+	public function getTitulos(){
+		return $this->titulos;
+	}
 }
