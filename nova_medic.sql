@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-09-2022 a las 23:18:44
--- Versión del servidor: 10.4.24-MariaDB
--- Versión de PHP: 8.1.6
+-- Tiempo de generación: 08-09-2022 a las 05:34:30
+-- Versión del servidor: 10.4.14-MariaDB
+-- Versión de PHP: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,15 +35,16 @@ CREATE TABLE `admin` (
   `correo` varchar(255) NOT NULL,
   `sexo` varchar(20) NOT NULL,
   `fecha_nac` date NOT NULL,
-  `fotoPerfil` varchar(250) NOT NULL DEFAULT '../uploads/imgDefault.webp'
+  `fotoPerfil` varchar(250) NOT NULL DEFAULT '../uploads/imgDefault.webp',
+  `changePass` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `admin`
 --
 
-INSERT INTO `admin` (`id`, `nombre`, `apellido`, `pass`, `correo`, `sexo`, `fecha_nac`, `fotoPerfil`) VALUES
-(5, 'Víctor Eduardo', 'Montecino', '827ccb0eea8a706c4c34a16891f84e7b', 'admin1@gmail.com', 'Hombre', '2004-02-05', '../uploads/imgDefault.webp');
+INSERT INTO `admin` (`id`, `nombre`, `apellido`, `pass`, `correo`, `sexo`, `fecha_nac`, `fotoPerfil`, `changePass`) VALUES
+(5, 'Víctor Eduardo', 'Montecino', '827ccb0eea8a706c4c34a16891f84e7b', 'admin1@gmail.com', 'Hombre', '2004-02-05', '../uploads/imgDefault.webp', 0);
 
 -- --------------------------------------------------------
 
@@ -65,9 +66,10 @@ CREATE TABLE `chat` (
 --
 
 INSERT INTO `chat` (`id`, `nameDR`, `nameC`, `idC`, `idDC`, `espec`) VALUES
-(7, 'Víctor Eduardo', 'Víctor  Reyna', 11, 1, 'Doctor General'),
-(11, 'Juan Perez', 'Víctor  Reyna', 11, 4, 'Doctor General'),
-(12, 'Fernando Josue', 'Víctor  Reyna', 11, 2, 'Psicologia');
+(22, 'Fernando Josue', 'Víctor  Reyna', 11, 2, 'Psicologia'),
+(23, 'jojo', 'Víctor  Reyna', 11, 3, 'Nutricionista'),
+(27, 'Juan Perez', 'Víctor  Reyna', 11, 4, 'Doctor General'),
+(30, 'loalso', 'Víctor  Reyna', 11, 1, 'Doctor General');
 
 -- --------------------------------------------------------
 
@@ -84,17 +86,18 @@ CREATE TABLE `cliente` (
   `sexo` varchar(20) NOT NULL,
   `fecha_nac` date NOT NULL,
   `fotoPerfil` varchar(250) NOT NULL DEFAULT '../uploads/imgDefault.webp',
-  `id_historial` int(11) DEFAULT NULL
+  `id_historial` int(11) DEFAULT NULL,
+  `baneo` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` (`id`, `nombre`, `apellido`, `pass`, `correo`, `sexo`, `fecha_nac`, `fotoPerfil`, `id_historial`) VALUES
-(10, 'Cristian ', 'Pineda', 'c4ca4238a0b923820dcc509a6f75849b', 'cristian.pineda2308@gmail.com', 'Hombre', '2022-08-14', '../uploads/imgDefault.webp', NULL),
-(11, 'Víctor ', 'Reyna', '827ccb0eea8a706c4c34a16891f84e7b', 'victor@gmail.com', 'Hombre', '2004-01-01', '../uploads/cliente/11/unknown.png', 2),
-(15, 'Lourdes', 'Portales', '827ccb0eea8a706c4c34a16891f84e7b', 'lourdes@gmail.com', 'Mujer', '2004-08-05', '../uploads/imgDefault.webp', 9);
+INSERT INTO `cliente` (`id`, `nombre`, `apellido`, `pass`, `correo`, `sexo`, `fecha_nac`, `fotoPerfil`, `id_historial`, `baneo`) VALUES
+(10, 'Cristian ', 'Pineda', 'c4ca4238a0b923820dcc509a6f75849b', 'cristian.pineda2308@gmail.com', 'Hombre', '2022-08-14', '../uploads/imgDefault.webp', NULL, 0),
+(11, 'Víctor ', 'Reyna', '827ccb0eea8a706c4c34a16891f84e7b', 'victor@gmail.com', 'Hombre', '2004-01-01', '../uploads/cliente/11/unknown.png', 2, 0),
+(15, 'Lourdes', 'Portales', '827ccb0eea8a706c4c34a16891f84e7b', 'lourdes@gmail.com', 'Mujer', '2004-08-05', '../uploads/imgDefault.webp', 9, 0);
 
 -- --------------------------------------------------------
 
@@ -109,14 +112,6 @@ CREATE TABLE `consulta` (
   `descripcion` varchar(500) NOT NULL,
   `categoria` varchar(25) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Volcado de datos para la tabla `consulta`
---
-
-INSERT INTO `consulta` (`id`, `cliente`, `doctor`, `descripcion`, `categoria`) VALUES
-(9, '11', '4', 'Penesito\r\n', ''),
-(10, '11', '2', 'Pene\r\n', '');
 
 -- --------------------------------------------------------
 
@@ -135,18 +130,23 @@ CREATE TABLE `doctor` (
   `estado` int(11) DEFAULT NULL,
   `titulos` varchar(150) DEFAULT NULL,
   `fotoPerfil` varchar(250) NOT NULL DEFAULT '../uploads/imgDefault.webp',
-  `espec` varchar(200) NOT NULL
+  `espec` varchar(200) NOT NULL,
+  `changePass` int(10) NOT NULL,
+  `baneo` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `doctor`
 --
 
-INSERT INTO `doctor` (`id`, `nombre`, `apellido`, `pass`, `correo`, `sexo`, `fecha_nac`, `estado`, `titulos`, `fotoPerfil`, `espec`) VALUES
-(1, 'Víctor Eduardo', 'Montecino', '827ccb0eea8a706c4c34a16891f84e7b', 'doctor@gmail.com', 'Hombre', '2004-05-05', NULL, NULL, '../uploads/doctor/1/doctorchapatin.jpg', 'Doctor General'),
-(2, 'Fernando Josue', 'Lara', '827ccb0eea8a706c4c34a16891f84e7b', 'doctor2@gmail.com', 'Hombre', '2004-05-10', NULL, NULL, '../uploads/imgDefault.webp', 'Psicologia'),
-(3, 'jojo', 'rere', '827ccb0eea8a706c4c34a16891f84e7b', 'doctor3@gmail.com', 'Hombre', '2004-09-20', NULL, NULL, '../uploads/imgDefault.webp', 'Nutricionista'),
-(4, 'Juan Perez', 'Pollo', '827ccb0eea8a706c4c34a16891f84e7b', 'doctor4@gmail.com', 'Hombre', '2004-05-12', NULL, NULL, '../uploads/imgDefault.webp', 'Doctor General');
+INSERT INTO `doctor` (`id`, `nombre`, `apellido`, `pass`, `correo`, `sexo`, `fecha_nac`, `estado`, `titulos`, `fotoPerfil`, `espec`, `changePass`, `baneo`) VALUES
+(1, 'loalso', 'Montecino', '827ccb0eea8a706c4c34a16891f84e7b', 'doctor@gmail.com', 'Hombre', '2004-05-05', 2, 'Fanatico del pene', '../uploads/doctor/1/doctorchapatin.jpg', 'Doctor General', 1, 0),
+(2, 'Fernando Josue', 'Lara', 'e10adc3949ba59abbe56e057f20f883e', 'doctor2@gmail.com', 'Hombre', '2004-05-10', 0, NULL, '../uploads/imgDefault.webp', 'Psicologia', 1, 0),
+(3, 'jojo', 'rere', '827ccb0eea8a706c4c34a16891f84e7b', 'doctor3@gmail.com', 'Hombre', '2004-09-20', NULL, NULL, '../uploads/imgDefault.webp', 'Nutricionista', 0, 0),
+(4, 'Juan Perez', 'Pollo', '827ccb0eea8a706c4c34a16891f84e7b', 'doctor4@gmail.com', 'Hombre', '2004-05-12', NULL, NULL, '../uploads/imgDefault.webp', 'Doctor General', 0, 0),
+(5, 'Víctor Eduardo', 'Reyna Montecino', '7f148970645c7a2d510cc8da348bd3a6', 'veduardo239@gmail.com', 'Hombre', '2000-12-12', NULL, NULL, '../uploads/imgDefault.webp', 'Doctor General', 0, 0),
+(7, 'Víctor Eduardo', 'Reyna Montecino', 'cfe1fbc279b25c8a545a8a5dfb9bcaa5', 'victorgamer1030@gmail.com', 'Hombre', '2000-11-27', NULL, NULL, '../uploads/imgDefault.webp', 'Doctor General', 0, 0),
+(12, 'chepe', 'toño', '25f9e794323b453885f5181f1b624d0b', 'pimentel202012@gmail.com', 'Hombre', '2000-12-21', NULL, NULL, '../uploads/imgDefault.webp', 'Psicologia', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -181,6 +181,31 @@ INSERT INTO `expediente` (`id`, `peso`, `estatura`, `sangre`, `alergia`, `psico`
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `historial`
+--
+
+CREATE TABLE `historial` (
+  `id` int(11) NOT NULL,
+  `medico` varchar(255) DEFAULT NULL,
+  `paciente` varchar(255) DEFAULT NULL,
+  `razon` varchar(255) DEFAULT NULL,
+  `descrip` varchar(255) DEFAULT NULL,
+  `receta` varchar(255) DEFAULT NULL,
+  `fecha` varchar(255) DEFAULT NULL,
+  `idC` int(11) DEFAULT NULL,
+  `idDoc` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `historial`
+--
+
+INSERT INTO `historial` (`id`, `medico`, `paciente`, `razon`, `descrip`, `receta`, `fecha`, `idC`, `idDoc`) VALUES
+(2, 'loalso', 'Víctor', 'le dio sida', 'fewsfsad', 'xd', '08/09/2022', 11, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `mensaje`
 --
 
@@ -199,23 +224,36 @@ CREATE TABLE `mensaje` (
 --
 
 INSERT INTO `mensaje` (`id`, `usuario`, `msg`, `idDoctor`, `idCliente`, `tipo`, `estado`) VALUES
-(1, 'PEPE', 'viktor puto', 2, 3, 0, 'cliente'),
-(2, 'PEPE', 'viktor sos bien qlero de mierda', 2, 3, 0, 'cliente'),
-(3, 'Víctor ', 'El paciente solicita una video llamada', 11, 1, 0, 'Cliente'),
-(4, 'Víctor ', 'asdasdasdasd', 11, 1, 0, 'Cliente'),
-(5, 'Víctor Eduardo', 'asdasdsadasd', 1, 1, 1, 'Doctor'),
-(6, 'Víctor Eduardo', 'sadasdasd', 1, 1, 1, 'Doctor'),
-(7, 'Víctor Eduardo', 'omagosh', 0, 1, 0, 'Doctor'),
-(8, 'Víctor Eduardo', 'asdasdsad', 0, 1, 1, 'Doctor'),
-(9, 'Víctor Eduardo', 'dfafasfasfa', 1, 1, 1, 'Doctor'),
-(10, 'Víctor Eduardo', 'asdasdsada', 11, 1, 1, 'Doctor'),
-(11, 'Víctor Eduardo', 'dsadad', 11, 1, 1, 'Doctor'),
-(12, 'Víctor Eduardo', 'arroz', 11, 1, 1, 'Doctor'),
-(13, 'Víctor ', 'El paciente solicita una video llamada', 11, 0, 0, 'Cliente'),
-(14, 'Víctor Eduardo', 'asdasdsadsadsad', 11, 1, 1, 'Doctor'),
-(15, 'Víctor Eduardo', 'sadsadsad', 11, 1, 1, 'Doctor'),
-(16, 'Víctor ', 'El paciente solicita una video llamada', 11, 1, 0, 'Cliente'),
-(17, 'Víctor ', 'El paciente solicita una video llamada', 11, 1, 0, 'Cliente');
+(48, 'Víctor Eduardo', 'dasdasda', 1, 0, 1, 'Doctor'),
+(49, 'Víctor Eduardo', 'dasdasd', 1, 0, 1, 'Doctor'),
+(53, 'Víctor ', 'El paciente solicita una video llamada', 2, 11, 0, 'Cliente'),
+(54, 'Víctor ', 'pene', 2, 11, 0, 'Cliente'),
+(55, 'jojo', 'sadadasdad', 3, 0, 1, 'Doctor'),
+(56, 'jojo', 'asdasdasd', 3, 11, 1, 'Doctor'),
+(124, 'Víctor ', 'hola mami', 1, 11, 0, 'Cliente'),
+(125, 'loalso', 'hola bebe', 1, 11, 1, 'Doctor');
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `reportes`
+--
+
+CREATE TABLE `reportes` (
+  `id` int(11) NOT NULL,
+  `descripcion` varchar(500) NOT NULL,
+  `reportante` varchar(100) NOT NULL,
+  `reportado` varchar(100) NOT NULL,
+  `rolReportado` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `reportes`
+--
+
+INSERT INTO `reportes` (`id`, `descripcion`, `reportante`, `reportado`, `rolReportado`) VALUES
+(6, 'asdasdsadad', 'Víctor  Reyna', 'Víctor Eduardo Montecino', 'Doctor'),
+(7, 'Me hablo feo el maricon\r\n', 'Víctor Eduardo Montecino', 'Víctor  Reyna', 'Paciente');
 
 --
 -- Índices para tablas volcadas
@@ -260,9 +298,23 @@ ALTER TABLE `expediente`
   ADD KEY `id_cliente` (`id_cliente`);
 
 --
+-- Indices de la tabla `historial`
+--
+ALTER TABLE `historial`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `idC` (`idC`),
+  ADD KEY `idDoc` (`idDoc`);
+
+--
 -- Indices de la tabla `mensaje`
 --
 ALTER TABLE `mensaje`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `reportes`
+--
+ALTER TABLE `reportes`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -279,25 +331,25 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT de la tabla `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `consulta`
 --
 ALTER TABLE `consulta`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `doctor`
 --
 ALTER TABLE `doctor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `expediente`
@@ -306,10 +358,22 @@ ALTER TABLE `expediente`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
+-- AUTO_INCREMENT de la tabla `historial`
+--
+ALTER TABLE `historial`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `mensaje`
 --
 ALTER TABLE `mensaje`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+
+--
+-- AUTO_INCREMENT de la tabla `reportes`
+--
+ALTER TABLE `reportes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
