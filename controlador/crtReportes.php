@@ -15,16 +15,25 @@ $descripcion = isset($_POST['descripcion']) ? $_POST['descripcion'] : "";
 $category = isset($_POST['category']) ? $_POST['category'] : "";
 $idReportado = isset($_POST['idReportado']) ? $_POST['idReportado'] : "";
 $idReportante = isset($_POST['idReportante']) ? $_POST['idReportante'] : "";
+$vista = isset($_POST['vistas']) ? $_POST['vistas'] : "";
 
 
 $report->setReporte($descripcion,$reportante,$nombreReportado,$rol,$idReportante,$idReportado);
 $report->subirReporte();
 
 if($rol=="Doctor"){
-    header("location:../vistas/doctoresConsul.php?category=".$category);
-    
+    if($vista =="chat"){
+      header("location:../vistas/chat.php?idDoc=".$idReportado."&idC=".$idReportante);
+    }else{
+        header("location:../vistas/doctoresConsul.php?category=".$category);
+    }
+
 }else{
-    header("location:../vistas/aceptarConsultas.php");
+    if($vista =="chat"){
+        header("location:../vistas/chat.php");
+    }else{
+        header("location:../vistas/aceptarConsultas.php");
+    }
 }
 
 
