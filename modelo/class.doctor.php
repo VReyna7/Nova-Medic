@@ -331,6 +331,22 @@ class Doctor
 		return $datos["changePass"];
 	}
 
+    public function setHistorial($id)
+    {
+        $dbh = new Conexion;
+        $conexion = $dbh->get_conexion();
+        $sql = 'Select * from historial where idC=:id';
+        $stmt = $conexion->prepare($sql);
+        $stmt->bindParam(":id", $id);
+        if (!$stmt) {
+            throw new Exception("Error. Hubo un fallo en la base de datos");
+        } else {
+            $stmt->execute();
+            $datauser = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $datauser;
+        }
+    }
+
     public function modificarContra($id,$pass,$changePass){
 		$conexion = new Conexion();
 		$dbh = $conexion->get_conexion();

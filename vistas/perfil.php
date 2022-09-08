@@ -10,7 +10,9 @@
   <script src="../js/scrollreveal.js"></script>
   <script src="../js/editarPerfil.js"></script>
   <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/estado.css?v=<?php echo time(); ?>">
   <title>Perfil</title>
+
   <link rel="icon" href="../img/favicon.ico">
   <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
   <?php
@@ -26,9 +28,11 @@ $accion = isset($_GET['accion']) ? $_GET['accion'] : "";
 $idClient = isset($_GET['idClient']) ? $_GET['idClient'] : "";
 $rol = isset($_GET['rol']) ? $_GET['rol'] : "";
 $category = isset($_GET['category']) ? $_GET['category'] : "";
+$vista = isset($_GET['vista']) ? $_GET['vista'] : "";
 
 
 $userSession = new Sesion();
+
 if (isset($_SESSION['doctor'])) {
   $user = new Doctor();
   $user->setDoctor($userSession->getDoctorActual());
@@ -66,21 +70,26 @@ else
         <?php
 if ($doctor) {
   echo '<ul class="navbar-nav mx-auto">
-              <li class="nav-item">
-                <a class="nav-link  fs-6 navbar-brand" aria-current="page" href="indexDoctor.php" >INICIO</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link fs-6 navbar-brand" href="../vistas/aceptarConsultas.php" >INICIAR CONSULTA</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link fs-6 navbar-brand" href="chat.php">CHAT</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link fs-6 navbar-brand active" href="../vistas/perfil.php">PERFIL</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link fs-6 navbar-brand" href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>
-              </li>
+      <li class="nav-item">
+      <a class="nav-link  fs-6 navbar-brand" aria-current="page" href="#" >INICIO</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link fs-6 navbar-brand" href="aceptarConsultas.php" >ACEPTAR CONSULTAS</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link fs-6 navbar-brand" href="chat.php">CHAT</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link fs-6  active navbar-brand" href="perfil.php">PERFIL</a>
+    </li>
+    <li class="nav-item">
+      <button class="nav-link fs-6 navbar-brand" id="disponible" onclick="disponible()">Disponible</button>
+      <button class="nav-link fs-6 navbar-brand" id="ocupado" onclick="ocupado()">Ocupado</button>
+    <input type="hidden" id="selector" value="">
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fs-6 navbar-brand" href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>
+        </li>
             </ul>';
 }
 else if ($cliente) {
@@ -159,7 +168,7 @@ if ($accion == "Visualizar") {
     echo '<div class="fotoPerfil">
               <img src="' . $doc->getFoto() . '">';
     if ($cliente) {
-      echo '<a href=" ../vistas/reportesCreacion.php?nombre=' . $doc->getNombre() . '&apellido=', $doc->getApellido() . '&rol=Doctor&category=' . $category .'&idReportante='.$userSession->getClienteActual().'&idReportado='.$doc->getId() .'"><input type="button" class="btn buttonReport btn-danger" value="Reportar"></a>';
+      echo '<a href=" ../vistas/reportesCreacion.php?nombre=' . $doc->getNombre() . '&apellido=', $doc->getApellido() . '&rol=Doctor&idReportante='.$userSession->getClienteActual().'&idReportado='.$doc->getId() .'&vista='.$vista.'&category='.$category.'"><input type="button" class="btn buttonReport btn-danger" value="Reportar"></a>';
     }
     echo '</div>';
     echo '<div class="datosUsuario">
@@ -185,9 +194,9 @@ if ($accion == "Visualizar") {
     echo '<div class="fotoPerfil">
               <img src="' . $client->getFoto() . '">';
     if ($doctor) {
-      echo '<a href=" ../vistas/reportesCreacion.php?nombre=' . $client->getNombre() . '&apellido=', $client->getApellido() . '&rol=Paciente&idReportante='.$userSession->getClienteActual().'&idReportado='.$client->getId() .'"><button type="button" class="btn buttonReport btn-danger">Reportar</button></a>';
+      echo '<a href=" ../vistas/reportesCreacion.php?nombre=' . $client->getNombre() . '&apellido=', $client->getApellido() . '&rol=Paciente&idReportante='.$userSession->getDoctorActual().'&idReportado='.$client->getId().'&vista='.$vista.'"><button type="button" class="btn buttonReport btn-danger">Reportar</button></a>';
       echo '<a href=" ../vistas/expediente.php"><button type="button" class="btn btn-danger">Expediente Medico </button></a>';
-      echo '<a href="#"><button type="button" class="btn btn-danger">Historial Medico</button></a>';
+      echo '<a href="../vistas/historialMedico.html"><button type="button" class="btn btn-danger">Historial Medico</button></a>';
     }
     echo '</div>';
     echo '<div class="datosUsuario">

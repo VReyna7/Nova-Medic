@@ -21,7 +21,7 @@
 
   $idDoc = isset($_GET['idDoc']) ? $_GET['idDoc'] : "";
   $idC = isset($_GET['idC']) ? $_GET['idC'] : "";
-  //error_reporting(0);
+  error_reporting(0);
   $chat = new Chat();
   $userSession = new Sesion();
 
@@ -102,11 +102,14 @@
     <div class="btn-menu">
       <label for="btn-menu">➢</label>
       <?php
-      if ($doctor) {
+      if ($doctor && !empty($idC) && !empty($idDoc)) {
         echo '<a href="../vistas/registroHistorialMedico.php?idDoc='.$idDoc.'&idC='.$idC.'"><input type="submit" value="Crear Historial" name="agregarExpediente" class="Add" id="agregarExpe"></a>';
+        echo '<a href="historialMedico.php?idC='.$idC.'"><input type="submit" value="Ver Historial" name="agregarExpediente" class="Add" id="agregarExpe"></a>';
+        echo '<a href="perfil.php?idClient='.$idC.'&accion=Visualizar&rol=Cliente&vista=Chat"><input type="submit" value="Ver Perfil" name="agregarExpediente" class="Add" id="agregarExpe"></a>';
         echo '<a href="../controlador/crtFinalizarConsult.php?idDoc=' . $idDoc . '&dC=' . $idC . '"><input type="submit" value="Finalizar consulta" name="agregarExpediente" class="Add" id="agregarExpe"></a>';
+      }else if($cliente && !empty($idC) && !empty($idDoc)){
+        echo '<a href="perfil.php?idDoc='.$idDoc.'&accion=Visualizar&rol=Doctor&vista=chat"><input type="submit" value="Ver Perfil" name="agregarExpediente" class="Add" id="agregarExpe"></a>';
       }
-
       ?>
 
     </div>
@@ -200,12 +203,10 @@
         <form method="POST" class="enviarMensaje">
           <?php
           if (isset($_SESSION['cliente'])) {
-
+  
             if (!empty($idC) && !empty($idDoc)) {
-              if (!empty($idC) && !empty($idDoc)) {
                 echo '<button type="button" id="btnCall" name="solicitarlCall"><img src="../img/call.png" class="imgbutton" /></button>
             <input type="hidden" name="id" class="id" value="' . $idDoc . '">';
-              }
             }
           } else if (isset($_SESSION['doctor'])) {
             if (!empty($idC) && !empty($idDoc)) {

@@ -171,8 +171,10 @@ class Cliente
         } else {
             $stmt->execute();
             $datauser = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            return $datauser;
         }
     }
+
 
 
     /*public function veriFoto($name, $ext)

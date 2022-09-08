@@ -1,39 +1,40 @@
-<?php session_start()?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/regHistorialMedico.css">
-    <link rel="stylesheet" href="../css/estado.css?v=<?php echo time(); ?>">
-    <script src="../js/scrollreveal.js"></script>
+    <link rel="stylesheet" href="../css/informeConsultas.css">
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <title>Document</title>
     <link rel="icon" href="../img/favicon.ico">
-	<?php
-	require_once("../modelo/class.conexion.php");
-	require_once("../modelo/class.doctor.php");
-	require_once("../modelo/class.cliente.php");
-	require_once("../modelo/class.sesion.php");
+    <script src="../bootstrap/js/bootstrap.bundle.min.js"></script>
+    <title>Historial Médico</title>
+    
+    <?php
+	  require_once("../modelo/class.conexion.php");
+	  require_once("../modelo/class.cliente.php");
+	  require_once("../modelo/class.doctor.php");
+	  require_once("../modelo/class.sesion.php");
 
-	$doc = new Doctor;
-	$clnt = new Cliente;
-	$sesion = new Sesion;
+    $idC = isset($_GET['idC'])?$_GET['idC']:"";
 
-	if(isset($_SESSION['doctor'])){
-		$idDoc = isset($_GET['idDoc'])?$_GET['idDoc']:"";
-		$idC = isset($_GET['idC'])?$_GET['idC']:"";
-		$doc->setDoctor($idDoc);
-		$clnt->setCliente($idC);
-	}else{
-		header("location: ../vistas/iniciosesion.php");
-	}
+    //error_reporting(0);
 
+	  $userSession = new Sesion();
+	    if(isset($_SESSION['doctor'])){
+		  $user = new Doctor();
+	  	$user->setDoctor($userSession->getDoctorActual());
+      $consulta = $user->AceptarConsul($userSession->getDoctorActual());
+
+	    }else{
+		  header("location: ../vistas/iniciosesion.php");
+      } 
+      
 	?>
 </head>
 <body>
-<nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
           <img src="../img/Logo 2 real.png" width="90" height="90" class="d-inline-block align-top" alt="">
           <a class="navbar-brand fs-4" href="#">NOVA MEDIC</a>
@@ -52,55 +53,43 @@
                   <a class="nav-link fs-6 navbar-brand" href="chat.php">CHAT</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link fs-6 navbar-brand " href="../vistas/perfil.php">PERFIL</a>
+                  <a class="nav-link fs-6 navbar-brand active" href="../vistas/perfil.php">PERFIL</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link fs-6 navbar-brand " href="<?php echo 'chat.php?idC='.$idC.'&idDoc='.$idDoc; ?>">REGRESAR</a>
-                </li>
-                <li class="nav-item">
-                <button class="nav-link fs-6 navbar-brand" id="disponible" onclick="disponible()">Disponible</button>
-                <button class="nav-link fs-6 navbar-brand" id="ocupado" onclick="ocupado()">Ocupado</button>
-              </li>
-                <li class="nav-item">
-                  <a class="nav-link fs-6 navbar-brand" href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>
+                  <a class="nav-link fs-6 navbar-brand " href="../controlador/crtCerrarSesion.php">CERRAR SESION</a>
                 </li>
               </ul>
         </div>
     </div>
   </nav>
-  <div class="div-form">
-    <form class="colorito" id="colorito" method="POST" action="../controlador/crtCrearHistorial.php">
-      <label for="colorito" class="text-white fs-5">HISTORIAL MEDICO</label>
-		<?php
-		if(isset($error)){
-			echo "<p>".$error."</p>";
-		}
-		?>
-      <div class="form-group text-white">
-        <label for="exampleInputEmail1">Médico</label>
-		<input type="text" class="form-control" id="exampleInputEmail1" autocomplete="off" aria-describedby="emailHelp"  name="doctor" value=<?php echo $doc->getNombreCompleto()?> required>
-      </div>
-      <div class="form-group text-white">
-        <label for="exampleInputPassword1">Paciente</label>
-		<input type="text" class="form-control" id="exampleInputPassword1" autocomplete="off" name="paciente" value=<?php echo $clnt->getNombreCompleto()?> required>
-      </div>
-      <div class="form-group text-white">
-        <label for="exampleInputPassword1">Razon de Consulta:</label>
-        <input type="text" class="form-control" id="exampleInputPassword1" autocomplete="off"  name="razon" required>
-      </div>
-      <div class="form-group text-white">
-        <label for="exampleInputPassword1">Descripción de Consulta</label>
-        <textarea type="text" class="form-control" id="exampleInputPassword1" autocomplete="off"  name="descrip" required></textarea>
-      </div>
-      <div class="form-group text-white">
-        <label for="exampleInputPassword1">Receta Médica</label>
-        <textarea type="text" class="form-control" id="exampleInputPassword1" autocomplete="off"  name="receta" required></textarea>
-      </div>
-	  <input type="hidden" value=<?php echo $idC?> name="idC">
-		<input type="hidden" value=<?php echo $idDoc?> name="idDoc">
-      	<input type="submit" class="btn btn-primary mx-auto" value="Añadir">
-    </form>
- </div>
+  <div class="contenedor">
+    <h1>Historial Medico</h1>
+          <?php 
+               $historial = $user->setHistorial($idC);
+               foreach($historial as $mostrar){
+                echo '<div class="histo"> 
+                <div class="encabezado" id="encabezado">
+                <h4>Razón de consulta: '.$mostrar["razon"].'</h4>
+                <h4>Fecha: '.$mostrar["fecha"].'</h4>
+             </div>';
+                echo '  <div class="contenido" id="contenido">
+                <h4>Médico: '.$mostrar["medico"].'</h4>
+                <h4>Paciente: '.$mostrar["paciente"].'</h4>
+                <section class="desCon">
+                    <h4>Descripción de consulta:</h4>
+                    <p>'.$mostrar["descrip"].'</p>
+                </section>
+                <section class="receta">
+                    <h4>Receta:</h4>
+                    <p>'.$mostrar["receta"].'</p>
+                </section>
+            </div>
+        </div>';
+                 }
+          ?>   
+    </div>
+    
+
     <!-- Footer -->
   <footer class="text-center text-lg-start bg-primary text-white ">
     <!-- Section: Social media -->
@@ -215,8 +204,9 @@
   <!-- Footer -->
   
   <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script src="../js/estado.js"></script>
+
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
 </body>
 </html>
