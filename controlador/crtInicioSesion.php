@@ -43,6 +43,7 @@ if (isset($_SESSION['cliente'])) {
 		echo $doc->getBaneo($doc->getId());
     }else{
         $sesion->setDoctorActual($doc->getId());
+		$doc->cambiarEstado(1);
         $verifiInnicioSSesion = $doc->getchangePass($doc->getId());
     }
     
