@@ -237,8 +237,6 @@ class Doctor
         return $doctores;
     }
 
-
-
     public function sesionDoctor($user)
     {
         $dbh = new Conexion;
@@ -346,6 +344,26 @@ class Doctor
         } else {
             $stmt->execute();
         }
+	}
+
+	public function crearHistorial($medico,$paciente,$razon,$descrip,$receta,$fecha,$idC,$idDoc){
+		$dbh = new Conexion;
+		$conexion = $dbh->get_conexion();
+		$sql = 'insert into historial (medico, paciente, razon,descrip,receta,fecha,idC,idDoc) values (:medico,:paciente,:razon,:descrip,:receta,:fecha,:idC,:idDoc)';	
+		$stmt = $conexion->prepare($sql);
+		$stmt->bindParam(":medico",$medico);
+		$stmt->bindParam(":paciente",$paciente);
+		$stmt->bindParam(":razon",$razon);
+		$stmt->bindParam(":descrip",$descrip);
+		$stmt->bindParam(":receta",$receta);
+		$stmt->bindParam(":fecha",$fecha);
+		$stmt->bindParam(":idC",$idC);
+		$stmt->bindParam(":idDoc",$idDoc);
+		if(!$stmt){
+			throw new Exception("Error con la base de datos");
+		}else{
+			$stmt->execute();
+		}
 	}
 
     //funciones get
