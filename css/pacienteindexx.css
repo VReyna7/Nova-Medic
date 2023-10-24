@@ -1,0 +1,326 @@
+/*Fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Barriecito|Quicksand&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+/* ++++++ MENU ++++++*/
+.navbar {
+    background-color: rgba(0, 0, 0) !important;
+    font-family: 'Roboto', sans-serif !important;
+}
+
+#navbarNav ul li a {
+    font-weight: 600;
+    color: #ffffff;
+    transition: 0.6s;
+    letter-spacing: 0.4px;
+}
+
+a {
+    position: relative;
+}
+
+a::after {
+    content: "";
+    position: absolute;
+    background-color: rgb(255, 0, 0);
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -6px;
+    transition: 0.3s;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+#navbarNav ul li .active {
+    color: rgb(255, 0, 0);
+}
+
+#navbarNav ul li a:hover {
+    color: rgb(250, 122, 122);
+}
+
+/* ++++++ CONTENT ++++++ */
+.content {
+    background-color: black;
+    height: 100vh;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.ct-image {
+    /* The image used */
+    background-image: url("../img/backgrounds.jpg");
+
+    /* Add the blur effect */
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.ct-text {
+    background-color: rgb(1, 24, 51);
+    /* Fallback color */
+    background-color: rgba(22, 67, 94, 0.4);
+    /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    border-radius: 1rem;
+    position: absolute;
+    top: 50vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 60%;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.content2{
+    position: relative;
+    height: 80vh;
+    padding-left: 2rem;
+    text-align: center;
+    vertical-align: middle;
+    box-shadow: 4px 8px 9px rgb(0, 0, 0);
+}
+
+.perfilContent{
+    position: absolute;
+    top: 25%;
+    text-align:justify;
+    width: 50%;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 1.5rem;
+}
+
+.perfilContent h1{
+    font-size: 3rem;
+    font-weight:900;
+}
+
+.perfilContent p{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+}
+
+.perfilImage{
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    text-align: center;
+    width: 50%;
+    padding: 2.2rem;
+}
+
+.perfilImg{
+    height: 30vh;
+    width: 50vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border-radius: 1rem;
+    box-shadow: 8px 10px 15px 0px black;
+}
+
+.content3 {
+    position: relative;
+    background-color: black;
+    height: 80vh;
+}
+
+.chat-image{
+    /* The image used */
+    background-image: url("../IMG/content.png");
+
+    /* Add the blur effect */
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+
+    /* Full height */
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.chat-text{
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    border-radius: 1rem;
+    position: absolute;
+    top: 40vh;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 60%;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Quicksand', sans-serif;
+}
+
+.consult{
+    position: relative;
+    height: 75vh;
+}
+
+.consult h2{
+    font-size: 2.5rem;
+    font-weight: 600;
+}
+
+.consult .col{
+    margin-top: 20vh;
+    margin-left: 1.5vw;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    box-shadow: 4px 8px 9px rgb(0, 0, 0);
+}
+
+/* DOCTOR */
+.content3_d{
+    position: relative;
+    background-image: linear-gradient(to right, rgba(180, 1, 70, 0.384), rgba(150, 0, 0, 0.336)), url("../img/backgroundwparallax.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    height: 80vh;
+    color: #ffffff;
+    box-shadow: 4px 8px 9px rgb(0, 0, 0);
+}
+
+.perfilContentd{
+    position: absolute;
+    top: 35%;
+    text-align:right;
+    width: 50%;
+    left: 50%;
+    padding-right: 2rem;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 1.5rem;
+}
+
+.perfilContentd h1{
+    font-size: 3rem;
+    font-weight:900;
+}
+
+.perfilContentd p{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+}
+
+.perfilImaged{
+    position: absolute;
+    top: 25%;
+    text-align: center;
+    width: 50%;
+    padding: 2.2rem;
+}
+
+.perfilImgd{
+    height: 30vh;
+    width: 50vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border-radius: 1rem;
+    box-shadow: 8px 10px 15px 0px black;
+}
+
+.content4_d{
+    position: relative;
+    height: 80vh;
+    color: #000000;
+}
+
+.content4_d .perfilContentd{
+    position: absolute;
+    top: 35%;
+    left: 25%;
+    text-align:center;
+    width: 50%;
+    padding-right: 2rem;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 1.5rem;
+}
+
+.content4_d .perfilContentd h1{
+    font-size: 3rem;
+    font-weight:900;
+}
+
+.content4_d .perfilContentd p{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+}
+
+/* ADMIN */
+.content2a{
+    position: relative;
+    height: 80vh;
+    padding-left: 2rem;
+    text-align: center;
+    vertical-align: middle;
+    box-shadow: 4px 8px 9px rgb(0, 0, 0);
+}
+
+.perfilContenta{
+    position: absolute;
+    top: 25%;
+    text-align:justify;
+    width: 50%;
+    font-family: 'Roboto', sans-serif !important;
+    font-size: 1.5rem;
+}
+
+.perfilContenta h1{
+    font-size: 3rem;
+    font-weight:900;
+}
+
+.perfilContenta p{
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 400;
+}
+
+.perfilImagea{
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    text-align: center;
+    width: 50%;
+    padding: 2.2rem;
+}
+
+.perfilImga{
+    height: 30vh;
+    width: 50vh;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border-radius: 1rem;
+    box-shadow: 8px 10px 15px 0px black;
+}

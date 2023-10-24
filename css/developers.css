@@ -1,0 +1,180 @@
+/*Fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Barriecito|Quicksand&display=swap');
+
+/* GLOBAL STYLE */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+body {
+    background-color: #ffffff;
+}
+
+
+/* ++++++ MENU ++++++*/
+.navbar {
+    background-color: rgba(0, 0, 0) !important;
+}
+
+#navbarNav ul li a {
+    font-weight: 600;
+    color: #ffffff;
+    transition: 0.6s;
+    letter-spacing: 0.4px;
+}
+
+a {
+    position: relative;
+}
+
+a::after {
+    content: "";
+    position: absolute;
+    background-color: rgb(255, 0, 0);
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -6px;
+    transition: 0.3s;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+#navbarNav ul li .active {
+    color: rgb(255, 0, 0);
+}
+
+#navbarNav ul li a:hover {
+    color: rgb(250, 122, 122);
+}
+
+/* SECTION DEVELOPERS */
+.list {
+    width: 20rem;
+    height: 20rem;
+    background: #e5e5e5;
+    display: inline-block;
+    text-align: center;
+    border-radius: 5%;
+    position: relative;
+    overflow: hidden;
+    margin: 7rem 6rem 0 2rem;
+    cursor: pointer;
+}
+
+#menu {
+    position: relative;
+    width: 90%;
+    height: 26rem;
+    top: 1rem;
+    background-color: rgb(241, 241, 241);
+    margin: 0 7rem 2rem 5rem;
+    border-radius: 5rem;
+}
+
+#cards {
+    width: 80%;
+    overflow: hidden;
+    white-space: nowrap;
+    display: block;
+    list-style: none;
+    padding: 0;
+    position: relative;
+    left: 10%;
+    bottom: 60px;
+}
+
+#box1{
+    background-image: url("../img/Fernando.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+#box2{
+    background-image: url("../img/cristian.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+#box3{
+    background-image: url("../img/vik.jpeg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+#box4{
+    background-image: url("../img/henry.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+#box5{
+    background-image: url("../img/eduardo.jpg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+.list p {
+    width: 300px hidden;
+}
+
+#prev {
+    display: inline-block;
+    position: absolute;
+    left: 2%;
+    cursor: pointer;
+    font-size: 60px;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+}
+
+#next {
+    display: inline-block;
+    position: absolute;
+    right: 2%;
+    cursor: pointer;
+    font-size: 60px;
+    z-index: 1;
+    width: 50px;
+    height: 50px;
+}
+
+#prev,
+#next {
+    margin-top: 11rem;
+    color: #aaaaaa;
+}
+
+@media (max-width: 1026px) {
+    #menu {
+        width: 95%;
+        height: 22rem;
+        top: 0.5rem;
+        margin: 0 2% 0 2%;
+    }
+
+    .list {
+        width: 17rem;
+        height: 17rem;
+        background: #e5e5e5;
+        display: inline-block;
+        text-align: center;
+        border-radius: 5%;
+        position: relative;
+        overflow: hidden;
+        margin: 6rem 1rem 0 1rem;
+    }
+
+    #prev,
+    #next {
+        margin-top: 9.5rem;
+    }
+}

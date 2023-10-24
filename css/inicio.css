@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Barriecito|Quicksand&display=swap');
+
+/* GLOBAL STYLE */
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+body {
+    background-color: #8f8f8f;
+}
+
+
+
+/* ++++++ MENU ++++++*/
+.navbar {
+    background-color: rgba(0, 0, 0) !important;
+}
+
+#navbarNav ul li a {
+    font-weight: 600;
+    color: #ffffff;
+    transition: 0.6s;
+    letter-spacing: 0.4px;
+}
+
+a {
+    position: relative;
+}
+
+a::after {
+    content: "";
+    position: absolute;
+    background-color: rgb(255, 0, 0);
+    height: 3px;
+    width: 0;
+    left: 0;
+    bottom: -6px;
+    transition: 0.3s;
+}
+
+a:hover::after {
+    width: 100%;
+}
+
+#navbarNav ul li .active {
+    color: rgb(255, 0, 0);
+}
+
+#navbarNav ul li a:hover {
+    color: rgb(250, 122, 122);
+}
+
+
+
+/* ++++++ CARDS ++++++ */
+.Cards{
+    background-color: #fff;
+    z-index: 2 !important;
+    box-shadow: 2px 4px 2px 1px rgba(0, 0, 0, 0.329);
+}
+.wrapper h1 {
+    font-family: 'Barriecito', cursive;
+    text-align: left;
+}
+
+.wrapper h3 {
+    font-family: 'Quicksand', sans-serif;
+    text-align: left;
+    margin-top: -20px;
+}
+
+.wrapper {
+    border-radius: 5px;
+    display: inline-block;
+    background: #fff;
+    position: relative;
+    margin: 0 100px;
+    width: 20vw;
+    height: auto;
+    overflow: hidden;
+    box-shadow: 0px 10px 25px #999;
+    bottom: 10vh;
+    left: 5%;
+    box-shadow: 4px 8px 9px rgb(0, 0, 0);
+    z-index: 2;
+}
+
+.pic1 {
+    height: 180px;
+    background: url('../IMG/Gen.jpg') no-repeat;
+    background-size: 400px;
+    background-position: center;
+    padding: 0 0 20px 0;
+    margin-bottom: 35px;
+    transition: 0.6s;
+}
+.pic2 {
+    height: 180px;
+    background: url('../IMG/Psico.jpg') no-repeat;
+    background-size: 400px;
+    background-position: center;
+    padding: 0 0 20px 0;
+    margin-bottom: 35px;
+    transition: 0.6s;
+}
+.pic3 {
+    height: 180px;
+    background: url('../IMG/Nutrition.jpg') no-repeat;
+    background-size: 400px;
+    background-position: center;
+    padding: 0 0 20px 0;
+    margin-bottom: 35px;
+    transition: 0.6s;
+}
+.wrapper:hover .pic1, .wrapper:hover .pic2 , .wrapper:hover .pic3, .wrapper:focus .pic1, .wrapper:focus .pic2, .wrapper:focus .pic3 {
+    transform: scale(1.2);
+}
+
+p.header {
+    padding: 0 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-style: italic;
+}
+
+p.content {
+    padding: 0 20px;
+    font-size: 1rem;
+    text-align: justify;
+}
+
+/* ++++++ SECCION OBJETIVOS W/ PARALLAX EFFECT ++++++ */
+.parallax {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 40px;
+    font-weight: bold;
+    background-color: black;
+    z-index: 1;
+}
+
+.parallax:nth-child(1) {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url("../IMG/parallaxBG.jpg");
+    background-size: cover;
+    width:100%;
+}
+
+.parallax .contentText{
+    padding: 2rem;
+    width: 75%;
+    color: #fff;
+    font-family: 'Barriecito', cursive;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+}
+
+.parallax .contentText h1{
+    font-weight: 600;
+}
+
+.contentText p{
+    font-weight: lighter;
+    font-size: 1.5rem;
+}
+
+
+
+/* ++++++ SECCION OBJETIVOS ++++++ */
+.Objetivos{
+    padding: 2rem;
+    background-color: #fff;
+    color: #000;
+    font-family: 'Barriecito', cursive;
+}
+
+.objectives h1, h2{
+    font-weight: 600;
+    padding-bottom: 2rem;
+}
+
+.objectives .content .col{
+    padding: 1rem;
+    margin-left: 1.5rem;
+    box-shadow: 4px 8px 9px rgb(0, 0, 0);
+}
+
+.objectives .content .col p{
+    padding: 1rem;
+    font-size: 1.5rem;
+}
+
+/* ++++++ FOOTER ++++++ */
+footer a{
+    text-decoration: none !important;
+}

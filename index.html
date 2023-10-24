@@ -4,229 +4,256 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/index.css">
-    <script src="js/scrollreveal.js"></script>
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <title>Nova Medic</title>
-    <link rel="icon" href="../img/favicon.ico">
+    <!-- FONTAWESOME FONTS & ICONS -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+
+    <!-- BOOTSTRAP ICONS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- BOOTSTRAP 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- JS BOOTSTRAP -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+
+    <!-- STYLESHEET -->
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/inicio.css">
+    <link rel="icon" href="img/favicon.ico">
 </head>
 <body>
-    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
       <div class="container">
           <img src="img/My project.png" width="90" height="90" class="d-inline-block align-top" alt="">
-          <a class="navbar-brand fs-4" href="#" >NOVA MEDIC</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+          <a class="navbar-brand fs-4" href="#">NOVA MEDIC</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse " id="navbarNav">
-            <ul class="navbar-nav mx-auto">
-              <li class="nav-item">
-                <a class="nav-link active fs-6 navbar-brand" aria-current="page" href="#fondo" >INICIO</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link fs-6 navbar-brand" href="#objetivos" >OBJETIVOS</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link fs-6 navbar-brand" href="#misiones">MISION</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link fs-6 navbar-brand" href="#creadores">CREADORES</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link fs-6 navbar-brand" href="vistas/contactanos.php">CONTACTANOS</a>
-              </li>
-            </ul>
+              <ul class="navbar-nav mx-auto">
+                  <li class="nav-item">
+                      <a class="nav-link fs-6 navbar-brand active" aria-current="page" href="#fondo">INICIO</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link fs-6 navbar-brand" href="vistas/desarrolladores.html">DESARROLLADORES</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link fs-6 navbar-brand" href="vistas/iniciosesion.php">INICIAR SESION</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link fs-6 navbar-brand" href="vistas/registro.php">REGISTRARSE</a>
+                  </li>
+              </ul>
           </div>
       </div>
-      </nav>
-      <div class="divfondo" id="fondo">
-        <div class="bntsPrinc">
-          <a href="vistas/iniciosesion.php"><button>Iniciar 
-            sesión</button></a>
-          <a href="vistas/registro.php"><button>Registro</button></a>
-      </div>
-      </div>
-      
-      <div class="objetivos" id="objetivos">
-          <img src="img/saludapoyada.jpg" class="imagensita">
-        <div class="objetivo-text">
-          <h3 class="display-5 objetivo-h3">Objetivos</h3>
-          <p class="p-objetivos" class="text-center text-wrap" >Apoyar a mejorar la administración hospitalaria desde las posibilidades que ofrecen 
-            las nuevas tecnologías, basándose en el proyecto que se le conocerá como Nova 
-            Medic. Nova Medic será una página web que utilizará los medios tecnológicos 
-            necesarios para poder acompañar en la administración hospitalaria desde los 
-            campos que sean posibles, como, por ejemplo: El área de nutrición, psicología, 
-            consultas generales. Tomamos estos 3 puntos como base principal y primaria para 
-            el inicio del proyecto por los siguientes motivos.</p>
-            <ol class="objetivos-ol">
-              <li> Las ramas médicas  elegidas pueden ser solucionadas en algunos casos sin
-                  necesidad de un estudio de laboratorio.</li>
-              <li>Casos como la psicología y la nutrición pueden ser tratadas durante sesiones
-                  virtuales, ya sea por chat o por video llamadas, 
-                  Auxiliándonos de página Google Meet
-                  </li>
-              <li> Ramas como la psicología y nutrición podrán tener la posibilidad de empezar a 
-                  ser más utilizadas por las personas al poder ser accedidas de manera más sencillas.</li>
-          </ol>
-          </div> 
-      </div>
+  </nav>
+<section class="Background-Sliders">
+  <div class="sliders container-fluid">
+      <div id="slider">
+          <div class="slides">
+              <img src="img/BG1.jpg" width="100%" style="opacity: 0.6;" />
+          </div>
 
+          <div class="slides">
+              <img src="img/BG2.jpg" width="100%" style="opacity: 0.6;" />
+          </div>
 
-    <div class="Mision" id="misiones">
-       <img src="img/imagen45.jpg" class="imagen-mision">
-         <div class="Mision-text">
-          <h3 class="display-5 Mision-h3">Misión</h3>
-          <p class="p-mision" class="text-center ">No  intentamos ser una tienda online de consultas o venta de 
-            productos médicos. Nova Medic busca ser parte de las posibilidades que las 
-            personas tienen en nuestro país para recibir un diagnostico medico profesional. 
-            Por eso nuestra idea no va por el camino de una empresa privada en ganancias, si 
-            no en una posible ORG sin fines de lucro o una idea para implementar atreves de 
-            los servicios públicos del gobierno.
-            De esta forma nova Medic busca mejorar el sistema hospitalario, no suplantarlo, 
-            Nova Medic busca ser simplemente otra posibilidad más para poder atentos a 
-            nuestra salud apoyados por la tecnología</p>
-        </div>
+          <div class="slides">
+              <img src="img/BG3.jpg" width="100%" style="opacity: 0.6;" />
+          </div>
+
+          <div class="slides">
+              <img src="img/BG4.jpg" width="100%" style="opacity: 0.6;" />
+          </div>
+
+          <div id="dot"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span
+                  class="dot"></span><span class="dot"></span></div>
       </div>
-      
-      <section class="creadores-box" id="creadores">
-        <h3 class="display-5 Creadores-h3">Creadores</h3>
-      <div class="all-creadores">
-        <div class="creadores-cont">
-            <div class="container-creador1"></div>
-            <h3 class="nombre-creador" >Cristian Pineda</h3>
-        </div>
-        <div class="creadores-cont">
-            <div class="container-creador2"></div>
-            <h3 class="nombre-creador">Víctor Reyna</h3>
-        </div>
-        <div class="creadores-cont">
-            <div class="container-creador3"></div>
-            <h3 class="nombre-creador">Angel Rodríguez</h3>
-        </div>
-        <div class="creadores-cont">
-            <div class="container-creador4"></div>
-            <h3 class="nombre-creador">Rodrigo Sosa</h3>
-        </div>
-        <div class="creadores-cont">
-            <div class="container-creador5"></div>
-            <h3 class="nombre-creador">Fernando Torres</h3>
-        </div>
-    </div>
-     </section> 
+  </div>
+</section>
+<section class="Cards">
+  <div class="wrapper">
+      <div class="pic1"></div>
+      <p class="header">
+          Medicina General
+      </p>
+      <p class="content">Se busca que el especialista haga una revisión general o examinación de malestares de los
+          pacientes.
+          <br /><br /> Para brindarle un tratamiento de visión general a sus síntomas o malestares del paciente.
+          <br /><br /> 🩺🥼
+      </p>
+  </div>
+  <div class="wrapper">
+      <div class="pic2"></div>
+      <p class="header">
+          Consulta psicológica
+      </p>
+      <p class="content">Se busca que el especialista en el área de psicología pueda reconocer y escuchar al
+          paciente
+          <br /><br /> Para poder brindarle la mejor tratamiento y métodos para poder mejorar en su vida
+          cotidiana.
+          <br /><br /> 🥼📃
+      </p>
+  </div>
+  <div class="wrapper">
+      <div class="pic3"></div>
+      <p class="header">
+          Consulta Nutricional
+      </p>
+      <p class="content">Se busca que el especialista en el área de nutrición pueda recomendar o planificar al
+          paciente
+          <br /><br /> La mejor nutrición y rutina que pueda ejercer para mejorar su condición de salud.
+          <br /><br /> 🥗🥼
+      </p>
+  </div>
+</section>
+<section class="parallaxSection">
+  <div class="parallax container-fluid" id="parallax">
+      <div class="contentText text-center">
+          <h1>Misión</h1>
+          <p>Nova Medic busca ser parte de las posibilidades que las
+              personas tienen en nuestro país para recibir un diagnostico medico profesional. <br>
+              No intentamos ser una tienda online de consultas o venta de
+              productos médicos.
+              Nova Medic busca ser simplemente otra posibilidad más para poder atender a
+              nuestra salud apoyandónos por la tecnología.</p>
+      </div>
+  </div>
+</section>
+<section class="Objetivos">
+  <div class="objectives container-fluid text-center">
+      <div class="row">
+          <div class="col">
+              <h1>OBJETIVOS</h1>
+          </div>
+      </div>
+      <div class="content row">
+          <div class="col">
+              <h2>A</h2>
+              <p>Las ramas medicas elegidas pueden ser solucionadas en algunos casos sin necesidad de un estudio
+                  de laboratorio.</p>
+          </div>
+          <div class="col">
+              <h2>B</h2>
+              <p>Casos como la psicología y la nutrición pueden ser tratadas durante sesiones virtuales, ya sea
+                  por chat o por videollamadas.</p>
+          </div>
+          <div class="col">
+              <h2>C</h2>
+              <p>Ramas como la psicología y nutrición podrán tener la posibilidad de empezar a ser más utilizadas
+                  por las personas al poder ser accedidas de manera más sencillas.</p>
+          </div>
+      </div>
+  </div>
+</section>
+<footer class="text-center text-lg-start bg-dark text-white footer">
+  <!-- Section: Social media -->
+  <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom text-center">
+  </section>
+  <!-- Section: Social media -->
 
-     <footer class="text-center text-lg-start bg-primary text-white footer">
-      <!-- Section: Social media -->
-      <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom">
-        <!-- Left -->
-        <!-- Left -->
-    
-        <!-- Right -->
-        <div>
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-google"></i>
-          </a>
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-github"></i>
-          </a>
-        </div>
-        <!-- Right -->
-      </section>
-      <!-- Section: Social media -->
-    
-      <!-- Section: Links  -->
-      <section class="">
-        <div class="container text-center text-md-start mt-5">
+  <!-- Section: Links  -->
+  <section class="">
+      <div class="container text-center text-md-start mt-5">
           <!-- Grid row -->
           <div class="row mt-3">
-            <!-- Grid column -->
-            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-              <!-- Content -->
-              <h6 class="text-uppercase fw-bold mb-4">
-                <i class="fas fa-gem me-3"></i>Nova-Medic.
-              </h6>
-              <p>
-                Nosotros somos Nova-medic y queremos darte las Gracias por confiar tu salud en nosotros. Disfruta Nova-Medic
-              </p>
-            </div>
-            <!-- Grid column -->
-    
-            <!-- Grid column -->
-            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-              <!-- Links -->
-              <h6 class="text-uppercase fw-bold mb-4">
-               Web Site.
-              </h6>
-              <p>
-                <a href="#!" class="text-reset">Instagram</a>
-              </p>
-              <p>
-                <a href="#!" class="text-reset">Facebook</a>
-              </p>
-              <p>
-                <a href="#!" class="text-reset">Twitter</a>
-              </p>
-              <p>
-                <a href="#!" class="text-reset">Youtube</a>
-              </p>
-            </div>
-            <!-- Grid column -->
-    
-            <!-- Grid column -->
-            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-              <!-- Links -->
-              <h6 class="text-uppercase fw-bold mb-4">
-                Sitios web.
-              </h6>
-              <p>
-                <a href="#!" class="text-reset">Instagram</a>
-              </p>
-              <p>
-                <a href="#!" class="text-reset">Facebook</a>
-              </p>
-              <p>
-                <a href="#!" class="text-reset">Twitter</a>
-              </p>
-              <p>
-                <a href="#!" class="text-reset">Youtube</a>
-              </p>
-            </div>
-            <!-- Grid column -->
-    
-            <!-- Grid column -->
-            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-              <!-- Links -->
-              <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
-              <p><i class="fas fa-home me-3"></i> El Salvador, San Salvador.</p>
-              <p>
-                <i class="fas fa-envelope me-3"></i>
-                novamedic@gmail.com
-              </p>
-              <p><i class="fas fa-phone me-3"></i> +503 7208-0960</p>
-              <p><i class="fas fa-print me-3"></i> +503 7208-0960</p>
-            </div>
-            <!-- Grid column -->
+              <!-- Grid column -->
+              <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                  <!-- Content -->
+                  <h6 class="text-uppercase fw-bold mb-4">
+                      <i class="fas fa-gem me-3"></i>Nova-Medic.
+                  </h6>
+                  <p>
+                      Nosotros somos Nova-medic y queremos darte las Gracias por confiar tu salud en nosotros.
+                      Disfruta Nova-Medic
+                  </p>
+              </div>
+              <!-- Grid column -->
+
+              <!-- Grid column -->
+              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                  <!-- Links -->
+                  <h6 class="text-uppercase fw-bold mb-4">
+                      Sitios web.
+                  </h6>
+                  <p>
+                      <a href="#!" class="text-reset"><i class="fab fa-instagram">&nbsp;&nbsp;</i>Instagram</i></a>
+                  </p>
+                  <p>
+                      <a href="#!" class="text-reset"><i class="fab fa-facebook-f"></i>&nbsp;&nbsp;Facebook</a>
+                  </p>
+                  <p>
+                      <a href="#!" class="text-reset"><i class="fab fa-twitter"></i>&nbsp;&nbsp;Twitter</a>
+                  </p>
+                  <p>
+                      <a href="#!" class="text-reset"><i class="bi bi-youtube"></i>&nbsp;&nbsp;Youtube</a>
+                  </p>
+              </div>
+              <!-- Grid column -->
+
+              <!-- Grid column -->
+              <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                  <!-- Links -->
+                  <h6 class="text-uppercase fw-bold mb-4">Contact</h6>
+                  <p><i class="fas fa-home me-3"></i> El Salvador, San Salvador.</p>
+                  <p>
+                      <i class="fas fa-envelope me-3"></i>
+                      novamedic@gmail.com
+                  </p>
+                  <p><i class="fas fa-phone me-3"></i> +503 7208-0960</p>
+                  <p><i class="fas fa-print me-3"></i> +503 7208-0960</p>
+              </div>
+              <!-- Grid column -->
           </div>
           <!-- Grid row -->
-        </div>
-      </section>
-      <!-- Section: Links  -->
-    </footer>
-    <!-- Footer -->
+      </div>
+  </section>
+  <!-- Section: Links  -->
+</footer>
+<!-- Footer -->
+</body>
+<script>
+// SLIDER INDEX
+var index = 0;
+var slides = document.querySelectorAll(".slides");
+var dot = document.querySelectorAll(".dot");
 
-<script src="js/index.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
-</body>
-</body>
+function changeSlide() {
+
+  if (index < 0) {
+      index = slides.length - 1;
+  }
+
+  if (index > slides.length - 1) {
+      index = 0;
+  }
+
+  for (let i = 0; i < slides.length; i++) {
+      slides[i].style.display = "none";
+      dot[i].classList.remove("active");
+  }
+
+  slides[index].style.display = "block";
+
+  index++;
+
+  setTimeout(changeSlide, 4000);
+
+}
+
+changeSlide();
+
+// EFFECT PARALLAX
+const parallax = document.getElementById("parallax");
+
+window.addEventListener("scroll", function () {
+  let offset = window.pageYOffset;
+  parallax.style.backgroundPositionY = offset * 0.7 + "px";
+});
+</script>
 </html>

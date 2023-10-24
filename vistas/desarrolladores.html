@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
+    <title>Desarrolladores</title>
     <!-- FONTAWESOME FONTS & ICONS -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
 
@@ -20,13 +20,14 @@
         crossorigin="anonymous"></script>
 
     <!-- STYLESHEET -->
-    <link rel="icon" href="../img/favicon.ico">
-    <link rel="stylesheet" href="../css/regis.css?v=<?php echo time(); ?>">
-    <script src="../js/scrollreveal.js"></script>
+    <link rel="stylesheet" href="../css/developers.css">
+    <link rel="stylesheet" href="../css/slider.css">
+    <link rel="icon" href="img/favicon.ico">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
 </head>
 <body>
-     <!-- MENU -->
-     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
+    <!-- MENU -->
+    <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
         <div class="container">
             <img src="../img/favicon.ico" width="90" height="90" class="d-inline-block align-top" alt="">
             <a class="navbar-brand fs-4" href="../index.html">NOVA MEDIC</a>
@@ -40,13 +41,13 @@
                         <a class="nav-link fs-6 navbar-brand" aria-current="page" href="../index.html">INICIO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-6 navbar-brand" href="../vistas/desarrolladores.html">DESARROLLADORES</a>
+                        <a class="nav-link fs-6 navbar-brand active" href="#fondo">DESARROLLADORES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-6 navbar-brand" href="../vistas/iniciosesion.php">INICIAR SESION</a>
+                        <a class="nav-link fs-6 navbar-brand" href="iniciosesion.php">INICIAR SESION</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-6 navbar-brand active" href="#">REGISTRARSE</a>
+                        <a class="nav-link fs-6 navbar-brand" href="registro.php">REGISTRARSE</a>
                     </li>
                 </ul>
             </div>
@@ -54,64 +55,69 @@
     </nav>
     <!-- CIERRE MENU -->
 
+    <!-- SLIDER BACKGROUND -->
+    <section class="Background-Sliders">
+        <div class="sliders container-fluid">
+            <div id="slider">
+                <div class="slides">
+                    <img src="../img/BG1.jpg" width="100%" style="opacity: 0.6;" />
+                </div>
 
-    <!-- FORM REGISTRO -->
-    <div class="div-form">
-      <form class="colorito" id="colorito" method="POST" action="../controlador/crtRegistro.php">
-        <label for="colorito" class="text-white fs-5">REGISTRO</label>
-        <?php
-          if(isset($error)){
-            echo "<p class='text-white fs-5'>".$error."</p>";
-          }
-        ?>
-        <div class="row">
-          <div class="col">
-            <label for="form-control " class="text-white">Nombre</label>
-            <input type="text" class="form-control" placeholder="Nombres" name="nombre" required>
-          </div>
-          <div class="col">
-            <label for="form-control" class="text-white">Apellido</label>
-            <input type="text" class="form-control" placeholder="Apellidos" name="ape" required>
-          </div>
-        </div>
-        <div class="sexo">
-          <label for="form-check" class="text-white">Sexo</label>
-          <div class="sexotexts">
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" id="inlineRadio1" value="Hombre" name="sex" required>
-              <label class="form-check-label text-white" for="inlineRadio1">Hombre</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio"  id="inlineRadio2" value="Mujer" name="sex" >
-              <label class="form-check-label text-white" for="inlineRadio2">Mujer</label>
-            </div>
-          </div>
-        </div>
-        <div class="fecha">
-          <label for="form-check" class="text-white">Fecha de nacimiento</label>
-          <input type="date" class="datapicker" data-date-format="mm/dd/yyyy" name="fecha" required>
-        </div>
-        <div class="count">
-          <div class="row">
-            <div class="col">
-              <label for="form-control " class="text-white">Correo</label>
-              <input type="email" class="form-control" placeholder="Email" name="mail" required>
-            </div>
-            <div class="col">
-              <label for="form-control" class="text-white">Contraseña</label>
-              <input type="password" class="form-control" placeholder="Password" name="pass" required>
-            </div>
-          </div>
-        </div>
-        <input type="submit" class="btn btn-dark" value="Siguiente">
-      </form>
-      <div class="divimagen">
-      </div>
-   </div>
+                <div class="slides">
+                    <img src="../img/BG2.jpg" width="100%" style="opacity: 0.6;" />
+                </div>
 
+                <div class="slides">
+                    <img src="../img/BG3.jpg" width="100%" style="opacity: 0.6;" />
+                </div>
 
-     <!-- FOOTER -->
-     <footer class="text-center text-lg-start bg-dark text-white footer">
+                <div class="slides">
+                    <img src="../img/BG4.jpg" width="100%" style="opacity: 0.6;" />
+                </div>
+
+                <div id="dot"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span
+                        class="dot"></span><span class="dot"></span></div>
+            </div>
+        </div>
+    </section>
+    <!-- CIERRE SLIDER BACKGROUND -->
+
+    <!-- DESARROLLADORES -->
+    <section class="devs">
+        <div class="container-fluid">
+            <h1 class="text-center p-4">Desarrolladores</h1>
+            <div id="menu">
+                <div id="nav">
+                    <div id="prev">
+                        <i class="bi bi-chevron-left"></i>
+                    </div>
+                    <div id="next">
+                        <i class="bi bi-chevron-right"></i>
+                    </div>
+                </div>
+                <ul id="cards">
+                    <li id="box1" class="list">
+            
+                    </li>
+                    <li id="box2" class="list">
+            
+                    </li>
+                    <li id="box3" class="list">
+            
+                    </li>
+                    <li id="box4" class="list">
+            
+                    </li>
+                    <li id="box5" class="list">
+            
+                    </li>
+                </ul>
+        </div>
+    </section>
+    <!-- CIERRE DESARROLLADORES -->
+
+    <!-- FOOTER -->
+    <footer class="text-center text-lg-start bg-dark text-white footer">
         <!-- Section: Social media -->
         <section class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom text-center">
         </section>
@@ -175,7 +181,51 @@
         </section>
         <!-- Section: Links  -->
     </footer>
-    <!-- CIERRE FOOTER -->
-    <script src="../JS/indexSession.js"></script>
+    <!-- Footer -->
+
 </body>
+<script>
+    // SLIDER INDEX
+    var index = 0;
+    var slides = document.querySelectorAll(".slides");
+    var dot = document.querySelectorAll(".dot");
+
+    function changeSlide() {
+
+        if (index < 0) {
+            index = slides.length - 1;
+        }
+
+        if (index > slides.length - 1) {
+            index = 0;
+        }
+
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+            dot[i].classList.remove("active");
+        }
+
+        slides[index].style.display = "block";
+
+        index++;
+
+        setTimeout(changeSlide, 4000);
+
+    }
+
+    changeSlide();
+
+
+    $('#prev').on('click', function () {
+            $('#cards').animate({
+                scrollLeft: '-=890'
+            }, 500, 'swing');
+        });
+
+        $('#next').on('click', function () {
+            $('#cards').animate({
+                scrollLeft: '+=890'
+            }, 500, 'swing');
+        });
+</script>
 </html>
