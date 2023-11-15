@@ -1,12 +1,12 @@
 # Nova-Medic
 ## PROYECTO DE HOSPITAL EN LINEA.
-## Tecnologias utilizadas
+### Tecnologias utilizadas
   -PHP
   -CSS3
   -HTML5
   -MySql
   -JS
-#Creadores
+### Creadores
   -Cristian Pineda
   -Victor Reyna
   -Fernando Torres
