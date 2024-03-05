@@ -12,6 +12,7 @@
   -Fernando Torres
   -Eduardo Rodriguez 
   -Henry 
+  -Angel Pimentel
   
 ### Misión
 Nova Medic busca ser parte de las posibilidades que las personas tienen en nuestro país para recibir un diagnostico medico profesional.
