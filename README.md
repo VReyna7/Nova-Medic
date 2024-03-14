@@ -20,3 +20,7 @@ No intentamos ser una tienda online de consultas o venta de productos médicos. 
 
 ## Contribuciones al proyecto
 Este proyecto es de caracter privado y su uso no esta disponible para su uso sin los permisos de los propietarios. 
+
+## Prohibido el la reprodución o crear trabajos derivados de este repositorio
+https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/licensing-a-repository
+No tiene la obligación de elegir una licencia. Sin embargo, sin una licencia, se aplican las leyes de derechos de autor predeterminadas, lo que significa que conserva todos los derechos sobre su código fuente y nadie puede reproducir, distribuir o crear trabajos derivados de su trabajo. 
