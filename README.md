@@ -20,7 +20,3 @@ No intentamos ser una tienda online de consultas o venta de productos médicos. 
 
 ## Contribuciones al proyecto
 Este proyecto es de caracter privado y su uso no esta disponible para su uso sin los permisos de los propietarios. 
-
-## Licencia
-
-Este proyecto está bajo la [Licencia MIT]
