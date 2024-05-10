@@ -10,8 +10,6 @@
   -Cristian Pineda
   -Victor Reyna
   -Fernando Torres
-  -Eduardo Rodriguez 
-  -Henry 
   -Angel Pimentel
   
 ### Misión
