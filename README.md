@@ -1,4 +1,4 @@
-# Nova-Medic
+# Nova-Medic s
 ## PROYECTO DE HOSPITAL EN LINEA.
 ### Tecnologias utilizadas
   -PHP
